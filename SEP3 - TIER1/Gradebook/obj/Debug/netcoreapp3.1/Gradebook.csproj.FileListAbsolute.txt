@@ -1,0 +1,92 @@
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\appsettings.Development.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\appsettings.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.exe
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.deps.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.runtimeconfig.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.runtimeconfig.dev.json
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.dll
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.pdb
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.Views.dll
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.Views.pdb
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csprojAssemblyReference.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.AssemblyInfoInputs.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.AssemblyInfo.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CoreCompileInputs.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.MvcApplicationPartsAssemblyInfo.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorComponent.input.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Gradebook.dll
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.TagHelpers.input.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.TagHelpers.output.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorCoreGenerate.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorAssemblyInfo.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorAssemblyInfo.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorTargetAssemblyInfo.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorTargetAssemblyInfo.cs
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.Views.pdb
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\staticwebassets\Gradebook.StaticWebAssets.Manifest.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\staticwebassets\Gradebook.StaticWebAssets.xml
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.dll
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.pdb
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
+W:\Univer\SEP\SEP3\WebApplication\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CopyComplete
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.exe
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.deps.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.runtimeconfig.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.runtimeconfig.dev.json
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.dll
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.pdb
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.Views.dll
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.Views.pdb
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csprojAssemblyReference.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.AssemblyInfoInputs.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.AssemblyInfo.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CoreCompileInputs.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorComponent.input.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Gradebook.dll
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.TagHelpers.input.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.TagHelpers.output.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorCoreGenerate.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorAssemblyInfo.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorAssemblyInfo.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorTargetAssemblyInfo.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorTargetAssemblyInfo.cs
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.Views.pdb
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\staticwebassets\Gradebook.StaticWebAssets.Manifest.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\staticwebassets\Gradebook.StaticWebAssets.xml
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.dll
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.pdb
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
+C:\Users\dobre\OneDrive\Tier 1 - Gradebook\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CopyComplete

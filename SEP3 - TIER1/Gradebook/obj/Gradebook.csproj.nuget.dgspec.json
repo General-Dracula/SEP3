@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\dobre\\OneDrive\\Tier 1 - Gradebook\\Gradebook\\Gradebook.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\dobre\\OneDrive\\Tier 1 - Gradebook\\Gradebook\\Gradebook.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dobre\\OneDrive\\Tier 1 - Gradebook\\Gradebook\\Gradebook.csproj",
+        "projectName": "Gradebook",
+        "projectPath": "C:\\Users\\dobre\\OneDrive\\Tier 1 - Gradebook\\Gradebook\\Gradebook.csproj",
+        "packagesPath": "C:\\Users\\dobre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dobre\\OneDrive\\Tier 1 - Gradebook\\Gradebook\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dobre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\dobre\\.dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

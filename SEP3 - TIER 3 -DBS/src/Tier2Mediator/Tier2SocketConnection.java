@@ -1,0 +1,120 @@
+package Tier2Mediator;
+
+import Data.Student;
+import Model.Tier2Model;
+import com.google.gson.Gson;
+import tier3NetworkPackages.NetworkPackage;
+import tier3NetworkPackages.NetworkType;
+import tier3NetworkPackages.StudentDataPackage;
+import tier3NetworkPackages.TwoFieldPackage;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Tier2SocketConnection implements Tier2Connection
+{
+    private Socket socket;
+    ServerSocket welcomeSocket;
+    private BufferedReader reader;
+    private PrintWriter writer;
+    private Tier2Model model;
+    private Gson gson;
+    private boolean stopCondition;
+
+    public Tier2SocketConnection(Tier2Model model)
+    {
+        this.model = model;
+        gson = new Gson();
+        stopCondition = false;
+    }
+
+
+    public void connect(int port)
+    {
+        try {
+            welcomeSocket = new ServerSocket(port);
+            socket = welcomeSocket.accept();
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new PrintWriter(socket.getOutputStream(), true);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isConnected()
+    {
+        return this.socket.isConnected();
+    }
+
+    public void closeSocket()
+    {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void waitFromTier2()
+    {
+        Runnable runnable = () -> {
+            String message = null;
+            NetworkPackage dataPackage;
+            while (!stopCondition) {
+                try {
+                    message = reader.readLine();
+                } catch (IOException e) {
+                    System.out.println(socket.getRemoteSocketAddress().toString() + " - disconnected");
+                    stopCondition = true;
+                    e.printStackTrace();
+                }
+
+                dataPackage = gson.fromJson(message, NetworkPackage.class);
+
+                switch (dataPackage.getType()) {
+                    case LogInRequest:
+                        TwoFieldPackage twoFieldPackage = gson.fromJson(message, TwoFieldPackage.class);
+                        System.out.println("Log In Request" + twoFieldPackage.getFirstField());
+                        model.CheckLogInData(twoFieldPackage.getFirstField(), twoFieldPackage.getSecondField(), twoFieldPackage.getId());
+                        break;
+//                case :
+//
+//                    break;
+//                case :
+//
+//                    break;
+//                case :
+//
+//                    break;
+//                case :
+//
+//                    break;
+                }
+
+
+            }  //while end
+
+        };
+        Thread t = new Thread(runnable);
+        //t.setDaemon(true);
+        t.start();
+    }
+
+    @Override
+    public void openStudentWindow(Student data, long id)
+    {
+        writer.println(gson.toJson(new StudentDataPackage(NetworkType.StudentWindowData, data, id)));
+    }
+
+    @Override
+    public void logInError(String error, Long id)
+    {
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.LogInError, error, "", id)));
+    }
+
+
+
+}

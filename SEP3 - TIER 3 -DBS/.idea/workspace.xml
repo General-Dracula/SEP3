@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="93bda636-8851-4abb-ab9a-339ddc6af64b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jvJ9DzCR8bRYqGZqinCuqFUKBN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gson-2.8.6.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dobre\OneDrive\SEP3 - TIER 3 -DBS\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="SEP3 - TIER 3 -DBS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="93bda636-8851-4abb-ab9a-339ddc6af64b" name="Default Changelist" comment="" />
+      <created>1604678478523</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604678478523</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="830" y="260" key="#com.intellij.ide.util.MemberChooser" timestamp="1604850581840">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="830" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604850581840" />
+    <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1604680281930">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604680281930" />
+    <state width="1037" height="261" key="GridCell.Tab.0.bottom" timestamp="1604850834148">
+      <screen x="2560" y="-253" width="1080" height="1880" />
+    </state>
+    <state width="2005" height="325" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604838729718" />
+    <state width="1037" height="261" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1604850834148" />
+    <state width="1037" height="261" key="GridCell.Tab.0.center" timestamp="1604850834148">
+      <screen x="2560" y="-253" width="1080" height="1880" />
+    </state>
+    <state width="2005" height="325" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604838729717" />
+    <state width="1037" height="261" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1604850834148" />
+    <state width="1037" height="261" key="GridCell.Tab.0.left" timestamp="1604850834148">
+      <screen x="2560" y="-253" width="1080" height="1880" />
+    </state>
+    <state width="2005" height="325" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604838729717" />
+    <state width="1037" height="261" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1604850834148" />
+    <state width="1037" height="261" key="GridCell.Tab.0.right" timestamp="1604850834148">
+      <screen x="2560" y="-253" width="1080" height="1880" />
+    </state>
+    <state width="2005" height="325" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604838729717" />
+    <state width="1037" height="261" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1604850834148" />
+    <state x="505" y="131" key="SettingsEditor" timestamp="1604680283964">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="505" y="131" key="SettingsEditor/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604680283964" />
+    <state x="-1080" y="-82" width="1096" height="1094" maximized="true" key="dock-window-1" timestamp="1604769193483">
+      <screen x="-1080" y="-247" width="1080" height="1880" />
+    </state>
+    <state x="-1080" y="-82" width="1096" height="1094" maximized="true" key="dock-window-1/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604769193483" />
+  </component>
+</project>
