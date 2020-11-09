@@ -36,7 +36,7 @@ public class ModelManager implements Model, Tier2Model
         absences.add(new Absence("12/2/2999", false, "Math"));
         absences.add(new Absence("12/2/2999", false, "Math"));
 
-        Student student = new Student("62-10", "Dodonica", "Puta mica", "Sugi pula dodon 13", "01/12/2000", "Sugpula69", "07442121", grades, absences);
+        Student student = new Student("1", "Dodonica", "Puta mica", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
 
         System.out.println(id + " -------------------" + password);
         if(id.equals(student.getId()) && password.equals(student.getViewGradePassword()))

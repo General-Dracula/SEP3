@@ -11,6 +11,11 @@ public class StudentDataPackage extends NetworkPackage {
         this.data = data;
     }
 
+    public StudentDataPackage()
+    {
+        super(NetworkType.StudentWindowData, Long.valueOf(10));
+    }
+
     public Student getData()
     {
         return this.data;

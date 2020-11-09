@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.NetworkPackages;
 
 namespace WebApplication.Data {
 public class UserService : IUserService {
@@ -32,16 +33,14 @@ public class UserService : IUserService {
     }
     
     
-    public async Task<User> ValidateLoginAsync(string username, string password)
+    public async Task<string> ValidateLoginAsync(string username, string password)
     {
         HttpClient client = new HttpClient();
         HttpResponseMessage response = await client.GetAsync($"http://localhost:8081/users?username={username}&password={password}");
         if (response.StatusCode == HttpStatusCode.OK)
         {
             string userAsJson = await response.Content.ReadAsStringAsync();
-            User resultUser = JsonSerializer.Deserialize<User>(userAsJson);
-            Console.WriteLine(resultUser.UserName + " " + resultUser.Password + " " + resultUser.SecurityLevel);
-            return resultUser;
+            return userAsJson;
         } 
         throw new Exception("User not found");
     }

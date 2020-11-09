@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zPRhRKVNEa/VuUUk5XMuXM+3Pim0hFf8XJMGsPV+RecBEQhLRGi1/hcp+e0Kcq1XNGGquHmgOGlAZK+Ip4bSjw==",
+  "dgSpecHash": "SezZQBwPf83qdsqJvfd8eJe6+l4B4ODOuwl6jE/Nf7/mGv09jupHrHpdjQNGZ/C2Vj6xUtSkUHEOLS9n3XIfPA==",
   "success": true,
-  "projectFilePath": "W:\\Univer\\SEP\\SEP3\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dobre\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

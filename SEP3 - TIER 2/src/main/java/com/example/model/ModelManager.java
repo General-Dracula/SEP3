@@ -1,8 +1,6 @@
 package com.example.model;
 
 import com.example.Data.Student;
-import com.example.tier1Mediator.Tier1ApiConnection;
-import com.example.tier1Mediator.Tier1Connection;
 import com.example.tier3Mediator.Tier3Connection;
 import com.example.tier3Mediator.Tier3SocketConnection;
 import com.example.tier3NetworkPackages.NetworkPackage;

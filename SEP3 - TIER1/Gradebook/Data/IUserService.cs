@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.NetworkPackages;
 
 namespace WebApplication.Data {
 public interface IUserService
 {
-    Task<User> ValidateLoginAsync(string username, string password);
+    Task<string> ValidateLoginAsync(string username, string password);
     User ValidateLogin(string username, string password);
 }
 }

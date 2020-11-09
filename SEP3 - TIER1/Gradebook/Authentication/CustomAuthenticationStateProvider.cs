@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
+using Newtonsoft.Json;
 using WebApplication.Data;
 using WebApplication.Models;
+using WebApplication.NetworkPackages;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace WebApplication.Authentication {
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
@@ -43,13 +45,32 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
         if (string.IsNullOrEmpty(password)) throw new Exception("Enter password");
 
         ClaimsIdentity identity = new ClaimsIdentity();
-        try {
-            User user = await userService.ValidateLoginAsync(username, password);
+        try
+        {
+            string response = await userService.ValidateLoginAsync(username, password);
+            Console.WriteLine(response);
+            NetworkPackage resultUser = JsonConvert.DeserializeObject<NetworkPackage>(response);
+            Console.WriteLine(resultUser.id);
+            User user = new User();
+            //Console.WriteLine(resultUser.GetType().ToString() + "!!!!!!!!!-------------1");
+            if (resultUser.type.Equals("StudentWindowData"));
+            {
+                //Console.WriteLine("!!!!!!!!!------------2");
+                StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
+                //Console.WriteLine(studentDataPackage.id.ToString() + "!!!!!!!!!------------3");
+                user.UserName = studentDataPackage.data.id;
+                //Console.WriteLine("!!!!!!!!!------------4");
+                user.Password =  studentDataPackage.data.viewGradePassword;
+                user.SecurityLevel = 2;    
+                //Console.WriteLine("!!!!!!!!!------------5");
+            }
+            
             identity = SetupClaimsForUser(user);
             string serialisedData = JsonSerializer.Serialize(user);
             await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
-            cachedUser = user;
+            cachedUser = new User();
         } catch (Exception e) {
+            Console.WriteLine(e.StackTrace);
             throw e;
         }
 
