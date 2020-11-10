@@ -26,7 +26,6 @@ namespace WebApplication
             services.AddServerSideBlazor();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            //services.AddControllers().AddNewtonsoftJson();
 
             services.AddAuthorization(options => {
                 options.AddPolicy("SecurityLevel2",  a => 

@@ -1,0 +1,67 @@
+@page "/Student"
+@using WebApplication.Models
+@using WebApplication.Authentication
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h2 style="margin:auto; width: 50%; text-align: center;">Welcome <b>@student.firstName @student.lastName</b></h2>
+<br>
+
+<h4>Your grades:</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Grade</th>
+        <th>Course</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Grade grade in student.grades)
+    {
+        <tr>
+            <td>@grade.grade</td>
+            <td>@grade.course</td>
+            <td>@grade.date</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br>
+
+<h4>Your absences:</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Motivated</th>
+        <th>Course</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Absence absence in student.absences)
+    {
+        <tr>
+            @if (@absence.motivated == true)
+            {
+                <td style="color: #12ff00">Yes</td>
+            }
+            else
+            {
+                <td style="color: #ff000d">No</td>
+            }
+            <td>@absence.course</td>
+            <td>@absence.date</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br>
+<h4>Your address: <b>@student.address</b></h4>
+<h4>Your phone number: <b>@student.phoneNumber</b></h4>
+
+
+@code {
+    Student student = CustomAuthenticationStateProvider.CachedStudent;
+}

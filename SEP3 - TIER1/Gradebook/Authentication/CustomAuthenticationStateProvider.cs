@@ -16,10 +16,16 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
     private readonly IUserService userService;
 
     private User cachedUser;
+    public static Student CachedStudent;
 
+    private static bool studentWindow;
+    private static bool teacherWindow;
+    private static bool adminWindow;
+    
     public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserService userService) {
         this.jsRuntime = jsRuntime;
         this.userService = userService;
+        RestoreWindowBooleans();
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync() {
@@ -41,7 +47,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
 
     public async Task ValidateLogin(string username, string password) {
         Console.WriteLine("Validating log in");
-        if (string.IsNullOrEmpty(username)) throw new Exception("Enter username");
+        if (string.IsNullOrEmpty(username)) throw new Exception("Enter ID");
         if (string.IsNullOrEmpty(password)) throw new Exception("Enter password");
 
         ClaimsIdentity identity = new ClaimsIdentity();
@@ -52,17 +58,15 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             NetworkPackage resultUser = JsonConvert.DeserializeObject<NetworkPackage>(response);
             Console.WriteLine(resultUser.id);
             User user = new User();
-            //Console.WriteLine(resultUser.GetType().ToString() + "!!!!!!!!!-------------1");
             if (resultUser.type.Equals("StudentWindowData"));
             {
-                //Console.WriteLine("!!!!!!!!!------------2");
                 StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
-                //Console.WriteLine(studentDataPackage.id.ToString() + "!!!!!!!!!------------3");
                 user.UserName = studentDataPackage.data.id;
-                //Console.WriteLine("!!!!!!!!!------------4");
                 user.Password =  studentDataPackage.data.viewGradePassword;
-                user.SecurityLevel = 2;    
-                //Console.WriteLine("!!!!!!!!!------------5");
+                user.SecurityLevel = 2;
+                CachedStudent = studentDataPackage.data;
+                RestoreWindowBooleans();
+                studentWindow = true;
             }
             
             identity = SetupClaimsForUser(user);
@@ -76,6 +80,20 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
 
         NotifyAuthenticationStateChanged(
             Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
+    }
+
+    public static string NavigateToWindow()
+    {
+        if (studentWindow) return "/Student";
+        else if (teacherWindow) return "/Teacher";
+        else return "/Admin";
+    }
+
+    private void RestoreWindowBooleans()
+    {
+        studentWindow = false;
+        teacherWindow = false;
+        adminWindow = false;
     }
 
     public void Logout() {

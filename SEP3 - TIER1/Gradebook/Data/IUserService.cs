@@ -6,6 +6,5 @@ namespace WebApplication.Data {
 public interface IUserService
 {
     Task<string> ValidateLoginAsync(string username, string password);
-    User ValidateLogin(string username, string password);
 }
 }

@@ -8,6 +8,7 @@ import Tier2Mediator.Tier2SocketConnection;
 
 import java.util.ArrayList;
 
+
 public class ModelManager implements Model, Tier2Model
 {
     Tier2Connection tier2Connection;

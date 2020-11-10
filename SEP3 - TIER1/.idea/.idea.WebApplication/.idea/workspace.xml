@@ -100,16 +100,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Gradebook/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Data/IUserService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Data/UserService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gradebook/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gradebook/App.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Data/UserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Data/IUserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -127,20 +127,24 @@
         <option value="$PROJECT_DIR$/WebApplication/Pages/Login.razor" />
         <option value="$PROJECT_DIR$/WebApplication/Shared/MainLayout.razor" />
         <option value="$PROJECT_DIR$/WebApplication/Data/UserService.cs" />
-        <option value="$PROJECT_DIR$/Gradebook/Pages/Login.razor" />
-        <option value="$PROJECT_DIR$/Gradebook/Data/IUserService.cs" />
-        <option value="$PROJECT_DIR$/Gradebook/Data/UserService.cs" />
         <option value="$PROJECT_DIR$/Gradebook/Models/User.cs" />
         <option value="$PROJECT_DIR$/Gradebook/NetworkPackages/NetworkType.cs" />
-        <option value="$PROJECT_DIR$/Gradebook/Startup.cs" />
         <option value="$PROJECT_DIR$/Gradebook/Models/Grade.cs" />
         <option value="$PROJECT_DIR$/Gradebook/Models/Absence.cs" />
         <option value="$PROJECT_DIR$/Gradebook/Models/Student.cs" />
-        <option value="$PROJECT_DIR$/Gradebook/NetworkPackages/StudentDataPackage.cs" />
         <option value="$PROJECT_DIR$/Gradebook/NetworkPackages/TwoFieldPackage.cs" />
         <option value="$PROJECT_DIR$/Gradebook/NetworkPackages/NetworkPackage.cs" />
-        <option value="$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" />
+        <option value="$PROJECT_DIR$/Gradebook/Pages/Student.cshtml" />
+        <option value="$PROJECT_DIR$/Gradebook/Pages/Student.razor" />
+        <option value="$PROJECT_DIR$/Gradebook/NetworkPackages/StudentDataPackage.cs" />
+        <option value="$PROJECT_DIR$/Gradebook/Startup.cs" />
         <option value="$PROJECT_DIR$/Gradebook/Shared/MainLayout.razor" />
+        <option value="$PROJECT_DIR$/Gradebook/Pages/StudentView.razor" />
+        <option value="$PROJECT_DIR$/Gradebook/Pages/Login.razor" />
+        <option value="$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" />
+        <option value="$PROJECT_DIR$/Gradebook/wwwroot/css/login.css" />
+        <option value="$PROJECT_DIR$/Gradebook/Data/IUserService.cs" />
+        <option value="$PROJECT_DIR$/Gradebook/Data/UserService.cs" />
       </list>
     </option>
   </component>
@@ -209,6 +213,7 @@
       <workItem from="1604937119441" duration="8943000" />
       <workItem from="1604946083168" duration="140000" />
       <workItem from="1604946237356" duration="1603000" />
+      <workItem from="1605027402477" duration="10186000" />
     </task>
     <servers />
   </component>
@@ -237,30 +242,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="312" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1604620123009" />
-    <state width="2005" height="254" key="GridCell.Tab.0.bottom" timestamp="1604947831684">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2517" height="391" key="GridCell.Tab.0.bottom" timestamp="1605037709238">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1037" height="239" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@-1080.-247.1080.1880" timestamp="1604937910643" />
     <state width="2005" height="254" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604947831684" />
-    <state width="1240" height="393" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1604926490778" />
-    <state width="2005" height="254" key="GridCell.Tab.0.center" timestamp="1604947831684">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2517" height="391" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605037709238" />
+    <state width="2517" height="391" key="GridCell.Tab.0.center" timestamp="1605037709238">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1037" height="239" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@-1080.-247.1080.1880" timestamp="1604937910642" />
     <state width="2005" height="254" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604947831684" />
-    <state width="1240" height="393" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1604926490778" />
-    <state width="2005" height="254" key="GridCell.Tab.0.left" timestamp="1604947831684">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2517" height="391" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605037709238" />
+    <state width="2517" height="391" key="GridCell.Tab.0.left" timestamp="1605037709238">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1037" height="239" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@-1080.-247.1080.1880" timestamp="1604937910642" />
     <state width="2005" height="254" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604947831684" />
-    <state width="1240" height="393" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1604926490778" />
-    <state width="2005" height="254" key="GridCell.Tab.0.right" timestamp="1604947831684">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2517" height="391" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605037709238" />
+    <state width="2517" height="391" key="GridCell.Tab.0.right" timestamp="1605037709238">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1037" height="239" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@-1080.-247.1080.1880" timestamp="1604937910643" />
     <state width="2005" height="254" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604947831684" />
-    <state width="1240" height="393" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1604926490778" />
+    <state width="2517" height="391" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605037709238" />
     <state x="857" y="273" key="RiderGenerateDialog" timestamp="1604943462353">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
