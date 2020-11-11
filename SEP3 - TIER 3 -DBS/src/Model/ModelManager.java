@@ -27,17 +27,19 @@ public class ModelManager implements Model, Tier2Model
         ArrayList<Grade> grades = new ArrayList<Grade>();
         ArrayList<Absence> absences =  new ArrayList<Absence>();
 
-        grades.add(new Grade(7, "6/9/6969", "Math"));
-        grades.add(new Grade(10, "6/9/6969", "Math"));
-        grades.add(new Grade(8, "6/9/6969", "Romanian"));
-        grades.add(new Grade(7, "6/9/6969", "Chemistry"));
+        grades.add(new Grade(5, "1/5/2020", "Math"));
+        grades.add(new Grade(7, "1/6/2020", "Math"));
+        grades.add(new Grade(8, "1/7/2020", "Romanian"));
+        grades.add(new Grade(7, "1/8/2020", "Chemistry"));
+        grades.add(new Grade(9, "1/9/2020", "Chemistry"));
+        grades.add(new Grade(3, "1/10/2020", "Math"));
 
-        absences.add(new Absence("12/2/2999", false, "Math"));
-        absences.add(new Absence("11/2/2999", true, "Romanian"));
-        absences.add(new Absence("12/2/2999", false, "Math"));
-        absences.add(new Absence("12/2/2999", false, "Math"));
+        absences.add(new Absence("1/10/2020", false, "Math"));
+        absences.add(new Absence("2/10/2020", true, "Romanian"));
+        absences.add(new Absence("3/10/2020", false, "Math"));
+        absences.add(new Absence("4/10/2020", false, "Math"));
 
-        Student student = new Student("1", "Dodonica", "Puta mica", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
+        Student student = new Student("1", "Dodon", "Muila", "Str. Sugerii, Nr. 69", "01/12/2000", "1", "07442121", grades, absences);
 
         System.out.println(id + " -------------------" + password);
         if(id.equals(student.getId()) && password.equals(student.getViewGradePassword()))
