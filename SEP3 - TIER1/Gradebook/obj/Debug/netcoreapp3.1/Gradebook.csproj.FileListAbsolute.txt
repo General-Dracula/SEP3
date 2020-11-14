@@ -232,5 +232,3 @@ W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.pdb
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\StudentView.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\StudentView.razor.g.cs
-C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\StudentView.razor.g.cs
-C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\StudentView.razor.g.cs

@@ -80,6 +80,7 @@
               <e p="README.md" t="Include" />
             </e>
             <e p="site.css" t="Include" />
+            <e p="studentView.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="Media" t="Include">

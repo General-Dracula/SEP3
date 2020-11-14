@@ -3,65 +3,131 @@
 @using WebApplication.Authentication
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<h2 style="margin:auto; width: 50%; text-align: center;">Welcome <b>@student.firstName @student.lastName</b></h2>
+<head>
+    <link rel="stylesheet" href="css/studentView.css">
+</head>
+
+<h2 style="margin:auto; width: 50%; text-align: center;"><b>@student.firstName @student.lastName</b>, ID = @student.id</h2>
 <br>
 
-<h4>Your grades:</h4>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Grade</th>
-        <th>Course</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (Grade grade in student.grades)
+<table>
+    @foreach (String course in courses)
     {
         <tr>
-            <td>@grade.grade</td>
-            <td>@grade.course</td>
-            <td>@grade.date</td>
+            <th class="course">@course</th>
+            <tr>
+                <td style="width: 7em">Grades</td>
+                <tr>
+                    @foreach (Grade grade in student.grades)
+                    {
+                        string gradeOpacity = "0." + (int)(grade.grade*0.9);
+                        if (grade.grade == 10) gradeOpacity = "1";
+                        string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
+                        Console.WriteLine(grade.grade/10.0);
+                        if (grade.course.Equals(course))
+                        {
+                            <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    @foreach (Grade grade in student.grades)
+                    {
+                        if (grade.course.Equals(course))
+                        {
+                            <td class="cell">@grade.date</td>
+                        }
+                    }
+                </tr>
+            </tr>
+            <tr>
+                <td style="width: 7em">Absences</td>
+                <tr>
+                    @foreach (Absence absence in student.absences)
+                    {
+                        if (absence.course.Equals(course))
+                        {
+                            if (absence.motivated)
+                            {
+                                <td class="cell" style="background-color: #8aff78">Motivated</td>
+                            }
+                            else
+                            {
+                                <td class="cell" style="background-color: #ff606f">Unmotivated</td>   
+                            }
+                        }
+                    }
+                </tr>
+                <tr>
+                    @foreach (Absence absence in student.absences)
+                    {
+                        if (absence.course.Equals(course))
+                        {
+                            <td class="cell">@absence.date</td>
+                        }
+                    }
+                </tr>
+            </tr>
         </tr>
     }
-    </tbody>
 </table>
 
 <br>
-
-<h4>Your absences:</h4>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Motivated</th>
-        <th>Course</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (Absence absence in student.absences)
-    {
-        <tr>
-            @if (@absence.motivated == true)
-            {
-                <td style="color: #12ff00">Yes</td>
-            }
-            else
-            {
-                <td style="color: #ff000d">No</td>
-            }
-            <td>@absence.course</td>
-            <td>@absence.date</td>
-        </tr>
-    }
-    </tbody>
-</table>
-
-<br>
-<h4>Your address: <b>@student.address</b></h4>
-<h4>Your phone number: <b>@student.phoneNumber</b></h4>
+<h4>Student's address: <b>@student.address</b></h4>
+<h4>Student's phone number: <b>@student.phoneNumber</b></h4>
 
 
 @code {
     Student student = CustomAuthenticationStateProvider.CachedStudent;
+    List<string> courses = new List<string>();
+    List<List<int>> grades = new List<List<int>>();
+    int maxRow = 0;
+    Grade currentGrade = new Grade();
+
+    private void ExtractCourses()
+    {
+        foreach (Grade grade in student.grades)
+        {
+            if (courses == null)
+            {
+                courses.Add(grade.course);
+            }
+            else if (!courses.Contains(grade.course))
+            {
+                courses.Add(grade.course);
+            }
+        }
+        foreach (Absence absence in student.absences)
+        {
+            if(courses==null) courses.Add(absence.course);
+            else if (!courses.Contains(absence.course))
+            {
+                courses.Add(absence.course);
+            }
+        }
+    }
+
+    private void ExtractGrades()
+    {
+        int index = 0;
+        foreach (string course in courses)
+        {
+            foreach (Grade grade in student.grades)
+            {
+                if (course.Equals(grade.course))
+                {
+                    grades[index].Add(grade.grade);
+                    if(maxRow < grades[index].Count) maxRow = grades[index].Count;
+                }
+            }
+            index++;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        ExtractCourses();
+        //ExtractGrades();
+    }
 }

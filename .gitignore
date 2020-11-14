@@ -48,3 +48,38 @@ SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/staticwebassets/Gradebook.StaticW
 SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/staticwebassets/Gradebook.StaticWebAssets.xml
 SEP3 - TIER 3 -DBS/.idea/workspace.xml
 SEP3 - TIER 3 -DBS/.idea/workspace.xml
+*.dll
+*.pdb
+*.cache
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.assets.cache
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.CoreCompileInputs.cache
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.FileListAbsolute.txt
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csprojAssemblyReference.cache
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.dll
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.pdb
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.dll
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.pdb
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/_Imports.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/App.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/_Host.cshtml.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/Error.cshtml.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/Login.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/StudentView.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Shared/MainLayout.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Shared/NavMenu.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Razor/Shared/SurveyPrompt.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/_Imports.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/App.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Gradebook.dll
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Gradebook.pdb
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Login.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/StudentView.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/NavMenu.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs
+SEP3 - TIER1/Gradebook/obj/Gradebook.csproj.nuget.dgspec.json
+SEP3 - TIER1/Gradebook/obj/Gradebook.csproj.nuget.g.props
+SEP3 - TIER1/Gradebook/obj/project.assets.json
+SEP3 - TIER1/Gradebook/obj/project.nuget.cache
+SEP3 - TIER1/Gradebook/obj/project.packagespec.json
+SEP3 - TIER1/Gradebook/obj/rider.project.restore.info

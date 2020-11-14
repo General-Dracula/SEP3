@@ -1,0 +1,41 @@
+table, th, td{
+    border-collapse: separate;
+}
+
+th, td{
+    border: 2px solid #03c2fc;
+    text-align: center;
+}
+
+.course{
+    width: 10%;
+}
+
+.cell{
+    width: 7em;
+    height: auto;
+}
+
+table {
+    width: 100%;
+}
+
+tr:nth-child(1){
+    background-color: #d1d1ff;
+}
+
+tr:nth-child(2){
+    background-color: #d3faff;
+}
+
+tr:nth-child(3){
+    background-color: #cfffe2;
+}
+
+tr:nth-child(4){
+    background-color: #f1d2ff;
+}
+
+tr:nth-child(5){
+    background-color: #fffbe4;
+}
