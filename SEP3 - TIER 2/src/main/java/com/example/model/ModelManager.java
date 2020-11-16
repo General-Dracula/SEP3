@@ -25,10 +25,11 @@ public class ModelManager implements Model, Tier3Model, Tier1Model
         return tier3Connection.checkLogInData(id, password);
     }
 
-
     @Override
-    public void OpenStudentGrades(Student data)
+    public NetworkPackage assignGrade(String studentId, String course, int grade)
     {
-        ////
+        return tier3Connection.assignGrade(studentId, course, grade);
     }
+
+
 }

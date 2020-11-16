@@ -6,6 +6,7 @@ public class Class
 {
     private int year;
     private char letter;
+    private String teacherID;
 
     private ArrayList<Student> students;
 
@@ -14,13 +15,15 @@ public class Class
         this.year = 0;
         this.students = null;
         this.letter = ' ';
+        this.teacherID = " ";
     }
 
-    public Class(int year, char letter, ArrayList<Student> students)
+    public Class(int year, char letter, String teacherID, ArrayList<Student> students)
     {
         this.year = year;
         this.letter = letter;
         this.students = students;
+        this.teacherID = teacherID;
     }
 
 
@@ -33,5 +36,15 @@ public class Class
     public void setStudents(ArrayList<Student> students)
     {
         this.students = students;
+    }
+
+    public String getTeacherID()
+    {
+        return teacherID;
+    }
+
+    public void setTeacherID(String teacherID)
+    {
+        this.teacherID = teacherID;
     }
 }

@@ -8,4 +8,6 @@ import org.springframework.stereotype.Component;
 public interface Tier1Model
 {
     public NetworkPackage checkLogInInfo(String id, String password);
+
+    public NetworkPackage assignGrade(String studentId, String course, int grade);
 }

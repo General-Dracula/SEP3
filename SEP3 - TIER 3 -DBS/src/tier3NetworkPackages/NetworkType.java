@@ -8,6 +8,13 @@ public enum NetworkType
 
 
     //Get Student Data
-    StudentWindowData
+    StudentData,
+
+    TeacherData,
+    TeacherError,
+
+    TeacherAssignGrade,
+    TeacherAssignAbsence,
+    TeacherMotivateAbsence
 
 }

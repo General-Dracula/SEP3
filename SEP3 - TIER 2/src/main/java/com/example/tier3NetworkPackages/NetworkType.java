@@ -7,6 +7,14 @@ public enum NetworkType
     LogInError,
 
     //Get Student Data
-    StudentWindowData
+    StudentData,
 
+
+
+  TeacherData,
+  TeacherError,
+
+  TeacherAssignGrade,
+  TeacherAssignAbsence,
+  TeacherMotivateAbsence
 }

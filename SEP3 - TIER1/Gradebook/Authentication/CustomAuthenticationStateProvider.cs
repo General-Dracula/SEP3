@@ -58,7 +58,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             NetworkPackage resultUser = JsonConvert.DeserializeObject<NetworkPackage>(response);
             Console.WriteLine(resultUser.id);
             User user = new User();
-            if (resultUser.type.Equals("StudentWindowData"));
+            if (resultUser.type.Equals("StudentData"));
             {
                 StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
                 user.UserName = studentDataPackage.data.id;

@@ -1,5 +1,7 @@
 package Data;
 
+import java.util.ArrayList;
+
 public class Teacher
 {
     private String id;
@@ -7,16 +9,20 @@ public class Teacher
     private String lastName;
     private String password;
 
+    private ArrayList<Class> classes;
+
     public Teacher()
     {
         id = null;
         firstName = null;
         lastName = null;
         password = null;
+        classes = null;
     }
 
-    public Teacher(String id, String firstName, String lastName, String password)
+    public Teacher(String id, String firstName, String lastName, String password, ArrayList<Class> classes)
     {
+        this.classes = classes;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,5 +67,15 @@ public class Teacher
     public void setPassword(String password)
     {
         this.password = password;
+    }
+
+    public ArrayList<Class> getClasses()
+    {
+        return classes;
+    }
+
+    public void setClasses(ArrayList<Class> classes)
+    {
+        this.classes = classes;
     }
 }

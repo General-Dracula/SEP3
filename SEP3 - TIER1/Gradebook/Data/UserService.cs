@@ -21,6 +21,6 @@ public class UserService : IUserService {
             return userAsJson;
         } 
         throw new Exception("User not found");
-    }
+    } 
 }
 }

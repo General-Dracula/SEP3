@@ -25,6 +25,7 @@ public class Tier1ApiConnection {
     {
         this.model = model;
         gson = new Gson();
+
     }
 
 
@@ -34,7 +35,7 @@ public class Tier1ApiConnection {
         String username = user.getFirstField();
         String password = user.getSecondField();
         NetworkPackage bai = model.checkLogInInfo(username, password);
-        if (bai.getType().equals(NetworkType.StudentWindowData))
+        if (bai.getType().equals(NetworkType.StudentData))
         {
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             StudentDataPackage studentDataPackage = (StudentDataPackage) bai;
@@ -43,4 +44,7 @@ public class Tier1ApiConnection {
             return new ResponseEntity<String>(aux, HttpStatus.OK);
         }   else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
     }
+
+
+    //model.assignGrade(id, course, grade);
 }

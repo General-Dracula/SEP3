@@ -13,7 +13,7 @@ public class StudentDataPackage extends NetworkPackage {
 
     public StudentDataPackage()
     {
-        super(NetworkType.StudentWindowData, Long.valueOf(10));
+        super(NetworkType.StudentData, Long.valueOf(10));
     }
 
     public Student getData()

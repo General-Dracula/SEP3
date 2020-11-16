@@ -1,6 +1,7 @@
 package Tier2Mediator;
 
 import Data.Student;
+import Data.Teacher;
 
 public interface Tier2Connection
 {
@@ -9,6 +10,9 @@ public interface Tier2Connection
     public void connect(int port);
     public void waitFromTier2();
 
-    public void openStudentWindow(Student data, long id);
+    public void openStudent(Student data, long id);
     public void logInError(String error, Long id);
+
+    public void openTeacher(Teacher data, Long id);
+    public void teacherError(String error, Long id);
 }

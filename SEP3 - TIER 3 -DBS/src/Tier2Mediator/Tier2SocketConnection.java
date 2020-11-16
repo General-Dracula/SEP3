@@ -1,12 +1,10 @@
 package Tier2Mediator;
 
 import Data.Student;
+import Data.Teacher;
 import Model.Tier2Model;
 import com.google.gson.Gson;
-import tier3NetworkPackages.NetworkPackage;
-import tier3NetworkPackages.NetworkType;
-import tier3NetworkPackages.StudentDataPackage;
-import tier3NetworkPackages.TwoFieldPackage;
+import tier3NetworkPackages.*;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -80,9 +78,12 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("Log In Request" + twoFieldPackage.getFirstField());
                         model.CheckLogInData(twoFieldPackage.getFirstField(), twoFieldPackage.getSecondField(), twoFieldPackage.getId());
                         break;
-//                case :
-//
-//                    break;
+                    case TeacherAssignGrade:
+                        ThreeFieldPackage threeFieldPackage = gson.fromJson(message, ThreeFieldPackage.class);
+                        model.TeacherAssignGrade(threeFieldPackage.getFirstField(), threeFieldPackage.getSecondField(), threeFieldPackage.getThirdField(), threeFieldPackage.getId());
+                    break;
+
+
 //                case :
 //
 //                    break;
@@ -104,9 +105,9 @@ public class Tier2SocketConnection implements Tier2Connection
     }
 
     @Override
-    public void openStudentWindow(Student data, long id)
+    public void openStudent(Student data, long id)
     {
-        writer.println(gson.toJson(new StudentDataPackage(NetworkType.StudentWindowData, data, id)));
+        writer.println(gson.toJson(new StudentDataPackage(NetworkType.StudentData, data, id)));
     }
 
     @Override
@@ -115,6 +116,17 @@ public class Tier2SocketConnection implements Tier2Connection
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.LogInError, error, "", id)));
     }
 
+    @Override
+    public void openTeacher(Teacher data, Long id)
+    {
+        writer.println(gson.toJson(new TeacherDataPackage(data, NetworkType.TeacherData, id)));
+    }
+
+    @Override
+    public void teacherError(String error, Long id)
+    {
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.TeacherError, error, "", id)));
+    }
 
 
 }

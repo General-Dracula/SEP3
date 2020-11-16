@@ -1,11 +1,9 @@
 package com.example.tier3Mediator;
 
+import com.example.Data.Teacher;
+import com.example.tier3NetworkPackages.*;
 import com.google.gson.Gson;
 import com.example.model.Tier3Model;
-import com.example.tier3NetworkPackages.NetworkPackage;
-import com.example.tier3NetworkPackages.NetworkType;
-import com.example.tier3NetworkPackages.StudentDataPackage;
-import com.example.tier3NetworkPackages.TwoFieldPackage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +11,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Tier3SocketConnection implements Tier3Connection
 {
@@ -81,20 +78,26 @@ public class Tier3SocketConnection implements Tier3Connection
                 dataPackage = gson.fromJson(message, NetworkPackage.class);
 
                 switch (dataPackage.getType()) {
-                    case StudentWindowData:
+                    case StudentData:
                         StudentDataPackage studentDataPackage = gson.fromJson(message, StudentDataPackage.class);
-                        System.out.println("!!!!!!!!!!!!!!!!!!Student Window data  " + studentDataPackage.getData().getAddress());
                         requestList.add(studentDataPackage);
-                        //model.OpenStudentGrades(studentDataPackage.getData());
                         break;
                 case LogInError:
                         TwoFieldPackage logInError = gson.fromJson(message, TwoFieldPackage.class);
                         System.out.println("------------ERROR!!!!!!!!!!!!!!!!!!");
                         requestList.add(logInError);
                     break;
-//                case :
-//
-//                    break;
+                    case TeacherData:
+                        TeacherDataPackage teacherDataPackage = gson.fromJson(message, TeacherDataPackage.class);
+                        requestList.add(teacherDataPackage);
+                    break;
+
+                    case TeacherError:
+                        TwoFieldPackage twoFieldPackage2 = gson.fromJson(message, TwoFieldPackage.class);
+                        requestList.add(twoFieldPackage2);
+                        break;
+
+
 //                case :
 //
 //                    break;
@@ -114,17 +117,15 @@ public class Tier3SocketConnection implements Tier3Connection
 
     public NetworkPackage checkLogInData(String id, String password)
     {
-        long aux = getCounter();
-        NetworkPackage aux2 = null;
-        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.LogInRequest, id, password, aux)));
-        //Runnable runnable = () -> {
-            //NetworkPackage aux2;
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.LogInRequest, id, password, currentCounter)));
             boolean bai = true;
             while(bai) {
                 for (int i = 0; i <  requestList.size(); i++) {
-                    if (requestList.get(i).getId() == aux)
+                    if (requestList.get(i).getId() == currentCounter)
                     {
-                        aux2 = requestList.get(i);
+                        responsePackage = requestList.get(i);
                         requestList.remove(i);
                         bai = false;
                     }
@@ -135,19 +136,40 @@ public class Tier3SocketConnection implements Tier3Connection
                     e.printStackTrace();
                 }
             }
-            return aux2;
-        //};
-        //Thread t = new Thread(runnable);
-       // t.setDaemon(true);
-        //t.start();
-        //System.out.println("-------------------------------" + aux2.get().getType().toString());
-        //NetworkPackage bai2 = aux2.get();
-        //return bai2;
+            return responsePackage;
+
+    }
+
+    @Override
+    public NetworkPackage assignGrade(String studentId, String course, int grade)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.TeacherAssignGrade, studentId, course, String.valueOf(grade), currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
     }
 
 
     public synchronized long getCounter()
     {
+        if(counter > 100000000)
+            counter = 0;
         counter++;
         return counter;
     }
