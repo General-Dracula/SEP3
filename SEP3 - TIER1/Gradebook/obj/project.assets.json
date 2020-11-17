@@ -52,24 +52,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dobre\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
       "projectName": "Gradebook",
-      "projectPath": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
-      "packagesPath": "C:\\Users\\dobre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dobre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -109,7 +111,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\dobre\\.dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

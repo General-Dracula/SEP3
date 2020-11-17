@@ -14,13 +14,12 @@ public class UserService : IUserService {
         TwoFieldPackage userToVerify = new TwoFieldPackage{firstField = username, secondField = password};
         string userSerialized = JsonSerializer.Serialize(userToVerify);
         StringContent content = new StringContent(userSerialized, Encoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync("http://localhost:8081/users", content);
+        HttpResponseMessage response = await client.PostAsync("http://localhost:8080/users", content);
         if (response.StatusCode == HttpStatusCode.OK)
         {
             string userAsJson = await response.Content.ReadAsStringAsync();
             return userAsJson;
-        } 
-        throw new Exception("User not found");
+        } else throw new Exception("User not found");
     } 
 }
 }

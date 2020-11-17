@@ -1,11 +1,8 @@
 package com.example.tier1Mediator;
 
 import com.example.model.Tier1Model;
-import com.example.tier3NetworkPackages.NetworkPackage;
-import com.example.tier3NetworkPackages.NetworkType;
-import com.example.tier3NetworkPackages.StudentDataPackage;
+import com.example.tier3NetworkPackages.*;
 
-import com.example.tier3NetworkPackages.TwoFieldPackage;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,13 +32,15 @@ public class Tier1ApiConnection {
         String username = user.getFirstField();
         String password = user.getSecondField();
         NetworkPackage bai = model.checkLogInInfo(username, password);
-        if (bai.getType().equals(NetworkType.StudentData))
-        {
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        if (bai.getType().equals(NetworkType.StudentData)) {
             StudentDataPackage studentDataPackage = (StudentDataPackage) bai;
-            String aux = gson.toJson(studentDataPackage);
-            System.out.println(aux);
-            return new ResponseEntity<String>(aux, HttpStatus.OK);
+            String studentAux = gson.toJson(studentDataPackage);
+            return new ResponseEntity<String>(studentAux, HttpStatus.OK);
+        }else if(bai.getType().equals(NetworkType.TeacherData))
+        {
+            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) bai;
+            String teacherAux = gson.toJson(teacherDataPackage);
+            return new ResponseEntity<String>(teacherAux, HttpStatus.OK);
         }   else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
     }
 

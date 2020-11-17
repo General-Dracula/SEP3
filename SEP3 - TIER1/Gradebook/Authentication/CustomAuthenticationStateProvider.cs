@@ -58,7 +58,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             NetworkPackage resultUser = JsonConvert.DeserializeObject<NetworkPackage>(response);
             Console.WriteLine(resultUser.id);
             User user = new User();
-            if (resultUser.type.Equals("StudentData"));
+            if (resultUser.type.Equals("StudentData"))
             {
                 StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
                 user.UserName = studentDataPackage.data.id;
@@ -67,6 +67,9 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
                 CachedStudent = studentDataPackage.data;
                 RestoreWindowBooleans();
                 studentWindow = true;
+            } else if (resultUser.type.Equals("TeacherData"))
+            {
+                Console.WriteLine("TEACHER------------------");
             }
             
             identity = SetupClaimsForUser(user);
