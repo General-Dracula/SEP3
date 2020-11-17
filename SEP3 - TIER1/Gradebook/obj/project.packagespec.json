@@ -1,11 +1,14 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+    "projectUniqueName": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
     "projectName": "Gradebook",
-    "projectPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
-    "outputPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
+    "projectPath": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+    "outputPath": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
     "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
     "originalTargetFrameworks": [
       "netcoreapp3.1"
     ],
@@ -42,6 +45,12 @@
       ],
       "assetTargetFallback": true,
       "warn": true,
+      "downloadDependencies": [
+        {
+          "name": "Microsoft.AspNetCore.App.Ref",
+          "version": "[3.1.2, 3.1.2]"
+        }
+      ],
       "frameworkReferences": {
         "Microsoft.AspNetCore.App": {
           "privateAssets": "none"
@@ -50,7 +59,7 @@
           "privateAssets": "all"
         }
       },
-      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
     }
   }
 }

@@ -17,6 +17,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
 
     private User cachedUser;
     public static Student CachedStudent;
+    public static Teacher CachedTeacher;
 
     private static bool studentWindow;
     private static bool teacherWindow;
@@ -69,7 +70,13 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
                 studentWindow = true;
             } else if (resultUser.type.Equals("TeacherData"))
             {
-                Console.WriteLine("TEACHER------------------");
+                TeacherDataPackage teacherDataPackage = JsonSerializer.Deserialize<TeacherDataPackage>(response);
+                user.UserName = teacherDataPackage.data.id;
+                user.Password =  teacherDataPackage.data.password;
+                user.SecurityLevel = 2;
+                CachedTeacher = teacherDataPackage.data;
+                RestoreWindowBooleans();
+                teacherWindow = true;
             }
             
             identity = SetupClaimsForUser(user);
