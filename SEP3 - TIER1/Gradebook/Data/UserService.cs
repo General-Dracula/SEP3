@@ -51,5 +51,20 @@ public class UserService : IUserService {
         return null;
         throw new Exception("User not found");
     }
+
+    public async Task<NetworkPackage> MotivateAbsence(string studentID, string course, string date, string teacherID)
+    {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = await client.GetAsync($"http://localhost:8080/teachers/motivateabsence?studentID={studentID}&course={course}&date={date}&teacherID={teacherID}");
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            string userAsJson = await response.Content.ReadAsStringAsync();
+            TeacherDataPackage resultUser = JsonSerializer.Deserialize<TeacherDataPackage>(userAsJson);
+            Console.WriteLine(resultUser.ToString());
+            return resultUser;
+        }   
+        return null;
+        throw new Exception("User not found");
+    }
 }
 }

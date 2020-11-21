@@ -82,7 +82,7 @@
             }
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-2">
         <div class="center-horiz">
             @if (studentSelected)
             {
@@ -103,6 +103,45 @@
                             </select>
                         </div>
                         <button class="btn btn-primary" @onclick="AssignAbsence">Add Absence</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="center-horiz">
+            @if (studentSelected)
+            {
+                <br>
+                <h4 class="center-horiz header-title">
+                    <b>Motivate Absence</b>
+                </h4>
+                <form>
+                    <div class="blue-border" style="width: fit-content">
+                        <div class="form-group">
+                            <label>Course</label>
+                            <select class="form-control" id="courseSelector" @bind="@selectedAbsenceCourse">
+                                <option value="" selected disabled hidden>Choose course...</option>
+                                @foreach (String course in selectedStudentCourses)
+                                {
+                                    <option value=@course>@course</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <select class="form-control" id="dateSelector" @bind="@selectedAbsenceDate">
+                                <option value="" selected disabled hidden>Choose date...</option>
+                                @foreach (Absence absence in selectedStudent.absences)
+                                {
+                                    if (absence.course.Equals(selectedAbsenceCourse))
+                                    {
+                                        <option value=@absence.date>@absence.date</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary" @onclick="MotivateAbsence">Motivate Absence</button>
                     </div>
                 </form>
             }
@@ -195,6 +234,7 @@
 
 @code {
     Teacher teacher = CustomAuthenticationStateProvider.CachedTeacher;
+    IUserService _userService = new UserService();
     //Regarding selected student
     string selectedClassAsString;
     string selectedStudentAsString;
@@ -205,8 +245,10 @@
     //Regarding new grade
     string selectedCourseAsString;
     string selectedGradeAsString;
-    IUserService _userService = new UserService();
-
+    //Regarding new absence
+    string selectedAbsenceCourse;
+    string selectedAbsenceDate;
+    
     void ClassSelected(ChangeEventArgs e)
     {
         selectedClassAsString = e.Value.ToString();
@@ -225,7 +267,7 @@
         }
         else if (package == null)
         {
-            Console.WriteLine("BAD REQUEST - GRADE");
+            Console.WriteLine("BAD REQUEST - GRADE ASSIGNMENT");
         }
     }
     
@@ -241,11 +283,25 @@
         }
         else if (package == null)
         {
-            Console.WriteLine("BAD REQUEST - ABSENCE");
+            Console.WriteLine("BAD REQUEST - ABSENCE ASSIGNMENT");
         }
     }
     
-    
+    async Task MotivateAbsence()
+    {
+        Console.WriteLine(selectedStudent.id + " " + selectedAbsenceCourse + " " + selectedAbsenceDate + " " + teacher.id);
+        NetworkPackage package = await _userService.MotivateAbsence(selectedStudent.id, selectedAbsenceCourse, selectedAbsenceDate, teacher.id);
+        if (package != null)
+        {
+            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
+            CustomAuthenticationStateProvider.CachedTeacher = teacherDataPackage.data;
+            teacher = teacherDataPackage.data;
+        }
+        else if (package == null)
+        {
+            Console.WriteLine("BAD REQUEST - ABSENCE MOTIVATION");
+        }
+    }
     
     private void ExtractCourses(ChangeEventArgs e)
     {
