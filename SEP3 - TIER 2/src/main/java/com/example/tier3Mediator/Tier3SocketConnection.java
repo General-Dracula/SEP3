@@ -1,9 +1,7 @@
 package com.example.tier3Mediator;
 
-import com.example.Data.Teacher;
 import com.example.tier3NetworkPackages.*;
 import com.google.gson.Gson;
-import com.example.model.Tier3Model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,16 +15,14 @@ public class Tier3SocketConnection implements Tier3Connection
     private Socket socket;
     private BufferedReader reader;
     private PrintWriter writer;
-    private Tier3Model model;
     private Gson gson;
     private boolean stopCondition;
 
     private long counter;
     private ArrayList<NetworkPackage> requestList;
 
-    public Tier3SocketConnection(Tier3Model model)
+    public Tier3SocketConnection()
     {
-        this.model = model;
         gson = new Gson();
         stopCondition = false;
         counter = 0;
@@ -141,11 +137,11 @@ public class Tier3SocketConnection implements Tier3Connection
     }
 
     @Override
-    public NetworkPackage assignGrade(String studentId, String course, int grade)
+    public NetworkPackage assignGrade(String studentId, String course, int grade, String teacherID)
     {
         long currentCounter = getCounter();
         NetworkPackage responsePackage = null;
-        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.TeacherAssignGrade, studentId, course, String.valueOf(grade), currentCounter)));
+        writer.println(gson.toJson(new FourFieldPackage(NetworkType.TeacherAssignGrade, studentId, course, String.valueOf(grade), teacherID, currentCounter)));
         boolean bai = true;
         while(bai) {
             for (int i = 0; i <  requestList.size(); i++) {

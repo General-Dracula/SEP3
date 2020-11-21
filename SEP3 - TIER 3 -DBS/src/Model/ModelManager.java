@@ -7,6 +7,7 @@ import Data.Teacher;
 import Data.Class;
 import Tier2Mediator.Tier2Connection;
 import Tier2Mediator.Tier2SocketConnection;
+import tier3NetworkPackages.TeacherDataPackage;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,29 +91,64 @@ public class ModelManager implements Model, Tier2Model
         teacher = new Teacher("2", "Baba", "Cloanta", "2", classes);
     }
 
+    private Teacher getTeacherData(String id)
+    {
+        return this.teacher;
+    }
+
+    private Student getStudentData(String id)
+    {
+        for(int i = 0; i < studentsA.size(); i++)
+            if(studentsA.get(i).getId().equals(id))
+                return studentsA.get(i);
+
+        for(int i = 0; i < studentsB.size(); i++)
+            if(studentsB.get(i).getId().equals(id))
+                return studentsB.get(i);
+        return null;
+    }
+
+    private String isUserValid(String id, String password)
+    {
+        if(id.equals("2") && password.equals("2"))
+            return "Teacher";
+        else
+        {
+            for(int i = 0; i < studentsA.size(); i++)
+                if(studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
+                    return "Student";
+
+            for(int i = 0; i < studentsB.size(); i++)
+                if(studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
+                    return "Student";
+        }
+        return null;
+    }
+
     @Override
     public void CheckLogInData(String id, String password, long id2)
     {
         ///FOR NOW
-        if(id.equals(student.getId()) && password.equals(student.getViewGradePassword()))
-            tier2Connection.openStudent(student, id2);
-        else if(id.equals(teacher.getId()) && password.equals(teacher.getPassword()))
-            tier2Connection.openTeacher(teacher, id2);
-        else
+        String validUser = isUserValid(id, password);
+        if(validUser == null)
         {
             tier2Connection.logInError("There was an error", id2);
             System.out.println("!!!!!!!!!!!!!!!!");
         }
+        else if(validUser.equals("Student"))
+            tier2Connection.openStudent(getStudentData(id), id2);
+        else if(validUser.equals("Teacher"))
+            tier2Connection.openTeacher(getTeacherData(id), id2);
     }
 
     @Override
-    public void TeacherAssignGrade(String studentId, String course, String grade, Long id)
+    public void TeacherAssignGrade(String studentId, String course, String grade, String teacherID ,Long id)
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
         if(student.getId().equals(studentId))
         {
             student.getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-            tier2Connection.openTeacher(teacher, id);
+            tier2Connection.openTeacher(getTeacherData(teacherID), id);
         }
         else tier2Connection.teacherError("Something is wrong boyy", id);
     }

@@ -46,9 +46,9 @@ public class Tier1ApiConnection {
 
 
     @GetMapping("/teachers/assigngrade")
-    public ResponseEntity<String> assignGrade(@RequestParam String studentID, @RequestParam String course, @RequestParam int grade)
+    public ResponseEntity<String> assignGrade(@RequestParam String studentID, @RequestParam String course, @RequestParam int grade, @RequestParam String teacherID)
     {
-        NetworkPackage networkPackage = model.assignGrade(studentID, course, grade);
+        NetworkPackage networkPackage = model.assignGrade(studentID, course, grade, teacherID);
         String response = gson.toJson(networkPackage);
         if(networkPackage.getType().equals(NetworkType.TeacherError))
         {

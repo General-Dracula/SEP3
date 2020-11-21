@@ -79,8 +79,8 @@ public class Tier2SocketConnection implements Tier2Connection
                         model.CheckLogInData(twoFieldPackage.getFirstField(), twoFieldPackage.getSecondField(), twoFieldPackage.getId());
                         break;
                     case TeacherAssignGrade:
-                        ThreeFieldPackage threeFieldPackage = gson.fromJson(message, ThreeFieldPackage.class);
-                        model.TeacherAssignGrade(threeFieldPackage.getFirstField(), threeFieldPackage.getSecondField(), threeFieldPackage.getThirdField(), threeFieldPackage.getId());
+                        FourFieldPackage threeFieldPackage = gson.fromJson(message, FourFieldPackage.class);
+                        model.TeacherAssignGrade(threeFieldPackage.getFirstField(), threeFieldPackage.getSecondField(), threeFieldPackage.getThirdField(), threeFieldPackage.getFourthField(), threeFieldPackage.getId());
                     break;
 
 

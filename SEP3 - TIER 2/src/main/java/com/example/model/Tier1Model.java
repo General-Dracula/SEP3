@@ -9,5 +9,5 @@ public interface Tier1Model
 {
     public NetworkPackage checkLogInInfo(String id, String password);
 
-    public NetworkPackage assignGrade(String studentId, String course, int grade);
+    public NetworkPackage assignGrade(String studentId, String course, int grade, String teacherID);
 }
