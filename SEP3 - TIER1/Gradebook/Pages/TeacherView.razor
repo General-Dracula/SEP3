@@ -21,7 +21,8 @@
                     <div class="form-group">
                         <label>Course</label>
                         <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
-                            @foreach (String course in selectedStudentCourses)
+                            <option value="" selected disabled hidden>Choose course...</option>
+                            @foreach (string course in selectedStudentCourses)
                             {
                                 <option value=@course>@course</option>
                             }
@@ -30,6 +31,7 @@
                     <div class="form-group" style="float: left">
                         <label>Grade</label>
                         <select class="form-control" id="gradeSelector" @bind="@selectedGradeAsString">
+                            <option value="" selected disabled hidden>Choose grade...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -43,7 +45,7 @@
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary" @onclick="AssignGrade">>Assign Grade</button>
+                    <button class="btn btn-primary" @onclick="AssignGrade">Assign Grade</button>
                 </div>
             </form>
         }
@@ -128,7 +130,7 @@
                                     string gradeOpacity = "0." + (int) (grade.grade * 0.9);
                                     if (grade.grade == 10) gradeOpacity = "1";
                                     string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
-                                    Console.WriteLine(grade.grade / 10.0);
+                                    //Console.WriteLine(grade.grade / 10.0);
                                     if (grade.course.Equals(course))
                                     {
                                         <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
@@ -202,7 +204,7 @@
     //Regarding new grade
     string selectedCourseAsString;
     string selectedGradeAsString;
-    IUserService _userService;
+    IUserService _userService = new UserService();
 
     void ClassSelected(ChangeEventArgs e)
     {
@@ -210,15 +212,42 @@
         selectedClass = JsonSerializer.Deserialize<Class>(selectedClassAsString);
     }
 
+    void GradeCourseSelected(ChangeEventArgs e)
+    {
+        selectedCourseAsString = e.Value.ToString();
+        Console.WriteLine();
+        Console.WriteLine(selectedCourseAsString);
+        Console.WriteLine();
+    }
+
+    void GradeSelected(ChangeEventArgs e)
+    {
+        selectedGradeAsString = e.Value.ToString();
+    }
+
     async Task AssignGrade()
     {
-        Console.WriteLine("----------------" + selectedStudent.id + selectedCourseAsString + selectedGradeAsString);
-        //TeacherDataPackage teacherDataPackage = (TeacherDataPackage) await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString));
-        var package = await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString));
+        NetworkPackage package = await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.id);
+        Console.WriteLine(selectedStudent.id + " " + selectedCourseAsString + " " + Int32.Parse(selectedGradeAsString));
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
+            CustomAuthenticationStateProvider.CachedTeacher = teacherDataPackage.data;
             teacher = teacherDataPackage.data;
+    //Console.WriteLine(JsonSerializer.Serialize((teacher)));
+            //PrintGrades();
+        }
+        else if (package == null)
+        {
+            Console.WriteLine("NULL");
+        }
+    }
+
+    private void PrintGrades()
+    {
+        foreach (Grade grade in selectedStudent.grades)
+        {
+            Console.Write(grade.grade + " ");   
         }
     }
     
@@ -228,7 +257,7 @@
         studentSelected = true;
         selectedStudentAsString = e.Value.ToString();
         selectedStudent = JsonSerializer.Deserialize<Student>(selectedStudentAsString);
-        Console.WriteLine(selectedStudent.firstName);
+        //Console.WriteLine(selectedStudent.firstName);
         foreach (Grade grade in selectedStudent.grades)
         {
             if (selectedStudentCourses == null)
@@ -249,5 +278,4 @@
             }
         }
     }
-    
 }
