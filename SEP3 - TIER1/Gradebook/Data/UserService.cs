@@ -20,6 +20,22 @@ public class UserService : IUserService {
             string userAsJson = await response.Content.ReadAsStringAsync();
             return userAsJson;
         } else throw new Exception("User not found");
-    } 
+    }
+
+    public async Task<NetworkPackage> AssignGrade(string studentID, string course, int grade)
+    {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = await client.GetAsync($"http://localhost:8080/teacher/assigngrade?studentID={studentID}&course={course}&grade={grade}");
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            string userAsJson = await response.Content.ReadAsStringAsync();
+            TeacherDataPackage resultUser = JsonSerializer.Deserialize<TeacherDataPackage>(userAsJson);
+            Console.WriteLine(resultUser.ToString());
+            return resultUser;
+        }   
+        return null;
+        throw new Exception("User not found");
+        
+    }
 }
 }

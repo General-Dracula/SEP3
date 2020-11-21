@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\scien\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\scien\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_WebApplication.731671419.00" t="ExcludeRecursive" />
-    <e p="D:\Univer\SEP\SEP3\SEP3 - TIER1" t="IncludeFlat">
+    <e p="C:\Users\Lenovo\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Lenovo\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_WebApplication.186141194.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Lenovo\Desktop\SEP3\SEP3 - TIER1" t="IncludeFlat">
       <e p="Gradebook" t="IncludeRecursive">
         <e p="_Imports.razor" t="Include" />
         <e p="App.razor" t="Include" />
@@ -47,6 +47,7 @@
           <e p="Error.cshtml" t="Include" />
           <e p="Login.razor" t="Include" />
           <e p="StudentView.razor" t="Include" />
+          <e p="TeacherView.razor" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -64,6 +65,7 @@
               <e p="bootstrap.min.css" t="Include" />
               <e p="bootstrap.min.css.map" t="Include" />
             </e>
+            <e p="gradeTable.css" t="Include" />
             <e p="Login.css" t="Include" />
             <e p="open-iconic" t="Include">
               <e p="font" t="Include">
@@ -82,8 +84,8 @@
               <e p="ICON-LICENSE" t="Include" />
               <e p="README.md" t="Include" />
             </e>
+            <e p="overallTheme.css" t="Include" />
             <e p="site.css" t="Include" />
-            <e p="studentView.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="Media" t="Include">

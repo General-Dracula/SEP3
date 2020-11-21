@@ -2,7 +2,8 @@
 @using WebApplication.Models
 @using WebApplication.Authentication
 @using System.Text.Json
-
+@using WebApplication.Data
+@using WebApplication.NetworkPackages
 
 <head>
     <link rel="stylesheet" href="css/gradeTable.css">
@@ -42,7 +43,7 @@
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Assign Grade</button>
+                    <button type="submit" class="btn btn-primary" @onclick="AssignGrade">>Assign Grade</button>
                 </div>
             </form>
         }
@@ -201,12 +202,26 @@
     //Regarding new grade
     string selectedCourseAsString;
     string selectedGradeAsString;
+    IUserService _userService;
 
     void ClassSelected(ChangeEventArgs e)
     {
         selectedClassAsString = e.Value.ToString();
         selectedClass = JsonSerializer.Deserialize<Class>(selectedClassAsString);
     }
+
+    async Task AssignGrade()
+    {
+        Console.WriteLine("----------------" + selectedStudent.id + selectedCourseAsString + selectedGradeAsString);
+        //TeacherDataPackage teacherDataPackage = (TeacherDataPackage) await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString));
+        var package = await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString));
+        if (package != null)
+        {
+            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
+            teacher = teacherDataPackage.data;
+        }
+    }
+    
     
     private void ExtractCourses(ChangeEventArgs e)
     {

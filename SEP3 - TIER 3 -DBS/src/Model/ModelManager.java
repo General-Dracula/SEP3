@@ -108,6 +108,7 @@ public class ModelManager implements Model, Tier2Model
     @Override
     public void TeacherAssignGrade(String studentId, String course, String grade, Long id)
     {
+        System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
         if(student.getId().equals(studentId))
         {
             student.getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));

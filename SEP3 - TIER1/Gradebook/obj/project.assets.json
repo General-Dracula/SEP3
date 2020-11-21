@@ -52,23 +52,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\scien\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
       "projectName": "Gradebook",
-      "projectPath": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
-      "packagesPath": "C:\\Users\\scien\\.nuget\\packages\\",
-      "outputPath": "D:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\scien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -80,7 +76,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -92,7 +87,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
@@ -109,12 +103,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -123,7 +111,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
