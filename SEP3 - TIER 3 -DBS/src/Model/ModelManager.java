@@ -78,7 +78,7 @@ public class ModelManager implements Model, Tier2Model
         studentsA.add(student);
         student = new Student("4", "Mircea", "Dobre", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
         studentsB.add(student);
-        student = new Student("1", "Sandu", "Chilat", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", gradesB, absences);
+        student = new Student("5", "Sandu", "Chilat", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", gradesB, absences);
         studentsB.add(student);
 
         aClass = new Class(12, 'A', "112", studentsA);
