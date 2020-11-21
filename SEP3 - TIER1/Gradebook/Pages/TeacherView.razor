@@ -95,13 +95,14 @@
                         <div class="form-group">
                             <label>Course</label>
                             <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
+                                <option value="" selected disabled hidden>Choose course...</option>
                                 @foreach (String course in selectedStudentCourses)
                                 {
                                     <option value=@course>@course</option>
                                 }
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Absence</button>
+                        <button class="btn btn-primary" @onclick="AssignAbsence">Add Absence</button>
                     </div>
                 </form>
             }
@@ -212,19 +213,6 @@
         selectedClass = JsonSerializer.Deserialize<Class>(selectedClassAsString);
     }
 
-    void GradeCourseSelected(ChangeEventArgs e)
-    {
-        selectedCourseAsString = e.Value.ToString();
-        Console.WriteLine();
-        Console.WriteLine(selectedCourseAsString);
-        Console.WriteLine();
-    }
-
-    void GradeSelected(ChangeEventArgs e)
-    {
-        selectedGradeAsString = e.Value.ToString();
-    }
-
     async Task AssignGrade()
     {
         NetworkPackage package = await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.id);
@@ -234,22 +222,29 @@
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
             CustomAuthenticationStateProvider.CachedTeacher = teacherDataPackage.data;
             teacher = teacherDataPackage.data;
-    //Console.WriteLine(JsonSerializer.Serialize((teacher)));
-            //PrintGrades();
         }
         else if (package == null)
         {
-            Console.WriteLine("NULL");
+            Console.WriteLine("BAD REQUEST - GRADE");
         }
     }
-
-    private void PrintGrades()
+    
+    async Task AssignAbsence()
     {
-        foreach (Grade grade in selectedStudent.grades)
+        NetworkPackage package = await _userService.AssignAbsence(selectedStudent.id, selectedCourseAsString, teacher.id);
+        Console.WriteLine(selectedStudent.id + " " + selectedCourseAsString);
+        if (package != null)
         {
-            Console.Write(grade.grade + " ");   
+            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
+            CustomAuthenticationStateProvider.CachedTeacher = teacherDataPackage.data;
+            teacher = teacherDataPackage.data;
+        }
+        else if (package == null)
+        {
+            Console.WriteLine("BAD REQUEST - ABSENCE");
         }
     }
+    
     
     
     private void ExtractCourses(ChangeEventArgs e)
