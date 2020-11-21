@@ -93,6 +93,7 @@ public class ModelManager implements Model, Tier2Model
 
     private Teacher getTeacherData(String id)
     {
+        System.out.println("----------TEACHER DATA " + teacher.getFirstName());
         return this.teacher;
     }
 
@@ -147,17 +148,17 @@ public class ModelManager implements Model, Tier2Model
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
 
             for(int i = 0; i < studentsA.size(); i++)
-                if(studentsA.get(i).getId().equals(id))
+                if(studentsA.get(i).getId().equals(studentId))
                 {
                     studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
                     tier2Connection.openTeacher(getTeacherData(teacherID), id);
                 }
 
             for(int i = 0; i < studentsB.size(); i++)
-                if(studentsB.get(i).getId().equals(id))
+                if(studentsB.get(i).getId().equals(studentId))
                 {
-                    tier2Connection.openTeacher(getTeacherData(teacherID), id);
                     studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+                    tier2Connection.openTeacher(getTeacherData(teacherID), id);
                 }
 
 

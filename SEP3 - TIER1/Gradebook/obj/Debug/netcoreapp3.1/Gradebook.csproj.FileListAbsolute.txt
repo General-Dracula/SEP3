@@ -337,3 +337,5 @@ C:\Users\Lenovo\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Lenovo\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\TeacherView.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TeacherView.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\TeacherView.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TeacherView.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\TeacherView.razor.g.cs

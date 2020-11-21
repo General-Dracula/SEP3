@@ -14,6 +14,7 @@ public class FourFieldPackage extends NetworkPackage
         this.firstField = firstField;
         this.secondField = secondField;
         this.thirdField = thirdField;
+        this.fourthField = fourthField;
     }
 
     public String getFirstField()

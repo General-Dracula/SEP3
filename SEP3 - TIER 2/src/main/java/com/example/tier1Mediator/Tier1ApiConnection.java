@@ -52,8 +52,10 @@ public class Tier1ApiConnection {
         String response = gson.toJson(networkPackage);
         if(networkPackage.getType().equals(NetworkType.TeacherError))
         {
+            System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
+        System.out.println("E BINE");
         return new ResponseEntity<String>(response, HttpStatus.OK);
 
     }

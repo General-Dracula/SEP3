@@ -85,6 +85,7 @@ public class Tier3SocketConnection implements Tier3Connection
                     break;
                     case TeacherData:
                         TeacherDataPackage teacherDataPackage = gson.fromJson(message, TeacherDataPackage.class);
+                        System.out.println(" -------------------" + teacherDataPackage.getData().getFirstName());
                         requestList.add(teacherDataPackage);
                     break;
 
