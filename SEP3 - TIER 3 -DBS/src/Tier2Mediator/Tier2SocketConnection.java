@@ -86,7 +86,10 @@ public class Tier2SocketConnection implements Tier2Connection
                         FourFieldPackage threeFieldPackage2 = gson.fromJson(message, FourFieldPackage.class);
                         model.TeacherAssignAbsence(threeFieldPackage2.getFirstField(), threeFieldPackage2.getSecondField(), threeFieldPackage2.getThirdField(), threeFieldPackage2.getId());
                         break;
-
+                    case TeacherMotivateAbsence:
+                        FourFieldPackage fourFieldPackage = gson.fromJson(message, FourFieldPackage.class);
+                        model.TeacherMotivateAbsence(fourFieldPackage.getFirstField(), fourFieldPackage.getSecondField(), fourFieldPackage.getThirdField(), fourFieldPackage.getFourthField(), fourFieldPackage.getId());
+                        break;
 
 //                case :
 //

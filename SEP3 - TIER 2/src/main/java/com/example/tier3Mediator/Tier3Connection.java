@@ -8,6 +8,7 @@ public interface Tier3Connection
 
     public NetworkPackage assignGrade(String studentId, String course, int grade, String teacherID);
     public NetworkPackage assignAbsence(String studentId, String course, String teacherID);
+    public NetworkPackage motivateAbsence(String studentID, String course, String date, String teacherID);
 
 
     public boolean isConnected();

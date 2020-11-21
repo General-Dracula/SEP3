@@ -36,5 +36,11 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.assignAbsence(studentID, course, teacherID);
     }
 
+    @Override
+    public NetworkPackage motivateAbsence(String studentID, String course, String date, String teacherID)
+    {
+        return tier3Connection.motivateAbsence(studentID, course, date, teacherID);
+    }
+
 
 }

@@ -7,4 +7,6 @@ public interface Tier2Model
     public void TeacherAssignGrade(String studentId, String course, String grade, String teacherID ,Long id);
 
     void TeacherAssignAbsence(String studentId, String course, String teacherID, long id);
+
+    void TeacherMotivateAbsence(String studentID, String course, String date, String teacherID, long id);
 }

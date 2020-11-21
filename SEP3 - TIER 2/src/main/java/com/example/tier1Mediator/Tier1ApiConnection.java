@@ -75,5 +75,19 @@ public class Tier1ApiConnection {
 
     }
 
-    //model.assignGrade(id, course, grade);
+    @GetMapping("/teachers/motivateabsence")
+    public ResponseEntity<String> motivateabsence(@RequestParam String studentID, @RequestParam String course, @RequestParam String date, @RequestParam String teacherID)
+    {
+        NetworkPackage networkPackage = model.motivateAbsence(studentID, course, date, teacherID);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.TeacherError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+
+    }
+
 }

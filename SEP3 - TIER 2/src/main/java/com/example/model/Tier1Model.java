@@ -12,4 +12,6 @@ public interface Tier1Model
     public NetworkPackage assignGrade(String studentId, String course, int grade, String teacherID);
 
     public NetworkPackage assignAbsence(String studentID, String course, String teacherID);
+
+    public NetworkPackage motivateAbsence(String studentID, String course, String date, String teacherID);
 }

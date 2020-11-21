@@ -187,4 +187,31 @@ public class ModelManager implements Model, Tier2Model
 
         tier2Connection.teacherError("Something is wrong boyy", id);
     }
+
+    @Override
+    public void TeacherMotivateAbsence(String studentID, String course, String date, String teacherID, long id)
+    {
+        System.out.println("!!!!!!!!!!!!!!!!!!MOTIVATE ABSENCE");
+
+        for(int i = 0; i < studentsA.size(); i++)
+            if(studentsA.get(i).getId().equals(studentID))
+                for(int j = 0; j < studentsA.get(i).getAbsences().size(); j++)
+                    if(studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course))
+                    {
+                        studentsA.get(i).getAbsences().get(j).setMotivated(true);
+                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                    }
+
+        for(int i = 0; i < studentsB.size(); i++)
+            if(studentsB.get(i).getId().equals(studentID))
+                for(int j = 0; j < studentsB.get(i).getAbsences().size(); j++)
+                    if(studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course))
+                    {
+                        studentsB.get(i).getAbsences().get(j).setMotivated(true);
+                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                    }
+
+
+        tier2Connection.teacherError("Something is wrong boyy", id);
+    }
 }
