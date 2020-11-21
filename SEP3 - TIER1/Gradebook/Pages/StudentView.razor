@@ -4,12 +4,17 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <head>
-    <link rel="stylesheet" href="css/studentView.css">
+    <link rel="stylesheet" href="css/gradeTable.css">
+    <link rel="stylesheet" href="css/overallTheme.css">
 </head>
 
-<h2 style="margin:auto; width: 50%; text-align: center;"><b>@student.firstName @student.lastName</b>, ID = @student.id</h2>
+<div>
+    <h2 class="blue-border center-horiz">Student - <b>@student.firstName @student.lastName</b>, ID = @student.id</h2>
+</div>
+
 <br>
 
+<div class="blue-border">
 <table>
     @foreach (String course in courses)
     {
@@ -71,18 +76,20 @@
         </tr>
     }
 </table>
+</div>
 
 <br>
+
+<div class="blue-border center-horiz">
 <h4>Student's address: <b>@student.address</b></h4>
 <h4>Student's phone number: <b>@student.phoneNumber</b></h4>
+</div>
 
+<br>
 
 @code {
     Student student = CustomAuthenticationStateProvider.CachedStudent;
     List<string> courses = new List<string>();
-    List<List<int>> grades = new List<List<int>>();
-    int maxRow = 0;
-    Grade currentGrade = new Grade();
 
     private void ExtractCourses()
     {
@@ -107,27 +114,9 @@
         }
     }
 
-    private void ExtractGrades()
-    {
-        int index = 0;
-        foreach (string course in courses)
-        {
-            foreach (Grade grade in student.grades)
-            {
-                if (course.Equals(grade.course))
-                {
-                    grades[index].Add(grade.grade);
-                    if(maxRow < grades[index].Count) maxRow = grades[index].Count;
-                }
-            }
-            index++;
-        }
-    }
-
     protected override void OnInitialized()
     {
         base.OnInitialized();
         ExtractCourses();
-        //ExtractGrades();
     }
 }

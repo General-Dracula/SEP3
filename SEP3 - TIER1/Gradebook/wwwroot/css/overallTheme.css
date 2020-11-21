@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.blue-border{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #03c2fc;
+    border-radius: 25px; 
+    padding: 0.5em;
+}
+
+.center-horiz{
+    margin:auto; 
+    width: fit-content; 
+    text-align: center;
+}
+
+.selector{
+    border:none;
+    height: 2em;
+    text-align: center;
+    text-align-last:center;
+}
+
+.form-control {
+    width:auto;
+    display:inline-block;
+}
+
+.header-title {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}

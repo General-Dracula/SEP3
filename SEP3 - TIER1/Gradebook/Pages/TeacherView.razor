@@ -1,0 +1,238 @@
+@page "/Teacher"
+@using WebApplication.Models
+@using WebApplication.Authentication
+@using System.Text.Json
+
+
+<head>
+    <link rel="stylesheet" href="css/gradeTable.css">
+    <link rel="stylesheet" href="css/overallTheme.css">
+</head>
+
+<div>
+<div class="row">
+    <div class="col-4 center-horiz">
+        @if (studentSelected)
+        {
+            <h4 class="center-horiz header-title"><b>New Grade</b></h4>
+            <form>
+                <div class="blue-border center-horiz">
+                    <div class="form-group">
+                        <label>Course</label>
+                        <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
+                            @foreach (String course in selectedStudentCourses)
+                            {
+                                <option value=@course>@course</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group" style="float: left">
+                        <label>Grade</label>
+                        <select class="form-control" id="gradeSelector" @bind="@selectedGradeAsString">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Assign Grade</button>
+                </div>
+            </form>
+        }
+    </div>
+    <div class="col-4">
+
+        <div>
+            <h2 class="blue-border center-horiz">Teacher - <b>@teacher.firstName @teacher.lastName</b>, ID = @teacher.id</h2>
+        </div>
+        <br>
+
+        <div class="blue-border center-horiz">
+            <select class="form-control" name="classes" @onchange="@ClassSelected" id="classes">
+                <option value="" selected disabled hidden>Choose class</option>
+                @foreach (Class _class in teacher.classes)
+                {
+                    string className = _class.year + "" + _class.letter;
+                    string serializedClass = JsonSerializer.Serialize(_class);
+                    <option value="@serializedClass">@className</option>
+                }
+            </select>
+
+            @if (selectedClass != null)
+            {
+                <select class="form-control" name="students" id="students" @onchange=@ExtractCourses>
+                    <option value="" selected disabled hidden>Choose student...</option>
+                    @foreach (Student student in selectedClass.students)
+                    {
+                        string selectedStudentName = student.firstName + " " + student.lastName;
+                        string serializedStudent = JsonSerializer.Serialize(student);
+                        <option value="@serializedStudent">@selectedStudentName</option>
+                    }
+                </select>
+            }
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="center-horiz">
+            @if (studentSelected)
+            {
+                <br>
+                <h4 class="center-horiz header-title">
+                    <b>New Absence</b>
+                </h4>
+                <form>
+                    <div class="blue-border" style="width: fit-content">
+                        <div class="form-group">
+                            <label>Course</label>
+                            <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
+                                @foreach (String course in selectedStudentCourses)
+                                {
+                                    <option value=@course>@course</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Absence</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+</div>
+
+<br>
+
+@if (selectedStudent != null)
+{
+    if (studentSelected)
+    {
+        <div class="blue-border">
+            <table>
+                @foreach (String course in selectedStudentCourses)
+                {
+                    <tr>
+                        <th class="course">@course</th>
+                        <tr>
+                            <td style="width: 7em">Grades</td>
+                            <tr>
+                                @foreach (Grade grade in selectedStudent.grades)
+                                {
+                                    string gradeOpacity = "0." + (int) (grade.grade * 0.9);
+                                    if (grade.grade == 10) gradeOpacity = "1";
+                                    string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
+                                    Console.WriteLine(grade.grade / 10.0);
+                                    if (grade.course.Equals(course))
+                                    {
+                                        <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
+                                    }
+                                }
+                            </tr>
+                            <tr>
+                                @foreach (Grade grade in selectedStudent.grades)
+                                {
+                                    if (grade.course.Equals(course))
+                                    {
+                                        <td class="cell">@grade.date</td>
+                                    }
+                                }
+                            </tr>
+                        </tr>
+                        <tr>
+                            <td style="width: 7em">Absences</td>
+                            <tr>
+                                @foreach (Absence absence in selectedStudent.absences)
+                                {
+                                    if (absence.course.Equals(course))
+                                    {
+                                        if (absence.motivated)
+                                        {
+                                            <td class="cell" style="background-color: #8aff78">Motivated</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="cell" style="background-color: #ff606f">Unmotivated</td>
+                                        }
+                                    }
+                                }
+                            </tr>
+                            <tr>
+                                @foreach (Absence absence in selectedStudent.absences)
+                                {
+                                    if (absence.course.Equals(course))
+                                    {
+                                        <td class="cell">@absence.date</td>
+                                    }
+                                }
+                            </tr>
+                        </tr>
+                    </tr>
+                }
+            </table>
+        </div>
+        <br>
+    }
+    if (studentSelected)
+    {
+        <div class="blue-border center-horiz">
+            <h4>Student's address: <b>@selectedStudent.address</b></h4>
+            <h4>Student's phone number: <b>@selectedStudent.phoneNumber</b></h4>
+        </div>
+        <br>
+    }
+}
+
+
+@code {
+    Teacher teacher = CustomAuthenticationStateProvider.CachedTeacher;
+    //Regarding selected student
+    string selectedClassAsString;
+    string selectedStudentAsString;
+    Class selectedClass;
+    Student selectedStudent = new Student();
+    bool studentSelected;
+    List<string> selectedStudentCourses = new List<string>();
+    //Regarding new grade
+    string selectedCourseAsString;
+    string selectedGradeAsString;
+
+    void ClassSelected(ChangeEventArgs e)
+    {
+        selectedClassAsString = e.Value.ToString();
+        selectedClass = JsonSerializer.Deserialize<Class>(selectedClassAsString);
+    }
+    
+    private void ExtractCourses(ChangeEventArgs e)
+    {
+        studentSelected = true;
+        selectedStudentAsString = e.Value.ToString();
+        selectedStudent = JsonSerializer.Deserialize<Student>(selectedStudentAsString);
+        Console.WriteLine(selectedStudent.firstName);
+        foreach (Grade grade in selectedStudent.grades)
+        {
+            if (selectedStudentCourses == null)
+            {
+                selectedStudentCourses.Add(grade.course);
+            }
+            else if (!selectedStudentCourses.Contains(grade.course))
+            {
+                selectedStudentCourses.Add(grade.course);
+            }
+        }
+        foreach (Absence absence in selectedStudent.absences)
+        {
+            if(selectedStudentCourses==null) selectedStudentCourses.Add(absence.course);
+            else if (!selectedStudentCourses.Contains(absence.course))
+            {
+                selectedStudentCourses.Add(absence.course);
+            }
+        }
+    }
+    
+}

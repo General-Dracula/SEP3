@@ -20,11 +20,13 @@ public class ModelManager implements Model, Tier2Model
 
     ////TESTING
     ArrayList<Grade> grades = new ArrayList<Grade>();
+    ArrayList<Grade> gradesB = new ArrayList<Grade>();
     ArrayList<Absence> absences =  new ArrayList<Absence>();
     Student student;
     Teacher teacher;
     Class aClass;
-    ArrayList<Student> students;
+    Class bClass;
+    ArrayList<Student> studentsA, studentsB;
     ArrayList<Class> classes;
 
     public ModelManager()
@@ -52,6 +54,9 @@ public class ModelManager implements Model, Tier2Model
         grades.add(new Grade(10, "01/02/2020", "Computer Science"));
         grades.add(new Grade(9, "01/02/2020", "Computer Science"));
         grades.add(new Grade(10, "01/02/2020", "Computer Science"));
+        gradesB.add(new Grade(10, "01/02/2020", "Computer Science"));
+        gradesB.add(new Grade(9, "01/02/2020", "Computer Science"));
+        gradesB.add(new Grade(10, "01/02/2020", "Computer Science"));
 
         absences.add(new Absence("01/02/2020", false, "Math"));
         absences.add(new Absence("01/02/2020", true, "Romanian"));
@@ -64,17 +69,25 @@ public class ModelManager implements Model, Tier2Model
         absences.add(new Absence("01/02/2020", true, "Computer Science"));
         absences.add(new Absence("01/02/2020", true, "Computer Science"));
 
+        studentsA = new ArrayList<Student>();
+        studentsB = new ArrayList<Student>();
+
         student = new Student("1", "Dodonica", "Puta mica", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
+        studentsA.add(student);
+        student = new Student("3", "Paul", "Balan", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
+        studentsA.add(student);
+        student = new Student("4", "Mircea", "Dobre", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", grades, absences);
+        studentsB.add(student);
+        student = new Student("1", "Sandu", "Chilat", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", gradesB, absences);
+        studentsB.add(student);
 
-        students = new ArrayList<Student>();
-        students.add(student);
-
-        aClass = new Class(12, 'A', "112", students);
-
+        aClass = new Class(12, 'A', "112", studentsA);
+        bClass = new Class(11, 'B', "112", studentsB);
         classes = new ArrayList<Class>();
         classes.add(aClass);
+        classes.add(bClass);
 
-        teacher = new Teacher("112", "Baba", "Cloanta", "Sug", classes);
+        teacher = new Teacher("2", "Baba", "Cloanta", "2", classes);
     }
 
     @Override
