@@ -147,7 +147,14 @@ public class ModelManager implements Model, Tier2Model
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
         if(student.getId().equals(studentId))
         {
-            student.getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+            for(int i = 0; i < studentsA.size(); i++)
+                if(studentsA.get(i).getId().equals(id))
+                    studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+
+            for(int i = 0; i < studentsB.size(); i++)
+                if(studentsB.get(i).getId().equals(id))
+                    studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+
             tier2Connection.openTeacher(getTeacherData(teacherID), id);
         }
         else tier2Connection.teacherError("Something is wrong boyy", id);
