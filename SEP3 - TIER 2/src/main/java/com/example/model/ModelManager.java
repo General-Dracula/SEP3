@@ -30,5 +30,11 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.assignGrade(studentId, course, grade, teacherID);
     }
 
+    @Override
+    public NetworkPackage assignAbsence(String studentID, String course, String teacherID)
+    {
+        return tier3Connection.assignAbsence(studentID, course, teacherID);
+    }
+
 
 }

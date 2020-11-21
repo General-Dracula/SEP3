@@ -164,4 +164,27 @@ public class ModelManager implements Model, Tier2Model
 
         tier2Connection.teacherError("Something is wrong boyy", id);
     }
+
+    @Override
+    public void TeacherAssignAbsence(String studentId, String course, String teacherID, long id)
+    {
+        System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN Absence");
+
+        for(int i = 0; i < studentsA.size(); i++)
+            if(studentsA.get(i).getId().equals(studentId))
+            {
+                studentsA.get(i).getAbsences().add(new Absence(this.dateField, false, course));
+                tier2Connection.openTeacher(getTeacherData(teacherID), id);
+            }
+
+        for(int i = 0; i < studentsB.size(); i++)
+            if(studentsB.get(i).getId().equals(studentId))
+            {
+                studentsB.get(i).getAbsences().add(new Absence(this.dateField, false, course));
+                tier2Connection.openTeacher(getTeacherData(teacherID), id);
+            }
+
+
+        tier2Connection.teacherError("Something is wrong boyy", id);
+    }
 }
