@@ -78,6 +78,7 @@ public class Tier1ApiConnection {
     @GetMapping("/teachers/motivateabsence")
     public ResponseEntity<String> motivateabsence(@RequestParam String studentID, @RequestParam String course, @RequestParam String date, @RequestParam String teacherID)
     {
+        System.out.println("AJUNGE ABSENCE MOTIVATE");
         NetworkPackage networkPackage = model.motivateAbsence(studentID, course, date, teacherID);
         String response = gson.toJson(networkPackage);
         if(networkPackage.getType().equals(NetworkType.TeacherError))

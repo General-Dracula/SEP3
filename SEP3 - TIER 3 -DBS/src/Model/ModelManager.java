@@ -7,7 +7,6 @@ import Data.Teacher;
 import Data.Class;
 import Tier2Mediator.Tier2Connection;
 import Tier2Mediator.Tier2SocketConnection;
-import tier3NetworkPackages.TeacherDataPackage;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -165,7 +164,7 @@ public class ModelManager implements Model, Tier2Model
         tier2Connection.teacherError("Something is wrong boyy", id);
     }
 
-    @Override
+
     public void TeacherAssignAbsence(String studentId, String course, String teacherID, long id)
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN Absence");
@@ -188,7 +187,6 @@ public class ModelManager implements Model, Tier2Model
         tier2Connection.teacherError("Something is wrong boyy", id);
     }
 
-    @Override
     public void TeacherMotivateAbsence(String studentID, String course, String date, String teacherID, long id)
     {
         System.out.println("!!!!!!!!!!!!!!!!!!MOTIVATE ABSENCE");
@@ -196,7 +194,7 @@ public class ModelManager implements Model, Tier2Model
         for(int i = 0; i < studentsA.size(); i++)
             if(studentsA.get(i).getId().equals(studentID))
                 for(int j = 0; j < studentsA.get(i).getAbsences().size(); j++)
-                    if(studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course))
+                    if(studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsA.get(i).getAbsences().get(j).isMotivated())
                     {
                         studentsA.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);
@@ -205,7 +203,7 @@ public class ModelManager implements Model, Tier2Model
         for(int i = 0; i < studentsB.size(); i++)
             if(studentsB.get(i).getId().equals(studentID))
                 for(int j = 0; j < studentsB.get(i).getAbsences().size(); j++)
-                    if(studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course))
+                    if(studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsB.get(i).getAbsences().get(j).isMotivated())
                     {
                         studentsB.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);

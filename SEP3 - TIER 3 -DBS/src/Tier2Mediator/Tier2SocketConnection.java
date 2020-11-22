@@ -88,6 +88,7 @@ public class Tier2SocketConnection implements Tier2Connection
                         break;
                     case TeacherMotivateAbsence:
                         FourFieldPackage fourFieldPackage = gson.fromJson(message, FourFieldPackage.class);
+                        System.out.println("-MOTIVATE ABSENCE");
                         model.TeacherMotivateAbsence(fourFieldPackage.getFirstField(), fourFieldPackage.getSecondField(), fourFieldPackage.getThirdField(), fourFieldPackage.getFourthField(), fourFieldPackage.getId());
                         break;
 

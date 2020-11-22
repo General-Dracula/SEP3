@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="93bda636-8851-4abb-ab9a-339ddc6af64b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier1Mediator/Tier1ApiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier1Mediator/Tier1ApiConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier3Mediator/Tier3SocketConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier3Mediator/Tier3SocketConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier3NetworkPackages/FourFieldPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/tier3NetworkPackages/FourFieldPackage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Model/ModelManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Model/ModelManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Model/Tier2Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Model/Tier2Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Tier2Mediator/Tier2SocketConnection$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Tier2Mediator/Tier2SocketConnection$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Tier2Mediator/Tier2SocketConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP3 - TIER 3 -DBS/Tier2Mediator/Tier2SocketConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tier3NetworkPackages/FourFieldPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tier3NetworkPackages/FourFieldPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tier2Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Tier2Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tier2Mediator/Tier2SocketConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tier2Mediator/Tier2SocketConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/bin/Debug/netcoreapp3.1/Gradebook.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/bin/Debug/netcoreapp3.1/Gradebook.Views.dll" afterDir="false" />
@@ -20,7 +22,6 @@
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.pdb" afterDir="false" />
@@ -141,37 +142,37 @@
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604680281930" />
     <state x="1006" y="392" key="FileChooserDialogImpl/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605373413612" />
-    <state width="1020" height="175" key="GridCell.Tab.0.bottom" timestamp="1605988587650">
-      <screen x="2560" y="-253" width="1080" height="1880" />
+    <state width="2005" height="175" key="GridCell.Tab.0.bottom" timestamp="1606053173486">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1493" height="206" key="GridCell.Tab.0.bottom/0.0.1536.764@0.0.1536.764" timestamp="1605603270344" />
     <state width="1493" height="89" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605977013041" />
-    <state width="2005" height="175" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1605988366799" />
-    <state width="1020" height="175" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1605988587650" />
+    <state width="2005" height="175" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1606053173486" />
+    <state width="1020" height="174" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1606052802713" />
     <state width="1322" height="396" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605386051683" />
-    <state width="1020" height="175" key="GridCell.Tab.0.center" timestamp="1605988587650">
-      <screen x="2560" y="-253" width="1080" height="1880" />
+    <state width="2005" height="175" key="GridCell.Tab.0.center" timestamp="1606053173486">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1493" height="206" key="GridCell.Tab.0.center/0.0.1536.764@0.0.1536.764" timestamp="1605603270343" />
     <state width="1493" height="89" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605977013041" />
-    <state width="2005" height="175" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1605988366799" />
-    <state width="1020" height="175" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1605988587650" />
+    <state width="2005" height="175" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1606053173486" />
+    <state width="1020" height="174" key="GridCell.Tab.0.center/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1606052802712" />
     <state width="1322" height="396" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605386051683" />
-    <state width="1020" height="175" key="GridCell.Tab.0.left" timestamp="1605988587650">
-      <screen x="2560" y="-253" width="1080" height="1880" />
+    <state width="2005" height="175" key="GridCell.Tab.0.left" timestamp="1606053173485">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1493" height="206" key="GridCell.Tab.0.left/0.0.1536.764@0.0.1536.764" timestamp="1605603270343" />
     <state width="1493" height="89" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605977013040" />
-    <state width="2005" height="175" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1605988366799" />
-    <state width="1020" height="175" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1605988587650" />
+    <state width="2005" height="175" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1606053173485" />
+    <state width="1020" height="174" key="GridCell.Tab.0.left/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1606052802712" />
     <state width="1322" height="396" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605386051682" />
-    <state width="1020" height="175" key="GridCell.Tab.0.right" timestamp="1605988587650">
-      <screen x="2560" y="-253" width="1080" height="1880" />
+    <state width="2005" height="175" key="GridCell.Tab.0.right" timestamp="1606053173486">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1493" height="206" key="GridCell.Tab.0.right/0.0.1536.764@0.0.1536.764" timestamp="1605603270343" />
     <state width="1493" height="89" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605977013041" />
-    <state width="2005" height="175" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1605988366799" />
-    <state width="1020" height="175" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1605988587650" />
+    <state width="2005" height="175" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1606053173486" />
+    <state width="1020" height="174" key="GridCell.Tab.0.right/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@2560.-253.1080.1880" timestamp="1606052802712" />
     <state width="1322" height="396" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.175.1920.1040@0.0.2560.1400" timestamp="1605386051683" />
     <state width="1493" height="256" key="GridCell.Tab.1.bottom" timestamp="1605601506029">
       <screen x="0" y="0" width="1536" height="764" />
@@ -194,10 +195,10 @@
     </state>
     <state x="379" y="0" key="SettingsEditor/0.0.1536.764@0.0.1536.764" timestamp="1605601481853" />
     <state x="505" y="131" key="SettingsEditor/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604680283964" />
-    <state x="-1080" y="-82" width="1096" height="1094" maximized="true" key="dock-window-1" timestamp="1604769193483">
+    <state x="-1080" y="-15" width="1096" height="770" key="dock-window-1" timestamp="1606052980955">
       <screen x="-1080" y="-247" width="1080" height="1880" />
     </state>
-    <state x="-1080" y="-82" width="1096" height="1094" maximized="true" key="dock-window-1/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1604769193483" />
+    <state x="-1080" y="-15" width="1096" height="770" key="dock-window-1/0.0.2048.1112/2560.-253.1080.1880/-1080.-247.1080.1880@0.0.2048.1112" timestamp="1606052980955" />
     <state x="767" y="186" key="refactoring.ChangeSignatureDialog" timestamp="1605557960293">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

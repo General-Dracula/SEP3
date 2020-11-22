@@ -36,7 +36,6 @@
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Gradebook.pdb" afterDir="false" />
@@ -83,17 +82,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/TeacherView.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Data/UserService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/App.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Data/IUserService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gradebook/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Data/IUserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Data/UserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/obj/Debug/netcoreapp3.1/Razor/Pages/TeacherView.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Authentication/CustomAuthenticationStateProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gradebook/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gradebook/App.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -215,6 +214,7 @@
       <workItem from="1605979195381" duration="8151000" />
       <workItem from="1605987826057" duration="375000" />
       <workItem from="1605989382544" duration="3212000" />
+      <workItem from="1606052327941" duration="770000" />
     </task>
     <servers />
   </component>
