@@ -1,9 +1,6 @@
 package Model;
 
-import Data.Absence;
-import Data.Grade;
-import Data.Student;
-import Data.Teacher;
+import Data.*;
 import Data.Class;
 import Tier2Mediator.Tier2Connection;
 import Tier2Mediator.Tier2SocketConnection;
@@ -81,8 +78,25 @@ public class ModelManager implements Model, Tier2Model
         student = new Student("5", "Sandu", "Chilat", "Sugi pula dodon 13", "01/12/2000", "1", "07442121", gradesB, absences);
         studentsB.add(student);
 
-        aClass = new Class(12, 'A', "112", studentsA);
-        bClass = new Class(11, 'B', "112", studentsB);
+        ArrayList<Course> courses = new ArrayList<Course>();
+        courses.add(new Course("Math"));
+        courses.add(new Course("Chemistry"));
+        courses.add(new Course("English"));
+        courses.add(new Course("Computer Science"));
+        courses.add(new Course("Romanian"));
+
+
+        ArrayList<Course> courses2 = new ArrayList<Course>();
+        courses2.add(new Course("Math"));
+        courses2.add(new Course("Chemistry"));
+        courses2.add(new Course("English"));
+        courses2.add(new Course("Computer Science"));
+        courses2.add(new Course("Romanian"));
+        courses2.add(new Course("Sugilimie"));
+
+
+        aClass = new Class(12, 'A', "112", studentsA, courses);
+        bClass = new Class(11, 'B', "112", studentsB, courses2);
         classes = new ArrayList<Class>();
         classes.add(aClass);
         classes.add(bClass);

@@ -8,5 +8,7 @@ namespace WebApplication.Models
         public char letter { get; set; }
         public string teacherID { get; set; }
         public List<Student> students { get; set; }
+        
+        public List<Course> courses { get; set; }
     }
 }

@@ -309,24 +309,34 @@
         selectedStudentAsString = e.Value.ToString();
         selectedStudent = JsonSerializer.Deserialize<Student>(selectedStudentAsString);
         //Console.WriteLine(selectedStudent.firstName);
-        foreach (Grade grade in selectedStudent.grades)
+
+        for(int i = 0; i < selectedClass.courses.Count; i++)
         {
-            if (selectedStudentCourses == null)
-            {
-                selectedStudentCourses.Add(grade.course);
-            }
-            else if (!selectedStudentCourses.Contains(grade.course))
-            {
-                selectedStudentCourses.Add(grade.course);
-            }
+            if (i == 0 && selectedStudentCourses != null)
+                selectedStudentCourses = new List<string>();
+            selectedStudentCourses.Add(selectedClass.courses[i].name);
         }
-        foreach (Absence absence in selectedStudent.absences)
-        {
-            if(selectedStudentCourses==null) selectedStudentCourses.Add(absence.course);
-            else if (!selectedStudentCourses.Contains(absence.course))
-            {
-                selectedStudentCourses.Add(absence.course);
-            }
-        }
+
+        
+        
+        // foreach (Grade grade in selectedStudent.grades)
+        // {
+        //     if (selectedStudentCourses == null)
+        //     {
+        //         selectedStudentCourses.Add(grade.course);
+        //     }
+        //     else if (!selectedStudentCourses.Contains(grade.course))
+        //     {
+        //         selectedStudentCourses.Add(grade.course);
+        //     }
+        // }
+        // foreach (Absence absence in selectedStudent.absences)
+        // {
+        //     if(selectedStudentCourses==null) selectedStudentCourses.Add(absence.course);
+        //     else if (!selectedStudentCourses.Contains(absence.course))
+        //     {
+        //         selectedStudentCourses.Add(absence.course);
+        //     }
+        // }
     }
 }
