@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93bda636-8851-4abb-ab9a-339ddc6af64b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/Data/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER 2/src/main/java/com/example/Data/Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/.idea/.idea.WebApplication/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/Pages/TeacherView.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../SEP3 - TIER1/Gradebook/Pages/TeacherView.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

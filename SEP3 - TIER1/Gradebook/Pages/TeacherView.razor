@@ -98,7 +98,22 @@
                                 <option value="" selected disabled hidden>Choose course...</option>
                                 @foreach (String course in selectedStudentCourses)
                                 {
-                                    <option value=@course>@course</option>
+                                    DateTime localDate = DateTime.Now;
+                                    int aux = 0;
+                                    @foreach (Absence absence in selectedStudent.absences)
+                                    {
+                                        Console.WriteLine("--------------" + localDate.Day + "/" + localDate.Month + "/" + localDate.Year);
+                                        if (absence.course.Equals(course) && absence.date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
+                                        {
+                                            aux++;
+                                        }
+                                        
+                                    }
+
+                                        if (aux == 0)
+                                        {
+                                            <option value=@course>@course</option>
+                                        }
                                 }
                             </select>
                         </div>
@@ -133,7 +148,7 @@
                                 <option value="" selected disabled hidden>Choose date...</option>
                                 @foreach (Absence absence in selectedStudent.absences)
                                 {
-                                    if (absence.course.Equals(selectedAbsenceCourse))
+                                    if (absence.course.Equals(selectedAbsenceCourse) && !absence.motivated)
                                     {
                                         <option value=@absence.date>@absence.date</option>
                                     }
