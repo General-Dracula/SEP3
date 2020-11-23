@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\dobre\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\dobre\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_WebApplication.1502525767.00" t="ExcludeRecursive" />
-    <e p="C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1" t="IncludeFlat">
+    <e p="C:\Users\Paul\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Paul\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_WebApplication.456376264.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Paul\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Paul\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="W:\Univer\SEP\SEP3\SEP3 - TIER1" t="IncludeFlat">
       <e p="Gradebook" t="IncludeRecursive">
         <e p="_Imports.razor" t="Include" />
         <e p="App.razor" t="Include" />
@@ -14,7 +16,11 @@
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data" t="Include">
+          <e p="ISecretaryService.cs" t="Include" />
+          <e p="ITeacherService.cs" t="Include" />
           <e p="IUserService.cs" t="Include" />
+          <e p="SecretaryService.cs" t="Include" />
+          <e p="TeacherService.cs" t="Include" />
           <e p="UserService.cs" t="Include" />
         </e>
         <e p="Gradebook.csproj" t="IncludeRecursive" />
@@ -46,6 +52,9 @@
           <e p="_Host.cshtml" t="Include" />
           <e p="Error.cshtml" t="Include" />
           <e p="Login.razor" t="Include" />
+          <e p="SecretaryClass.razor" t="Include" />
+          <e p="SecretaryStudent.razor" t="Include" />
+          <e p="SecretaryTeacher.razor" t="Include" />
           <e p="StudentView.razor" t="Include" />
           <e p="TeacherView.razor" t="Include" />
         </e>
@@ -55,7 +64,7 @@
         </e>
         <e p="Shared" t="Include">
           <e p="MainLayout.razor" t="Include" />
-          <e p="NavMenu.razor" t="Include" />
+          <e p="SecretarySidebar.razor" t="Include" />
           <e p="SurveyPrompt.razor" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
@@ -66,7 +75,7 @@
               <e p="bootstrap.min.css.map" t="Include" />
             </e>
             <e p="gradeTable.css" t="Include" />
-            <e p="Login.css" t="Include" />
+            <e p="login.css" t="Include" />
             <e p="open-iconic" t="Include">
               <e p="font" t="Include">
                 <e p="css" t="Include">

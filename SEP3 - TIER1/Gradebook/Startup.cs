@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -11,11 +12,13 @@ namespace WebApplication
 {
     public class Startup
     {
+        public static string PORT = "8080";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -25,6 +28,8 @@ namespace WebApplication
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<ISecretaryService, SecretaryService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
             services.AddAuthorization(options => {
