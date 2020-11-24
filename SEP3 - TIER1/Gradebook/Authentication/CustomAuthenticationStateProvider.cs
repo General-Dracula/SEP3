@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
+using Newtonsoft.Json;
 using WebApplication.Data;
 using WebApplication.Models;
 using WebApplication.NetworkPackages;
@@ -55,7 +56,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
         {
             string response = await userService.ValidateLoginAsync(username, password);
             //Console.WriteLine(response);
-            NetworkPackage resultUser = JsonSerializer.Deserialize<NetworkPackage>(response);
+            NetworkPackage resultUser = JsonConvert.DeserializeObject<NetworkPackage>(response);
             //Console.WriteLine(resultUser.id);
             User user = new User();
             if (resultUser.type.Equals("StudentData"))

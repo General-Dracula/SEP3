@@ -6,53 +6,42 @@
 
 <AuthorizeView>
     <NotAuthorized>
-        <div class="">
-            <div class="imgcontainer">
-                <img src="/Media/logo.png" alt="Avatar" class="avatar">
-            </div>
+    <div class="imgcontainer">
+      <img src="/Media/logo.png" alt="Avatar" class="avatar">
+    </div>
+    
+    <div class="container">
+      <label for="id"><b>Identification Number</b></label>
+      <input type="text" placeholder="Enter ID" name="id" @bind-value="username" required>
 
-            <div class="container" style="margin-top: 3em">
-                <div class="row">
-                    <div class="col-4 center-horiz blue-border" style="padding: 1em">
-                        <label for="id">
-                            <b>Identification Number</b>
-                        </label>
-                        <input type="text" placeholder="Enter ID" name="id" @bind-value="username" required>
-                        <label for="psw">
-                            <b>Password</b>
-                        </label>
-                        <input type="password" placeholder="Enter Password" name="psw" @bind-value="password" required>
-                        <div style="color:red">@errorMessage</div>
-                        <button class="btn-primary" type="submit" @onclick="PerformLogin">Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" @bind-value="password" required>
+      <div style="color:red">@errorMessage</div>
+      <button type="submit" @onclick="PerformLogin">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
     </NotAuthorized>
 </AuthorizeView>
 
 <link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="css/overallTheme.css">
 
 @code
 {
-    private string username;
-    private string password;
-    private string errorMessage;
+  private string username;
+  private string password;
+  private string errorMessage;
 
-    public async Task PerformLogin()
-    {
-        errorMessage = "";
-        try
-        {
-            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
-            username = "";
-            password = "";
-            NavigationManager.NavigateTo(CustomAuthenticationStateProvider.NavigateToWindow());
-        }
-        catch (Exception e)
-        {
-            errorMessage = e.Message;
-        }
+  public async Task PerformLogin() {
+    errorMessage = "";
+    try {
+      await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
+      username = "";
+      password = "";
+      NavigationManager.NavigateTo(CustomAuthenticationStateProvider.NavigateToWindow());
+    } catch (Exception e) {
+      errorMessage = e.Message;
     }
+  }
 }
