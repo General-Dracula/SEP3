@@ -1,5 +1,6 @@
 package Tier2Mediator;
 
+import Data.Secretary;
 import Data.Student;
 import Data.Teacher;
 import Model.Tier2Model;
@@ -134,6 +135,12 @@ public class Tier2SocketConnection implements Tier2Connection
     public void teacherError(String error, Long id)
     {
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.TeacherError, error, "", id)));
+    }
+
+    @Override
+    public void openSecretary(Secretary secretaryData, long id)
+    {
+        writer.println(gson.toJson(new SecretaryDataPackage(NetworkType.SecretaryData, secretaryData, id)));
     }
 
 

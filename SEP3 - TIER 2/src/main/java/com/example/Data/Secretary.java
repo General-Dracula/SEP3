@@ -1,20 +1,29 @@
 package com.example.Data;
 
+import java.util.ArrayList;
+
 public class Secretary
 {
     private String id;
     private String password;
 
+    private ArrayList<Teacher> teachers;
+    private ArrayList<Class> classes;
+
     public Secretary()
     {
-       id = null;
-       password = null;
+        id = null;
+        password = null;
+        this.teachers = null;
+        this.classes = null;
     }
 
-    public Secretary(String id, String password)
+    public Secretary(String id, String password, ArrayList<Teacher> teachers, ArrayList<Class> classes)
     {
         this.id = id;
         this.password = password;
+        this.classes = classes;
+        this.teachers = teachers;
     }
 
     public String getId()
@@ -35,5 +44,25 @@ public class Secretary
     public void setPassword(String password)
     {
         this.password = password;
+    }
+
+    public ArrayList<Teacher> getTeachers()
+    {
+        return teachers;
+    }
+
+    public void setTeachers(ArrayList<Teacher> teachers)
+    {
+        this.teachers = teachers;
+    }
+
+    public ArrayList<Class> getClasses()
+    {
+        return classes;
+    }
+
+    public void setClasses(ArrayList<Class> classes)
+    {
+        this.classes = classes;
     }
 }

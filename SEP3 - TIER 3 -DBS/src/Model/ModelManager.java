@@ -25,6 +25,7 @@ public class ModelManager implements Model, Tier2Model
     Class bClass;
     ArrayList<Student> studentsA, studentsB;
     ArrayList<Class> classes;
+    Secretary secretary;
 
     public ModelManager()
     {
@@ -102,6 +103,11 @@ public class ModelManager implements Model, Tier2Model
         classes.add(bClass);
 
         teacher = new Teacher("2", "Baba", "Cloanta", "2", classes);
+
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+        teachers.add(teacher);
+
+        secretary = new Secretary("0", "0", teachers, classes);
     }
 
     private Teacher getTeacherData(String id)
@@ -122,10 +128,18 @@ public class ModelManager implements Model, Tier2Model
         return null;
     }
 
+    private Secretary getSecretaryData(String id)
+    {
+        System.out.println("----------SECRETARY DATA " + secretary.getId());
+        return this.secretary;
+    }
+
     private String isUserValid(String id, String password)
     {
         if(id.equals("2") && password.equals("2"))
             return "Teacher";
+        else if(id.equals("0") && password.equals("0"))
+            return "Secretary";
         else
         {
             for(int i = 0; i < studentsA.size(); i++)
@@ -153,6 +167,8 @@ public class ModelManager implements Model, Tier2Model
             tier2Connection.openStudent(getStudentData(id), id2);
         else if(validUser.equals("Teacher"))
             tier2Connection.openTeacher(getTeacherData(id), id2);
+        else if(validUser.equals("Secretary"))
+            tier2Connection.openSecretary(getSecretaryData(id), id2);
     }
 
     @Override

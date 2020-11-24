@@ -102,7 +102,6 @@
                                     int aux = 0;
                                     @foreach (Absence absence in selectedStudent.absences)
                                     {
-                                        Console.WriteLine("--------------" + localDate.Day + "/" + localDate.Month + "/" + localDate.Year);
                                         if (absence.course.Equals(course) && absence.date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
                                         {
                                             aux++;

@@ -16,5 +16,7 @@ public enum NetworkType
 
   TeacherAssignGrade,
   TeacherAssignAbsence,
-  TeacherMotivateAbsence
+  TeacherMotivateAbsence,
+
+  SecretaryData,
 }
