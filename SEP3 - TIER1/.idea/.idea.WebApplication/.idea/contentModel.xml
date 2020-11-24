@@ -23,12 +23,14 @@
           <e p="Class.cs" t="Include" />
           <e p="Course.cs" t="Include" />
           <e p="Grade.cs" t="Include" />
+          <e p="Secretary.cs" t="Include" />
           <e p="Student.cs" t="Include" />
           <e p="Teacher.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
         <e p="NetworkPackages" t="Include">
           <e p="NetworkPackage.cs" t="Include" />
+          <e p="SecretaryDataPackage.cs" t="Include" />
           <e p="StudentDataPackage.cs" t="Include" />
           <e p="TeacherDataPackage.cs" t="Include" />
           <e p="ThreeFieldPackage.cs" t="Include" />
@@ -66,7 +68,7 @@
               <e p="bootstrap.min.css.map" t="Include" />
             </e>
             <e p="gradeTable.css" t="Include" />
-            <e p="Login.css" t="Include" />
+            <e p="login.css" t="Include" />
             <e p="open-iconic" t="Include">
               <e p="font" t="Include">
                 <e p="css" t="Include">
