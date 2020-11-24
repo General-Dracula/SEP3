@@ -28,7 +28,6 @@
                         string gradeOpacity = "0." + (int)(grade.grade*0.9);
                         if (grade.grade == 10) gradeOpacity = "1";
                         string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
-                        Console.WriteLine(grade.grade/10.0);
                         if (grade.course.Equals(course))
                         {
                             <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
