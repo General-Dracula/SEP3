@@ -3,14 +3,8 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<!--<AuthorizeView security-level 3!!>-->
-<div class="sidebar">
-    <SecretarySidebar/>
-</div>
- <!--</AuthorizeView> -->
-
 <div class="main">
-    <!--<AuthorizeView>-->
+    <AuthorizeView>
         <div class="top-row px-4">
                 <Authorized>
                   <a href="" @onclick="PerformLogout">
@@ -18,7 +12,7 @@
                     </a>
                 </Authorized>
         </div>
-    <!--</AuthorizeView> -->
+    </AuthorizeView>
 
     <div class="content px-4">
         @Body
@@ -48,7 +42,7 @@
         var user = (await AuthStat).User;
         if(!user.Identity.IsAuthenticated)
         {
-            NavigationManager.NavigateTo($"/login");
+            NavigationManager.NavigateTo($"/Login");
         }
     }
 }
