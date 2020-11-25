@@ -11,15 +11,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class ModelManager implements Model, Tier2Model
-{
+public class ModelManager implements Model, Tier2Model {
     Tier2Connection tier2Connection;
     String dateField = "";
 
     ////TESTING
     ArrayList<Grade> grades = new ArrayList<Grade>();
     ArrayList<Grade> gradesB = new ArrayList<Grade>();
-    ArrayList<Absence> absences =  new ArrayList<Absence>();
+    ArrayList<Absence> absences = new ArrayList<Absence>();
     Student student;
     ArrayList<Teacher> teachers;
     Class aClass;
@@ -114,8 +113,8 @@ public class ModelManager implements Model, Tier2Model
     private Teacher getTeacherData(String id)
     {
         System.out.println("----------TEACHER DATA ");
-        for(int i = 0; i < teachers.size(); i++)
-            if(teachers.get(i).getId().equals(id))
+        for (int i = 0; i < teachers.size(); i++)
+            if (teachers.get(i).getId().equals(id))
                 return teachers.get(i);
         return null;
     }
@@ -123,12 +122,12 @@ public class ModelManager implements Model, Tier2Model
     private Student getStudentData(String id)
     {
         System.out.println("----------STUDENT DATA ");
-        for(int i = 0; i < studentsA.size(); i++)
-            if(studentsA.get(i).getId().equals(id))
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(id))
                 return studentsA.get(i);
 
-        for(int i = 0; i < studentsB.size(); i++)
-            if(studentsB.get(i).getId().equals(id))
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(id))
                 return studentsB.get(i);
         return null;
     }
@@ -142,20 +141,20 @@ public class ModelManager implements Model, Tier2Model
     private String isUserValid(String id, String password)
     {
 
-            for(int i = 0; i < teachers.size(); i++)
-                if(teachers.get(i).getId().equals(id) && teachers.get(i).getPassword().equals(password))
-            return "Teacher";
+        for (int i = 0; i < teachers.size(); i++)
+            if (teachers.get(i).getId().equals(id) && teachers.get(i).getPassword().equals(password))
+                return "Teacher";
 
-            if(id.equals("0") && password.equals("0"))
-                return "Secretary";
+        if (id.equals("0") && password.equals("0"))
+            return "Secretary";
 
-            for(int i = 0; i < studentsA.size(); i++)
-                if(studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
-                    return "Student";
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
+                return "Student";
 
-            for(int i = 0; i < studentsB.size(); i++)
-                if(studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
-                    return "Student";
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
+                return "Student";
 
         return null;
     }
@@ -165,37 +164,33 @@ public class ModelManager implements Model, Tier2Model
     {
         ///FOR NOW
         String validUser = isUserValid(id, password);
-        if(validUser == null)
-        {
+        if (validUser == null) {
             tier2Connection.logInError("There was an error", id2);
             System.out.println("!!!!!!!!!!!!!!!!");
-        }
-        else if(validUser.equals("Student"))
+        } else if (validUser.equals("Student"))
             tier2Connection.openStudent(getStudentData(id), id2);
-        else if(validUser.equals("Teacher"))
+        else if (validUser.equals("Teacher"))
             tier2Connection.openTeacher(getTeacherData(id), id2);
-        else if(validUser.equals("Secretary"))
+        else if (validUser.equals("Secretary"))
             tier2Connection.openSecretary(getSecretaryData(id), id2);
     }
 
     @Override
-    public void TeacherAssignGrade(String studentId, String course, String grade, String teacherID ,Long id)
+    public void TeacherAssignGrade(String studentId, String course, String grade, String teacherID, Long id)
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
 
-            for(int i = 0; i < studentsA.size(); i++)
-                    if(studentsA.get(i).getId().equals(studentId))
-                    {
-                        studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                    }
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(studentId)) {
+                studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+                tier2Connection.openTeacher(getTeacherData(teacherID), id);
+            }
 
-                    for(int i = 0; i < studentsB.size(); i++)
-                        if(studentsB.get(i).getId().equals(studentId))
-                        {
-                            studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                            tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                }
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(studentId)) {
+                studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+                tier2Connection.openTeacher(getTeacherData(teacherID), id);
+            }
 
 
         tier2Connection.teacherError("Something is wrong boyy", id);
@@ -206,16 +201,14 @@ public class ModelManager implements Model, Tier2Model
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN Absence");
 
-        for(int i = 0; i < studentsA.size(); i++)
-            if(studentsA.get(i).getId().equals(studentId))
-            {
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(studentId)) {
                 studentsA.get(i).getAbsences().add(new Absence(this.dateField, false, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
             }
 
-        for(int i = 0; i < studentsB.size(); i++)
-            if(studentsB.get(i).getId().equals(studentId))
-            {
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(studentId)) {
                 studentsB.get(i).getAbsences().add(new Absence(this.dateField, false, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
             }
@@ -228,20 +221,18 @@ public class ModelManager implements Model, Tier2Model
     {
         System.out.println("!!!!!!!!!!!!!!!!!!MOTIVATE ABSENCE");
 
-        for(int i = 0; i < studentsA.size(); i++)
-            if(studentsA.get(i).getId().equals(studentID))
-                for(int j = 0; j < studentsA.get(i).getAbsences().size(); j++)
-                    if(studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsA.get(i).getAbsences().get(j).isMotivated())
-                    {
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(studentID))
+                for (int j = 0; j < studentsA.get(i).getAbsences().size(); j++)
+                    if (studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsA.get(i).getAbsences().get(j).isMotivated()) {
                         studentsA.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);
                     }
 
-        for(int i = 0; i < studentsB.size(); i++)
-            if(studentsB.get(i).getId().equals(studentID))
-                for(int j = 0; j < studentsB.get(i).getAbsences().size(); j++)
-                    if(studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsB.get(i).getAbsences().get(j).isMotivated())
-                    {
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(studentID))
+                for (int j = 0; j < studentsB.get(i).getAbsences().size(); j++)
+                    if (studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsB.get(i).getAbsences().get(j).isMotivated()) {
                         studentsB.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);
                     }
@@ -254,8 +245,20 @@ public class ModelManager implements Model, Tier2Model
     public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id)
     {
         String newTeacherId = String.valueOf(teachers.size());
-        this.teachers.add(new Teacher( newTeacherId ,firstName, lastName, password, null));
+        this.teachers.add(new Teacher(newTeacherId, firstName, lastName, password, null));
 
-        tier2Connection.openSecretary(getSecretaryData(newTeacherId), id);
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
+    }
+
+    @Override
+    public void SecretaryEditTeacher(String id, String password, long id2)
+    {
+        for (int i = 0; i < teachers.size(); i++)
+            if (teachers.get(i).getId().equals(id))
+            {
+                teachers.get(i).setPassword(password);
+                tier2Connection.openSecretary(getSecretaryData("0"), id2);
+            }
+        tier2Connection.secretaryError("Teacher not found", id2);
     }
 }

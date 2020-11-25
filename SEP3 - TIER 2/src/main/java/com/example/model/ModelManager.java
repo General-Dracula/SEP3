@@ -52,5 +52,13 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.createTeacher(firstName, lastName, password);
     }
 
+    @Override
+    public NetworkPackage editTeacher(String id, String password)
+    {
+        if(password.length() < 8)
+            return new TwoFieldPackage(NetworkType.SecretaryError, "Password too short", "", 1);
+        return tier3Connection.editTeacher(id, password);
+    }
+
 
 }

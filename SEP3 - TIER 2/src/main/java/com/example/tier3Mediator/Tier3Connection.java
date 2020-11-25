@@ -17,4 +17,6 @@ public interface Tier3Connection
     public void waitFromTier3();
 
     public NetworkPackage createTeacher(String firstName, String lastName, String password);
+
+    public NetworkPackage editTeacher(String id, String password);
 }

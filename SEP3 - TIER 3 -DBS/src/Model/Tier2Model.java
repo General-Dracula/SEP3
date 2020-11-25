@@ -11,4 +11,6 @@ public interface Tier2Model
     public void TeacherMotivateAbsence(String studentID, String course, String date, String teacherID, long id);
 
     public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id);
+
+    public void SecretaryEditTeacher(String id, String password, long id2);
 }

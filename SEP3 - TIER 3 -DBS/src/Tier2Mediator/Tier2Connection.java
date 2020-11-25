@@ -17,5 +17,6 @@ public interface Tier2Connection
     public void openTeacher(Teacher data, Long id);
     public void teacherError(String error, Long id);
 
-    void openSecretary(Secretary secretaryData, long id2);
+    public void openSecretary(Secretary secretaryData, long id2);
+    public void secretaryError(String error, Long id2);
 }

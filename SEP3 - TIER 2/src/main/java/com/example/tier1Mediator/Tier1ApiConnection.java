@@ -103,7 +103,7 @@ public class Tier1ApiConnection {
     @GetMapping("/secretary/createteacher")
     public ResponseEntity<String> createteacher(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String password)
     {
-        System.out.println("AJUNGE ABSENCE MOTIVATE");
+        System.out.println("AJUNGE CREATE TEACHER");
         NetworkPackage networkPackage = model.createTeacher(firstName, lastName, password);
         String response = gson.toJson(networkPackage);
         if(networkPackage.getType().equals(NetworkType.SecretaryError))
@@ -115,5 +115,23 @@ public class Tier1ApiConnection {
         return new ResponseEntity<String>(response, HttpStatus.OK);
 
     }
+
+    @GetMapping("/secretary/editteacher")
+    public ResponseEntity<String> createteacher(@RequestParam String id, @RequestParam String password)
+    {
+        System.out.println("AJUNGE EDIT TEACHER");
+        NetworkPackage networkPackage = model.editTeacher(id, password);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+
+    }
+
+    //model.editTeacher(id, password);
 
 }

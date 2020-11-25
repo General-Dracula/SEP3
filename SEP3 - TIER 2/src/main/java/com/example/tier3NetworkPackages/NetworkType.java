@@ -21,4 +21,6 @@ public enum NetworkType
   SecretaryData,
   SecretaryError,
   SecretaruCreateTeacher,
+  SecretaryEditTeacher,
+  SecretaryDeleteTeacher,
 }

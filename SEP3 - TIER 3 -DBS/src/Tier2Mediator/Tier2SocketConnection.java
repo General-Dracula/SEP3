@@ -97,6 +97,11 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("-CREATE TEACHER");
                         model.SecretaryCreateTeacher(threeFieldPackage1.getFirstField(), threeFieldPackage1.getSecondField(), threeFieldPackage1.getThirdField(), threeFieldPackage1.getId());
                         break;
+                    case SecretaryEditTeacher:
+                        TwoFieldPackage twoFieldPackage1 = gson.fromJson(message, TwoFieldPackage.class);
+                        System.out.println("Secretary edit teacher" + twoFieldPackage1.getFirstField());
+                        model.SecretaryEditTeacher(twoFieldPackage1.getFirstField(), twoFieldPackage1.getSecondField(), twoFieldPackage1.getId());
+                        break;
 
 //                case :
 //
@@ -146,6 +151,12 @@ public class Tier2SocketConnection implements Tier2Connection
     public void openSecretary(Secretary secretaryData, long id)
     {
         writer.println(gson.toJson(new SecretaryDataPackage(NetworkType.SecretaryData, secretaryData, id)));
+    }
+
+    @Override
+    public void secretaryError(String error, Long id2)
+    {
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryError, error, "" , id2)));
     }
 
 
