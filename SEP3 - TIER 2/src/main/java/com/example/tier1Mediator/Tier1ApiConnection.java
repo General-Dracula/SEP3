@@ -96,4 +96,9 @@ public class Tier1ApiConnection {
 
     }
 
+
+    //model.createTeacher("firstName", "lastName",  "email", "password");
+
+
+
 }

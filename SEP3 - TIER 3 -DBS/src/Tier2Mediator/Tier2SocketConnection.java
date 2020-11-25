@@ -92,6 +92,11 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("-MOTIVATE ABSENCE");
                         model.TeacherMotivateAbsence(fourFieldPackage.getFirstField(), fourFieldPackage.getSecondField(), fourFieldPackage.getThirdField(), fourFieldPackage.getFourthField(), fourFieldPackage.getId());
                         break;
+                    case SecretaruCreateTeacher:
+                        ThreeFieldPackage threeFieldPackage1 = gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("-CREATE TEACHER");
+                        model.SecretaryCreateTeacher(threeFieldPackage1.getFirstField(), threeFieldPackage1.getSecondField(), threeFieldPackage1.getThirdField(), threeFieldPackage1.getId());
+                        break;
 
 //                case :
 //

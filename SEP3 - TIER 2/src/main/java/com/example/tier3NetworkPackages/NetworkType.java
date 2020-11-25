@@ -19,4 +19,6 @@ public enum NetworkType
   TeacherMotivateAbsence,
 
   SecretaryData,
+  SecretaryError,
+  SecretaruCreateTeacher,
 }

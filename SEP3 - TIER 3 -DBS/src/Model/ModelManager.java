@@ -21,7 +21,7 @@ public class ModelManager implements Model, Tier2Model
     ArrayList<Grade> gradesB = new ArrayList<Grade>();
     ArrayList<Absence> absences =  new ArrayList<Absence>();
     Student student;
-    Teacher teacher;
+    ArrayList<Teacher> teachers;
     Class aClass;
     Class bClass;
     ArrayList<Student> studentsA, studentsB;
@@ -103,10 +103,9 @@ public class ModelManager implements Model, Tier2Model
         classes.add(aClass);
         classes.add(bClass);
 
-        teacher = new Teacher("2", "Baba", "Cloanta", "2", classes);
+        teachers = new ArrayList<Teacher>();
+        teachers.add(new Teacher("2", "Baba", "Cloanta", "2", classes));
 
-        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
-        teachers.add(teacher);
 
         secretary = new Secretary("0", "0", teachers, classes);
 
@@ -114,8 +113,11 @@ public class ModelManager implements Model, Tier2Model
 
     private Teacher getTeacherData(String id)
     {
-        System.out.println("----------TEACHER DATA " + teacher.getFirstName());
-        return this.teacher;
+        System.out.println("----------TEACHER DATA ");
+        for(int i = 0; i < teachers.size(); i++)
+            if(teachers.get(i).getId().equals(id))
+                return teachers.get(i);
+        return null;
     }
 
     private Student getStudentData(String id)
@@ -139,10 +141,13 @@ public class ModelManager implements Model, Tier2Model
 
     private String isUserValid(String id, String password)
     {
-        if(id.equals("2") && password.equals("2"))
+
+            for(int i = 0; i < teachers.size(); i++)
+                if(teachers.get(i).getId().equals(id) && teachers.get(i).getPassword().equals(password))
             return "Teacher";
-        if(id.equals("0") && password.equals("0"))
-            return "Secretary";
+
+            if(id.equals("0") && password.equals("0"))
+                return "Secretary";
 
             for(int i = 0; i < studentsA.size(); i++)
                 if(studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
@@ -243,5 +248,14 @@ public class ModelManager implements Model, Tier2Model
 
 
         tier2Connection.teacherError("Something is wrong boyy", id);
+    }
+
+    @Override
+    public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id)
+    {
+        String newTeacherId = String.valueOf(teachers.size());
+        this.teachers.add(new Teacher( newTeacherId ,firstName, lastName, password, null));
+
+        tier2Connection.openSecretary(getSecretaryData(newTeacherId), id);
     }
 }

@@ -3,6 +3,8 @@ package com.example.model;
 import com.example.tier3Mediator.Tier3Connection;
 import com.example.tier3Mediator.Tier3SocketConnection;
 import com.example.tier3NetworkPackages.NetworkPackage;
+import com.example.tier3NetworkPackages.NetworkType;
+import com.example.tier3NetworkPackages.TwoFieldPackage;
 import org.springframework.stereotype.Component;
 
 
@@ -40,6 +42,14 @@ public class ModelManager implements Model, Tier1Model
     public NetworkPackage motivateAbsence(String studentID, String course, String date, String teacherID)
     {
         return tier3Connection.motivateAbsence(studentID, course, date, teacherID);
+    }
+
+    @Override
+    public NetworkPackage createTeacher(String firstName, String lastName, String password)
+    {
+        if(password.length() < 8)
+            return new TwoFieldPackage(NetworkType.SecretaryError, "Password too short", "", 1);
+        return tier3Connection.createTeacher(firstName, lastName, password);
     }
 
 

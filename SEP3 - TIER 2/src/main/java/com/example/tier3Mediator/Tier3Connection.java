@@ -16,4 +16,5 @@ public interface Tier3Connection
     public void connect(int port, String host);
     public void waitFromTier3();
 
+    public NetworkPackage createTeacher(String firstName, String lastName, String password);
 }
