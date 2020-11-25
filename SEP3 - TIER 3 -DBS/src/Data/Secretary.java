@@ -12,8 +12,8 @@ public class Secretary
 
     public Secretary()
     {
-       id = null;
-       password = null;
+       this.id = null;
+       this.password = null;
        this.teachers = null;
        this.classes = null;
     }

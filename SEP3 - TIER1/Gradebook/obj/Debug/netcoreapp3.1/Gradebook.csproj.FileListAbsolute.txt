@@ -156,7 +156,6 @@ C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
-C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Gradebook.dll
@@ -166,7 +165,6 @@ C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
-C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
@@ -182,7 +180,6 @@ C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.pdb
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CopyComplete
-C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\appsettings.Development.json
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\appsettings.json
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -346,3 +343,13 @@ W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Se
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryStudent.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.StaticWebAssets.xml
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\BlazorDateRangePicker.dll
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.StaticWebAssets.xml
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\BlazorDateRangePicker.dll
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryClass.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryStudent.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryTeacher.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SecretarySidebar.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryClass.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryStudent.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryTeacher.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SecretarySidebar.razor.g.cs

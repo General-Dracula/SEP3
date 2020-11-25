@@ -95,9 +95,11 @@ public class Tier3SocketConnection implements Tier3Connection
                         break;
 
 
-//                case :
-//
-//                    break;
+                    case SecretaryData:
+                        SecretaryDataPackage secretaryDataPackage = gson.fromJson(message, SecretaryDataPackage.class);
+                        System.out.println(" -------------------" + secretaryDataPackage.getData().getId());
+                        requestList.add(secretaryDataPackage);
+                    break;
 //                case :
 //
 //                    break;

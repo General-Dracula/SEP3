@@ -1,6 +1,7 @@
 package Model;
 
 import Data.*;
+import Data.Secretary;
 import Data.Class;
 import Tier2Mediator.Tier2Connection;
 import Tier2Mediator.Tier2SocketConnection;
@@ -108,6 +109,7 @@ public class ModelManager implements Model, Tier2Model
         teachers.add(teacher);
 
         secretary = new Secretary("0", "0", teachers, classes);
+
     }
 
     private Teacher getTeacherData(String id)
@@ -118,6 +120,7 @@ public class ModelManager implements Model, Tier2Model
 
     private Student getStudentData(String id)
     {
+        System.out.println("----------STUDENT DATA ");
         for(int i = 0; i < studentsA.size(); i++)
             if(studentsA.get(i).getId().equals(id))
                 return studentsA.get(i);
@@ -138,10 +141,9 @@ public class ModelManager implements Model, Tier2Model
     {
         if(id.equals("2") && password.equals("2"))
             return "Teacher";
-        else if(id.equals("0") && password.equals("0"))
+        if(id.equals("0") && password.equals("0"))
             return "Secretary";
-        else
-        {
+
             for(int i = 0; i < studentsA.size(); i++)
                 if(studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
                     return "Student";
@@ -149,7 +151,7 @@ public class ModelManager implements Model, Tier2Model
             for(int i = 0; i < studentsB.size(); i++)
                 if(studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
                     return "Student";
-        }
+
         return null;
     }
 
@@ -177,17 +179,17 @@ public class ModelManager implements Model, Tier2Model
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
 
             for(int i = 0; i < studentsA.size(); i++)
-                if(studentsA.get(i).getId().equals(studentId))
-                {
-                    studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                    tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                }
+                    if(studentsA.get(i).getId().equals(studentId))
+                    {
+                        studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                    }
 
-            for(int i = 0; i < studentsB.size(); i++)
-                if(studentsB.get(i).getId().equals(studentId))
-                {
-                    studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                    tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                    for(int i = 0; i < studentsB.size(); i++)
+                        if(studentsB.get(i).getId().equals(studentId))
+                        {
+                            studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
+                            tier2Connection.openTeacher(getTeacherData(teacherID), id);
                 }
 
 

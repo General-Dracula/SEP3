@@ -17,10 +17,11 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
     private User cachedUser;
     public static Student CachedStudent;
     public static Teacher CachedTeacher;
+    public static Secretary CachedSecretary;
 
     private static bool studentWindow;
     private static bool teacherWindow;
-    private static bool adminWindow;
+    private static bool secretaryWindow;
     
     public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserService userService) {
         this.jsRuntime = jsRuntime;
@@ -63,7 +64,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
                 StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
                 user.UserName = studentDataPackage.data.id;
                 user.Password =  studentDataPackage.data.viewGradePassword;
-                user.SecurityLevel = 2;
+                user.SecurityLevel = 1;
                 CachedStudent = studentDataPackage.data;
                 RestoreWindowBooleans();
                 studentWindow = true;
@@ -76,6 +77,15 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
                 CachedTeacher = teacherDataPackage.data;
                 RestoreWindowBooleans();
                 teacherWindow = true;
+            } else if (resultUser.type.Equals("SecretaryData"))
+            {
+                SecretaryDataPackage secretaryDataPackage = JsonSerializer.Deserialize<SecretaryDataPackage>(response);
+                user.UserName = secretaryDataPackage.data.id;
+                user.Password = secretaryDataPackage.data.password;
+                user.SecurityLevel = 3;
+                CachedSecretary = secretaryDataPackage.data;
+                RestoreWindowBooleans();
+                secretaryWindow = true;
             }
             
             identity = SetupClaimsForUser(user);
@@ -95,14 +105,14 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
     {
         if (studentWindow) return "/Student";
         else if (teacherWindow) return "/Teacher";
-        else return "/Admin";
+        else return "/SecretaryTeacher";
     }
 
     private void RestoreWindowBooleans()
     {
         studentWindow = false;
         teacherWindow = false;
-        adminWindow = false;
+        secretaryWindow = false;
     }
 
     public void Logout() {

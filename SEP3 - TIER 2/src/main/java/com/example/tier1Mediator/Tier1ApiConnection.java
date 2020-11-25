@@ -31,16 +31,21 @@ public class Tier1ApiConnection {
     {
         String username = user.getFirstField();
         String password = user.getSecondField();
-        NetworkPackage bai = model.checkLogInInfo(username, password);
-        if (bai.getType().equals(NetworkType.StudentData)) {
-            StudentDataPackage studentDataPackage = (StudentDataPackage) bai;
+        NetworkPackage networkPackage = model.checkLogInInfo(username, password);
+        if (networkPackage.getType().equals(NetworkType.StudentData)) {
+            StudentDataPackage studentDataPackage = (StudentDataPackage) networkPackage;
             String studentAux = gson.toJson(studentDataPackage);
             return new ResponseEntity<String>(studentAux, HttpStatus.OK);
-        }else if(bai.getType().equals(NetworkType.TeacherData))
+        }else if(networkPackage.getType().equals(NetworkType.TeacherData))
         {
-            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) bai;
+            TeacherDataPackage teacherDataPackage = (TeacherDataPackage) networkPackage;
             String teacherAux = gson.toJson(teacherDataPackage);
             return new ResponseEntity<String>(teacherAux, HttpStatus.OK);
+        }else if(networkPackage.getType().equals(NetworkType.SecretaryData))
+        {
+            SecretaryDataPackage secretaryDataPackage = (SecretaryDataPackage) networkPackage;
+            String secretaryAux = gson.toJson(secretaryDataPackage);
+            return new ResponseEntity<String>(secretaryAux, HttpStatus.OK);
         }   else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
     }
 
