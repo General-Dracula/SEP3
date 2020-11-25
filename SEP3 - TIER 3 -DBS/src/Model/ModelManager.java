@@ -244,7 +244,7 @@ public class ModelManager implements Model, Tier2Model {
     @Override
     public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id)
     {
-        String newTeacherId = String.valueOf(teachers.size());
+        String newTeacherId = String.valueOf(teachers.size() + 100);
         this.teachers.add(new Teacher(newTeacherId, firstName, lastName, password, null));
 
         tier2Connection.openSecretary(getSecretaryData("0"), id);
@@ -260,5 +260,17 @@ public class ModelManager implements Model, Tier2Model {
                 tier2Connection.openSecretary(getSecretaryData("0"), id2);
             }
         tier2Connection.secretaryError("Teacher not found", id2);
+    }
+
+    @Override
+    public void SecretaryDeleteTeacher(String firstField, long id)
+    {
+        for (int i = 0; i < teachers.size(); i++)
+            if (teachers.get(i).getId().equals(firstField))
+            {
+                teachers.remove(teachers.get(i));
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        tier2Connection.secretaryError("Teacher not found", id);
     }
 }

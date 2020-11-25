@@ -170,6 +170,31 @@ public class Tier3SocketConnection implements Tier3Connection
         return responsePackage;
     }
 
+    @Override
+    public NetworkPackage deleteTeacher(String id)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteTeacher, id, "", currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
+    }
+
     public NetworkPackage checkLogInData(String id, String password)
     {
         long currentCounter = getCounter();

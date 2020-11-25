@@ -60,5 +60,11 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.editTeacher(id, password);
     }
 
+    @Override
+    public NetworkPackage deleteTeacher(String id)
+    {
+        return tier3Connection.deleteTeacher(id);
+    }
+
 
 }

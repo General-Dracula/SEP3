@@ -129,9 +129,8 @@ public class Tier1ApiConnection {
         }
         System.out.println("E BINE");
         return new ResponseEntity<String>(response, HttpStatus.OK);
-
     }
 
-    //model.editTeacher(id, password);
+    //model.deleteTeacher("id");
 
 }
