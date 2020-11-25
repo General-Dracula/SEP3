@@ -133,4 +133,19 @@ public class Tier1ApiConnection {
 
     //model.deleteTeacher("id");
 
+    @GetMapping("/secretary/deleteteacher")
+    public ResponseEntity<String> deleteteacher(@RequestParam String id)
+    {
+        System.out.println("AJUNGE DELETE TEACHER");
+        NetworkPackage networkPackage = model.deleteTeacher(id);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
 }
