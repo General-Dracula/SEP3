@@ -11,157 +11,158 @@
 </head>
 
 <div>
-<div class="row">
-    <div class="col-4 center-horiz">
-        @if (studentSelected)
-        {
-            <h4 class="center-horiz header-title"><b>New Grade</b></h4>
-            <form>
-                <div class="blue-border center-horiz">
-                    <div class="form-group">
-                        <label>Course</label>
-                        <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
-                            <option value="" selected disabled hidden>Choose course...</option>
-                            @foreach (string course in selectedStudentCourses)
-                            {
-                                <option value=@course>@course</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group" style="float: left">
-                        <label>Grade</label>
-                        <select class="form-control" id="gradeSelector" @bind="@selectedGradeAsString">
-                            <option value="" selected disabled hidden>Choose grade...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary" @onclick="AssignGrade">Assign Grade</button>
-                </div>
-            </form>
-        }
-    </div>
-    <div class="col-4">
-
-        <div>
-            <h2 class="blue-border center-horiz">Teacher - <b>@teacher.firstName @teacher.lastName</b>, ID = @teacher.id</h2>
-        </div>
-        <br>
-
-        <div class="blue-border center-horiz">
-            <select class="form-control" name="classes" @onchange="@ClassSelected" id="classes">
-                <option value="" selected disabled hidden>Choose class</option>
-                @foreach (Class _class in teacher.classes)
-                {
-                    string className = _class.year + "" + _class.letter;
-                    string serializedClass = JsonSerializer.Serialize(_class);
-                    <option value="@serializedClass">@className</option>
-                }
-            </select>
-
-            @if (selectedClass != null)
-            {
-                <select class="form-control" name="students" id="students" @onchange=@ExtractCourses>
-                    <option value="" selected disabled hidden>Choose student...</option>
-                    @foreach (Student student in selectedClass.students)
-                    {
-                        string selectedStudentName = student.firstName + " " + student.lastName;
-                        string serializedStudent = JsonSerializer.Serialize(student);
-                        <option value="@serializedStudent">@selectedStudentName</option>
-                    }
-                </select>
-            }
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="center-horiz">
+    <div class="row">
+        <div class="col-4 center-horiz">
             @if (studentSelected)
             {
-                <br>
                 <h4 class="center-horiz header-title">
-                    <b>New Absence</b>
+                    <b>New Grade</b>
                 </h4>
                 <form>
-                    <div class="blue-border" style="width: fit-content">
+                    <div class="blue-border center-horiz">
                         <div class="form-group">
                             <label>Course</label>
                             <select class="form-control" id="courseSelector" @bind="@selectedCourseAsString">
                                 <option value="" selected disabled hidden>Choose course...</option>
-                                @foreach (String course in selectedStudentCourses)
-                                {
-                                    DateTime localDate = DateTime.Now;
-                                    int aux = 0;
-                                    @foreach (Absence absence in selectedStudent.absences)
-                                    {
-                                        if (absence.course.Equals(course) && absence.date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
-                                        {
-                                            aux++;
-                                        }
-                                        
-                                    }
-
-                                        if (aux == 0)
-                                        {
-                                            <option value=@course>@course</option>
-                                        }
-                                }
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" @onclick="AssignAbsence">Add Absence</button>
-                    </div>
-                </form>
-            }
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="center-horiz">
-            @if (studentSelected)
-            {
-                <br>
-                <h4 class="center-horiz header-title">
-                    <b>Motivate Absence</b>
-                </h4>
-                <form>
-                    <div class="blue-border" style="width: fit-content">
-                        <div class="form-group">
-                            <label>Course</label>
-                            <select class="form-control" id="courseSelector" @bind="@selectedAbsenceCourse">
-                                <option value="" selected disabled hidden>Choose course...</option>
-                                @foreach (String course in selectedStudentCourses)
+                                @foreach (string course in selectedStudentCourses)
                                 {
                                     <option value=@course>@course</option>
                                 }
                             </select>
                         </div>
-                        <div>
-                            <select class="form-control" id="dateSelector" @bind="@selectedAbsenceDate">
-                                <option value="" selected disabled hidden>Choose date...</option>
-                                @foreach (Absence absence in selectedStudent.absences)
-                                {
-                                    if (absence.course.Equals(selectedAbsenceCourse) && !absence.motivated)
-                                    {
-                                        <option value=@absence.date>@absence.date</option>
-                                    }
-                                }
+                        <div class="form-group" style="float: left">
+                            <label>Grade</label>
+                            <select class="form-control" id="gradeSelector" @bind="@selectedGradeAsString">
+                                <option value="" selected disabled hidden>Choose grade...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
                         <br>
-                        <button class="btn btn-primary" @onclick="MotivateAbsence">Motivate Absence</button>
+                        <button class="btn btn-primary" disabled=@NewGradeButtonDisabled() @onclick="AssignGrade">Assign Grade</button>
                     </div>
                 </form>
             }
         </div>
+        <div class="col-4 center-horiz">
+            <div>
+                <h2 class="blue-border center-horiz">Teacher - <b>@teacher.firstName @teacher.lastName</b>, ID = @teacher.id</h2>
+            </div>
+            <br>
+
+            <div class="blue-border center-horiz">
+                <select class="form-control" name="classes" @onchange="@ClassSelected" id="classes">
+                    <option value="" selected disabled hidden>Choose class</option>
+                    @foreach (Class _class in teacher.classes)
+                    {
+                        string className = _class.year + "" + _class.letter;
+                        string serializedClass = JsonSerializer.Serialize(_class);
+                        <option value="@serializedClass">@className</option>
+                    }
+                </select>
+
+                @if (selectedClass != null)
+                {
+                    <select class="form-control" name="students" id="students" @onchange=@ExtractCourses>
+                        <option value="" selected disabled hidden>Choose student...</option>
+                        @foreach (Student student in selectedClass.students)
+                        {
+                            string selectedStudentName = student.firstName + " " + student.lastName;
+                            string serializedStudent = JsonSerializer.Serialize(student);
+                            <option value="@serializedStudent">@selectedStudentName</option>
+                        }
+                    </select>
+                }
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="center-horiz">
+                @if (studentSelected)
+                {
+                    <br>
+                    <h4 class="center-horiz header-title">
+                        <b>New Absence</b>
+                    </h4>
+                    <form>
+                        <div class="blue-border" style="width: fit-content">
+                            <div class="form-group">
+                                <label>Course</label>
+                                <select class="form-control" id="courseSelector" @bind="@selectedNewAbsenceCourse">
+                                    <option value="" selected disabled hidden>Choose course...</option>
+                                    @foreach (String course in selectedStudentCourses)
+                                    {
+                                        DateTime localDate = DateTime.Now;
+                                        int aux = 0;
+                                        @foreach (Absence absence in selectedStudent.absences)
+                                        {
+                                            if (absence.course.Equals(course) && absence.date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
+                                            {
+                                                aux++;
+                                            }
+                                        }
+
+                                        if (aux == 0)
+                                        {
+                                            <option value=@course>@course</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" @onclick="AssignAbsence" disabled=@NewAbsenceButtonDisabled()>Add Absence</button>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="center-horiz">
+                @if (studentSelected)
+                {
+                    <br>
+                    <h4 class="center-horiz header-title">
+                        <b>Motivate Absence</b>
+                    </h4>
+                    <form>
+                        <div class="blue-border" style="width: fit-content">
+                            <div class="form-group">
+                                <label>Course</label>
+                                <select class="form-control" id="courseSelector" @bind="@selectedAbsenceCourse">
+                                    <option value="" selected disabled hidden>Choose course...</option>
+                                    @foreach (String course in selectedStudentCourses)
+                                    {
+                                        <option value=@course>@course</option>
+                                    }
+                                </select>
+                            </div>
+                            <div>
+                                <label>Date</label>
+                                <select class="form-control" id="dateSelector" @bind="@selectedAbsenceDate">
+                                    <option value="" selected disabled hidden>Choose date...</option>
+                                    @foreach (Absence absence in selectedStudent.absences)
+                                    {
+                                        if (absence.course.Equals(selectedAbsenceCourse) && !absence.motivated)
+                                        {
+                                            <option value=@absence.date>@absence.date</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <br>
+                            <button class="btn btn-primary" @onclick="MotivateAbsence" disabled=@MotivateAbsenceButtonDisabled()>Motivate Absence</button>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
     </div>
-</div>
 </div>
 
 <br>
@@ -184,7 +185,6 @@
                                     string gradeOpacity = "0." + (int) (grade.grade * 0.9);
                                     if (grade.grade == 10) gradeOpacity = "1";
                                     string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
-                                    //Console.WriteLine(grade.grade / 10.0);
                                     if (grade.course.Equals(course))
                                     {
                                         <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
@@ -248,7 +248,7 @@
 
 @code {
     Teacher teacher = CustomAuthenticationStateProvider.CachedTeacher;
-    IUserService _userService = new UserService();
+    ITeacherService teacherService = new TeacherService();
     //Regarding selected student
     string selectedClassAsString;
     string selectedStudentAsString;
@@ -260,18 +260,34 @@
     string selectedCourseAsString;
     string selectedGradeAsString;
     //Regarding new absence
+    string selectedNewAbsenceCourse;
     string selectedAbsenceCourse;
     string selectedAbsenceDate;
-    
+
     void ClassSelected(ChangeEventArgs e)
     {
         selectedClassAsString = e.Value.ToString();
         selectedClass = JsonSerializer.Deserialize<Class>(selectedClassAsString);
     }
 
+    bool NewGradeButtonDisabled()
+    {
+        return (selectedCourseAsString == null || selectedGradeAsString == null);
+    }
+
+    bool NewAbsenceButtonDisabled()
+    {
+        return (selectedNewAbsenceCourse == null);
+    }
+    
+    bool MotivateAbsenceButtonDisabled()
+    {
+        return (selectedAbsenceCourse == null || selectedAbsenceDate == null);
+    }
+
     async Task AssignGrade()
     {
-        NetworkPackage package = await _userService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.id);
+        NetworkPackage package = await teacherService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.id);
         Console.WriteLine(selectedStudent.id + " " + selectedCourseAsString + " " + Int32.Parse(selectedGradeAsString));
         if (package != null)
         {
@@ -284,11 +300,11 @@
             Console.WriteLine("BAD REQUEST - GRADE ASSIGNMENT");
         }
     }
-    
+
     async Task AssignAbsence()
     {
-        NetworkPackage package = await _userService.AssignAbsence(selectedStudent.id, selectedCourseAsString, teacher.id);
-        Console.WriteLine(selectedStudent.id + " " + selectedCourseAsString);
+        NetworkPackage package = await teacherService.AssignAbsence(selectedStudent.id, selectedNewAbsenceCourse, teacher.id);
+        Console.WriteLine(selectedStudent.id + " " + selectedNewAbsenceCourse);
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
@@ -300,11 +316,11 @@
             Console.WriteLine("BAD REQUEST - ABSENCE ASSIGNMENT");
         }
     }
-    
+
     async Task MotivateAbsence()
     {
         Console.WriteLine(selectedStudent.id + " " + selectedAbsenceCourse + " " + selectedAbsenceDate + " " + teacher.id);
-        NetworkPackage package = await _userService.MotivateAbsence(selectedStudent.id, selectedAbsenceCourse, selectedAbsenceDate, teacher.id);
+        NetworkPackage package = await teacherService.MotivateAbsence(selectedStudent.id, selectedAbsenceCourse, selectedAbsenceDate, teacher.id);
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
@@ -316,41 +332,20 @@
             Console.WriteLine("BAD REQUEST - ABSENCE MOTIVATION");
         }
     }
-    
+
     private void ExtractCourses(ChangeEventArgs e)
     {
         studentSelected = true;
         selectedStudentAsString = e.Value.ToString();
         selectedStudent = JsonSerializer.Deserialize<Student>(selectedStudentAsString);
-        //Console.WriteLine(selectedStudent.firstName);
+    //Console.WriteLine(selectedStudent.firstName);
 
-        for(int i = 0; i < selectedClass.courses.Count; i++)
+        for (int i = 0; i < selectedClass.courses.Count; i++)
         {
             if (i == 0 && selectedStudentCourses != null)
                 selectedStudentCourses = new List<string>();
             selectedStudentCourses.Add(selectedClass.courses[i].name);
         }
-
-        
-        
-        // foreach (Grade grade in selectedStudent.grades)
-        // {
-        //     if (selectedStudentCourses == null)
-        //     {
-        //         selectedStudentCourses.Add(grade.course);
-        //     }
-        //     else if (!selectedStudentCourses.Contains(grade.course))
-        //     {
-        //         selectedStudentCourses.Add(grade.course);
-        //     }
-        // }
-        // foreach (Absence absence in selectedStudent.absences)
-        // {
-        //     if(selectedStudentCourses==null) selectedStudentCourses.Add(absence.course);
-        //     else if (!selectedStudentCourses.Contains(absence.course))
-        //     {
-        //         selectedStudentCourses.Add(absence.course);
-        //     }
-        // }
     }
+
 }
