@@ -350,4 +350,16 @@ public class ModelManager implements Model, Tier2Model {
         classes.add(new Class(Integer.valueOf(classNr), classLetter.charAt(0), teacherId, null, null));
         tier2Connection.openSecretary(getSecretaryData("0"), id);
     }
+
+    @Override
+    public void SecretaryDeleteClass(String classLetter, String classNr, Long id)
+    {
+        for (int i = 0; i < classes.size(); i++)
+            if (classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            {
+                classes.remove(classes.get(i));
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        tier2Connection.secretaryError("Class not found", id);
+    }
 }

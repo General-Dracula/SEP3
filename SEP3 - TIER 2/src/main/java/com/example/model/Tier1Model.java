@@ -28,4 +28,6 @@ public interface Tier1Model
     public NetworkPackage editStudent(String studentId, String address, String password, String phoneNr);
 
     public NetworkPackage createClass(String classNr, String classLetter, String teacherId);
+
+    public NetworkPackage deleteClass(String classLetter, String classNr);
 }

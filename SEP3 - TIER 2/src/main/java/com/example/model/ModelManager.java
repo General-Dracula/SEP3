@@ -90,5 +90,11 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.createClass(classNr, classLetter, teacherId);
     }
 
+    @Override
+    public NetworkPackage deleteClass(String classLetter, String classNr)
+    {
+        return tier3Connection.deleteClass(classLetter, classNr);
+    }
+
 
 }
