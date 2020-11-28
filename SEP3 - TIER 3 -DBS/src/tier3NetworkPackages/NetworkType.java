@@ -23,4 +23,15 @@ public enum NetworkType
   SecretaryEditTeacher,
   SecretaryDeleteTeacher,
 
+  SecretaryCreateStudent,
+  SecretaryDeleteStudent,
+  SecretaryEditStudent,
+
+  SecretaryCreateClass,
+  SecretaryDeleteClass,
+  SecretaryClassAddStudent,
+  SecretaryClassRemoveStudent,
+  SecretaryClassAddCourse,
+  SecretaryClassRemoveCourse,
+
 }

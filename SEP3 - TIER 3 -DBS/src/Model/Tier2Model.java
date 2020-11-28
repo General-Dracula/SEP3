@@ -1,5 +1,7 @@
 package Model;
 
+import Data.Student;
+
 public interface Tier2Model
 {
     public void CheckLogInData(String id, String password, long id2);
@@ -15,4 +17,12 @@ public interface Tier2Model
     public void SecretaryEditTeacher(String id, String password, long id2);
 
     public void SecretaryDeleteTeacher(String firstField, long id);
+
+    public void SecretaryCreateStudent(Student data, Long id);
+
+    public void SecretaryDeleteStudent(String studentId, long id);
+
+    public void SecretaryEditStudent(String studentId, String address, String password, String phoneNr, Long id);
+
+    public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id);
 }

@@ -21,4 +21,12 @@ public interface Tier3Connection
     public NetworkPackage editTeacher(String id, String password);
 
     public NetworkPackage deleteTeacher(String id);
+
+    public NetworkPackage createStudent(String firstName, String lastName, String address, String password, String phoneNr, String birthday);
+
+    public NetworkPackage deleteStudent(String id);
+
+    public NetworkPackage editStudent(String studentId, String address, String password, String phoneNr);
+
+    public NetworkPackage createClass(String classNr, String classLetter, String teacherId);
 }

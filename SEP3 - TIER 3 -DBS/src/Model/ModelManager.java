@@ -110,6 +110,28 @@ public class ModelManager implements Model, Tier2Model {
 
     }
 
+    synchronized private String getNewId()
+    {
+        String maxNr = "0";
+
+        for (int i = 0; i < teachers.size(); i++)
+            if (Integer.parseInt(teachers.get(i).getId()) > Integer.parseInt(maxNr))
+                maxNr = teachers.get(i).getId();
+
+        for (int i = 0; i < studentsA.size(); i++)
+            if (Integer.parseInt(studentsA.get(i).getId()) > Integer.parseInt(maxNr))
+                maxNr = studentsA.get(i).getId();
+
+        for (int i = 0; i < studentsB.size(); i++)
+            if (Integer.parseInt(studentsB.get(i).getId()) > Integer.parseInt(maxNr))
+                maxNr = studentsB.get(i).getId();
+
+        if (Integer.parseInt(secretary.getId()) > Integer.parseInt(maxNr))
+            maxNr = secretary.getId();
+
+        return maxNr;
+    }
+
     private Teacher getTeacherData(String id)
     {
         System.out.println("----------TEACHER DATA ");
@@ -244,8 +266,7 @@ public class ModelManager implements Model, Tier2Model {
     @Override
     public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id)
     {
-        String newTeacherId = String.valueOf(teachers.size() + 100);
-        this.teachers.add(new Teacher(newTeacherId, firstName, lastName, password, null));
+        this.teachers.add(new Teacher(this.getNewId(), firstName, lastName, password, null));
 
         tier2Connection.openSecretary(getSecretaryData("0"), id);
     }
@@ -272,5 +293,61 @@ public class ModelManager implements Model, Tier2Model {
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
             }
         tier2Connection.secretaryError("Teacher not found", id);
+    }
+
+    @Override
+    public void SecretaryCreateStudent(Student data, Long id)
+    {
+        data.setId(this.getNewId());
+        studentsA.add(data);
+
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
+    }
+
+    @Override
+    public void SecretaryDeleteStudent(String studentId, long id)
+    {
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(studentId))
+            {
+                studentsA.remove(studentsA.get(i));
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(studentId))
+            {
+                studentsB.remove(studentsB.get(i));
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        tier2Connection.secretaryError("Student not found", id);
+    }
+
+    @Override
+    public void SecretaryEditStudent(String studentId, String address, String password, String phoneNr, Long id)
+    {
+        for (int i = 0; i < studentsA.size(); i++)
+            if (studentsA.get(i).getId().equals(studentId))
+            {
+                studentsA.get(i).setAddress(address);
+                studentsA.get(i).setViewGradePassword(password);
+                studentsA.get(i).setPhoneNumber(phoneNr);
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        for (int i = 0; i < studentsB.size(); i++)
+            if (studentsB.get(i).getId().equals(studentId))
+            {
+                studentsB.get(i).setAddress(address);
+                studentsB.get(i).setViewGradePassword(password);
+                studentsB.get(i).setPhoneNumber(phoneNr);
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+        tier2Connection.secretaryError("Student not found", id);
+    }
+
+    @Override
+    public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id)
+    {
+        classes.add(new Class(Integer.valueOf(classNr), classLetter.charAt(0), teacherId, null, null));
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
     }
 }

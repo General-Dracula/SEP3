@@ -66,5 +66,29 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.deleteTeacher(id);
     }
 
+    @Override
+    public NetworkPackage createStudent(String firstName, String lastName, String address, String password, String phoneNr, String birthday)
+    {
+        return tier3Connection.createStudent(firstName, lastName, address, password, phoneNr, birthday);
+    }
+
+    @Override
+    public NetworkPackage deleteStudent(String id)
+    {
+        return tier3Connection.deleteStudent(id);
+    }
+
+    @Override
+    public NetworkPackage editStudent(String studentId, String address, String password, String phoneNr)
+    {
+        return tier3Connection.editStudent(studentId, address, password, phoneNr);
+    }
+
+    @Override
+    public NetworkPackage createClass(String classNr, String classLetter, String teacherId)
+    {
+        return tier3Connection.createClass(classNr, classLetter, teacherId);
+    }
+
 
 }

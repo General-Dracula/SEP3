@@ -1,5 +1,6 @@
 package com.example.tier3Mediator;
 
+import com.example.Data.Student;
 import com.example.tier3NetworkPackages.*;
 import com.google.gson.Gson;
 
@@ -176,6 +177,106 @@ public class Tier3SocketConnection implements Tier3Connection
         long currentCounter = getCounter();
         NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteTeacher, id, "", currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
+    }
+
+    @Override
+    public NetworkPackage createStudent(String firstName, String lastName, String address, String password, String phoneNr, String birthday)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new StudentDataPackage(NetworkType.SecretaryCreateStudent, new Student("0", firstName, lastName, address, birthday, password, phoneNr, null, null), currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
+    }
+
+    @Override
+    public NetworkPackage deleteStudent(String id)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteStudent, id, "", currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
+    }
+
+    @Override
+    public NetworkPackage editStudent(String studentId, String address, String password, String phoneNr)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new FourFieldPackage(NetworkType.SecretaryEditStudent, studentId, address, password, phoneNr, currentCounter)));
+        boolean bai = true;
+        while(bai) {
+            for (int i = 0; i <  requestList.size(); i++) {
+                if (requestList.get(i).getId() == currentCounter)
+                {
+                    responsePackage = requestList.get(i);
+                    requestList.remove(i);
+                    bai = false;
+                }
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return responsePackage;
+    }
+
+    @Override
+    public NetworkPackage createClass(String classNr, String classLetter, String teacherId)
+    {
+        long currentCounter = getCounter();
+        NetworkPackage responsePackage = null;
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryCreateClass, classNr, classLetter, teacherId, currentCounter)));
         boolean bai = true;
         while(bai) {
             for (int i = 0; i <  requestList.size(); i++) {

@@ -107,7 +107,28 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("Secretary delete teacher" + twoFieldPackage2.getFirstField());
                         model.SecretaryDeleteTeacher(twoFieldPackage2.getFirstField(), twoFieldPackage2.getId());
                         break;
+                    case SecretaryCreateStudent:
+                        StudentDataPackage studentDataPackage = gson.fromJson(message, StudentDataPackage.class);
+                        System.out.println("Student create student" + studentDataPackage.getData().getFirstName());
+                        model.SecretaryCreateStudent(studentDataPackage.getData(), studentDataPackage.getId());
 
+
+                    case SecretaryDeleteStudent:
+                        TwoFieldPackage twoFieldPackage3 = gson.fromJson(message, TwoFieldPackage.class);
+                        System.out.println("Secretary delete student" + twoFieldPackage3.getFirstField());
+                        model.SecretaryDeleteStudent(twoFieldPackage3.getFirstField(), twoFieldPackage3.getId());
+                        break;
+
+                    case SecretaryEditStudent:
+                        FourFieldPackage fourFieldPackage1 = gson.fromJson(message, FourFieldPackage.class);
+                        System.out.println("Secretary delete student" + fourFieldPackage1.getFirstField());
+                        model.SecretaryEditStudent(fourFieldPackage1.getFirstField(), fourFieldPackage1.getSecondField(), fourFieldPackage1.getThirdField(), fourFieldPackage1.getFourthField(), fourFieldPackage1.getId());
+                        break;
+
+                    case SecretaryCreateClass:
+                        ThreeFieldPackage threeFieldPackage3 =  gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("Secretary create class" + threeFieldPackage3.getFirstField());
+                        model.SecretaryCreateClass(threeFieldPackage3.getFirstField(), threeFieldPackage3.getSecondField(), threeFieldPackage3.getThirdField(), threeFieldPackage3.getId());
 //                case :
 //
 //                    break;

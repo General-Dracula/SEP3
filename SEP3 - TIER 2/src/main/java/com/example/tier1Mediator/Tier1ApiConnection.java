@@ -131,7 +131,7 @@ public class Tier1ApiConnection {
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
-    //model.deleteTeacher("id");
+
 
     @GetMapping("/secretary/deleteteacher")
     public ResponseEntity<String> deleteteacher(@RequestParam String id)
@@ -146,6 +146,68 @@ public class Tier1ApiConnection {
         }
         System.out.println("E BINE");
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/secretary/createstudent")
+    public ResponseEntity<String> createstudent(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String password, @RequestParam String phoneNr, @RequestParam String birthday)
+    {
+        System.out.println("AJUNGE CREATE STUDENT");
+        NetworkPackage networkPackage = model.createStudent(firstName, lastName, address, password, phoneNr, birthday);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/secretary/deletestudent")
+    public ResponseEntity<String> deletestudent(@RequestParam String id)
+    {
+        System.out.println("AJUNGE DELETE STUDENT");
+        NetworkPackage networkPackage = model.deleteStudent(id);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/secretary/editstudent")
+    public ResponseEntity<String> editstudent(@RequestParam String studentId, @RequestParam String address, @RequestParam String password, @RequestParam String phoneNr)
+    {
+        System.out.println("AJUNGE EDIT TEACHER");
+        NetworkPackage networkPackage = model.editStudent(studentId, address, password, phoneNr);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/secretary/createclass")
+    public ResponseEntity<String> createclass(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String teacherId)
+    {
+        System.out.println("AJUNGE CREATE TEACHER");
+        NetworkPackage networkPackage = model.createClass(classNr, classLetter, teacherId);
+        String response = gson.toJson(networkPackage);
+        if(networkPackage.getType().equals(NetworkType.SecretaryError))
+        {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+
     }
 
 }
