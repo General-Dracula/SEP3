@@ -129,6 +129,7 @@ public class Tier2SocketConnection implements Tier2Connection
                         ThreeFieldPackage threeFieldPackage3 =  gson.fromJson(message, ThreeFieldPackage.class);
                         System.out.println("Secretary create class" + threeFieldPackage3.getFirstField());
                         model.SecretaryCreateClass(threeFieldPackage3.getFirstField(), threeFieldPackage3.getSecondField(), threeFieldPackage3.getThirdField(), threeFieldPackage3.getId());
+                        break;
 
                     case SecretaryDeleteClass:
                         TwoFieldPackage twoFieldPackage4 = gson.fromJson(message, TwoFieldPackage.class);
