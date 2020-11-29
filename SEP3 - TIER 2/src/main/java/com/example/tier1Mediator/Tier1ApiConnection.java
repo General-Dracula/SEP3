@@ -36,17 +36,15 @@ public class Tier1ApiConnection {
             StudentDataPackage studentDataPackage = (StudentDataPackage) networkPackage;
             String studentAux = gson.toJson(studentDataPackage);
             return new ResponseEntity<String>(studentAux, HttpStatus.OK);
-        }else if(networkPackage.getType().equals(NetworkType.TeacherData))
-        {
+        } else if (networkPackage.getType().equals(NetworkType.TeacherData)) {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) networkPackage;
             String teacherAux = gson.toJson(teacherDataPackage);
             return new ResponseEntity<String>(teacherAux, HttpStatus.OK);
-        }else if(networkPackage.getType().equals(NetworkType.SecretaryData))
-        {
+        } else if (networkPackage.getType().equals(NetworkType.SecretaryData)) {
             SecretaryDataPackage secretaryDataPackage = (SecretaryDataPackage) networkPackage;
             String secretaryAux = gson.toJson(secretaryDataPackage);
             return new ResponseEntity<String>(secretaryAux, HttpStatus.OK);
-        }   else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        } else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
     }
 
 
@@ -55,8 +53,7 @@ public class Tier1ApiConnection {
     {
         NetworkPackage networkPackage = model.assignGrade(studentID, course, grade, teacherID);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.TeacherError))
-        {
+        if (networkPackage.getType().equals(NetworkType.TeacherError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -70,8 +67,7 @@ public class Tier1ApiConnection {
     {
         NetworkPackage networkPackage = model.assignAbsence(studentID, course, teacherID);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.TeacherError))
-        {
+        if (networkPackage.getType().equals(NetworkType.TeacherError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -86,8 +82,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE ABSENCE MOTIVATE");
         NetworkPackage networkPackage = model.motivateAbsence(studentID, course, date, teacherID);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.TeacherError))
-        {
+        if (networkPackage.getType().equals(NetworkType.TeacherError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -106,8 +101,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE CREATE TEACHER");
         NetworkPackage networkPackage = model.createTeacher(firstName, lastName, password);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -122,8 +116,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE EDIT TEACHER");
         NetworkPackage networkPackage = model.editTeacher(id, password);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -132,15 +125,13 @@ public class Tier1ApiConnection {
     }
 
 
-
     @GetMapping("/secretary/deleteteacher")
     public ResponseEntity<String> deleteteacher(@RequestParam String id)
     {
         System.out.println("AJUNGE DELETE TEACHER");
         NetworkPackage networkPackage = model.deleteTeacher(id);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -155,8 +146,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE CREATE STUDENT");
         NetworkPackage networkPackage = model.createStudent(firstName, lastName, address, password, phoneNr, birthday);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -170,8 +160,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE DELETE STUDENT");
         NetworkPackage networkPackage = model.deleteStudent(id);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -185,8 +174,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE EDIT TEACHER");
         NetworkPackage networkPackage = model.editStudent(studentId, address, password, phoneNr);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -200,8 +188,7 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE CREATE TEACHER");
         NetworkPackage networkPackage = model.createClass(classNr, classLetter, teacherId);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
@@ -216,8 +203,65 @@ public class Tier1ApiConnection {
         System.out.println("AJUNGE DELETE STUDENT");
         NetworkPackage networkPackage = model.deleteClass(classLetter, classNr);
         String response = gson.toJson(networkPackage);
-        if(networkPackage.getType().equals(NetworkType.SecretaryError))
-        {
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/secretary/addstudent")
+    public ResponseEntity<String> addstudent(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String studentId)
+    {
+        System.out.println("AJUNGE ADD STUDENT");
+        NetworkPackage networkPackage = model.classAddStudent(classNr, classLetter, studentId);
+        String response = gson.toJson(networkPackage);
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/secretary/removestudent")
+    public ResponseEntity<String> removestudent(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String studentId)
+    {
+        System.out.println("AJUNGE REMOVE STUDENT");
+        NetworkPackage networkPackage = model.classRemoveStudent(classNr, classLetter, studentId);
+        String response = gson.toJson(networkPackage);
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/secretary/addcourse")
+    public ResponseEntity<String> addcourse(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String courseName)
+    {
+        System.out.println("AJUNGE ADD COURSE");
+        NetworkPackage networkPackage = model.classAddCourse(classNr, classLetter, courseName);
+        String response = gson.toJson(networkPackage);
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
+            System.out.println("BAD REQUEST");
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("E BINE");
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/secretary/removecourse")
+    public ResponseEntity<String> removecourse(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String courseName)
+    {
+        System.out.println("AJUNGE REMOVE STUDENT");
+        NetworkPackage networkPackage = model.classRemoveCourse(classNr, classLetter, courseName);
+        String response = gson.toJson(networkPackage);
+        if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
             System.out.println("BAD REQUEST");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }

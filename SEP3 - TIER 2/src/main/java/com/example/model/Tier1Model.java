@@ -30,4 +30,12 @@ public interface Tier1Model
     public NetworkPackage createClass(String classNr, String classLetter, String teacherId);
 
     public NetworkPackage deleteClass(String classLetter, String classNr);
+
+    public NetworkPackage classAddStudent(String classNr, String classLetter, String studentId);
+
+    public NetworkPackage classRemoveStudent(String classNr, String classLetter, String studentId);
+
+    public NetworkPackage classAddCourse(String classNr, String classLetter, String courseName);
+
+    public NetworkPackage classRemoveCourse(String classNr, String classLetter, String courseName);
 }

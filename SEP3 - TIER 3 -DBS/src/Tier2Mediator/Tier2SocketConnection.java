@@ -136,6 +136,29 @@ public class Tier2SocketConnection implements Tier2Connection
                         model.SecretaryDeleteClass(twoFieldPackage4.getFirstField(), twoFieldPackage4.getSecondField(), twoFieldPackage4.getId());
                         break;
 
+                    case SecretaryClassAddStudent:
+                        ThreeFieldPackage threeFieldPackage4 = gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("SECRETARY CLASS ADD STUDENT " + threeFieldPackage4.getFirstField());
+                        model.SecretaryCLassAddStudent(threeFieldPackage4.getFirstField(), threeFieldPackage4.getSecondField(), threeFieldPackage4.getThirdField(), threeFieldPackage4.getId());
+                        break;
+
+                    case SecretaryClassRemoveStudent:
+                        ThreeFieldPackage threeFieldPackage5 = gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("SECRETARY CLASS ADD STUDENT " + threeFieldPackage5.getFirstField());
+                        model.SecretaryClassRemoveStudent(threeFieldPackage5.getFirstField(), threeFieldPackage5.getSecondField(), threeFieldPackage5.getThirdField(), threeFieldPackage5.getId());
+                        break;
+
+                    case SecretaryClassAddCourse:
+                        ThreeFieldPackage threeFieldPackage6 = gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("SECRETARY CLASS ADD COURSE " + threeFieldPackage6.getFirstField());
+                        model.SecretaryClassAddCourse(threeFieldPackage6.getFirstField(), threeFieldPackage6.getSecondField(), threeFieldPackage6.getThirdField(), threeFieldPackage6.getId());
+                        break;
+
+                    case SecretaryClassRemoveCourse:
+                        ThreeFieldPackage threeFieldPackage7 = gson.fromJson(message, ThreeFieldPackage.class);
+                        System.out.println("SECRETARY CLASS REMOVE COURSE " + threeFieldPackage7.getFirstField());
+                        model.SecretaryClassRemoveCourse(threeFieldPackage7.getFirstField(), threeFieldPackage7.getSecondField(), threeFieldPackage7.getThirdField(), threeFieldPackage7.getId());
+                        break;
 //                case :
 //
 //                    break;

@@ -129,6 +129,8 @@ public class ModelManager implements Model, Tier2Model {
         if (Integer.parseInt(secretary.getId()) > Integer.parseInt(maxNr))
             maxNr = secretary.getId();
 
+        maxNr = String.valueOf(Integer.valueOf(maxNr) + 1);
+
         return maxNr;
     }
 
@@ -360,6 +362,122 @@ public class ModelManager implements Model, Tier2Model {
                 classes.remove(classes.get(i));
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
             }
+        tier2Connection.secretaryError("Class not found", id);
+    }
+
+    @Override
+    public void SecretaryCLassAddStudent(String classNr, String classLetter, String studentId, long id)
+    {
+        for(int i = 0; i < classes.size(); i++)
+        {
+            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            {
+                for (int j = 0; j < studentsA.size(); j++)
+                    if (studentsA.get(j).getId().equals(studentId))
+                    {
+                        if(classes.get(i).getStudents() == null)
+                        {
+                            ArrayList<Student> auxStudList = new ArrayList<Student>();
+                            auxStudList.add(studentsA.get(j));
+                            classes.get(i).setStudents(auxStudList);
+                        }
+                        else {
+                            ArrayList<Student> auxStudList = classes.get(i).getStudents();
+                            auxStudList.add(studentsA.get(j));
+                            classes.get(j).setStudents(auxStudList);
+                        }
+                        tier2Connection.openSecretary(getSecretaryData("0"), id);
+                    }
+                for (int j = 0; j < studentsB.size(); j++)
+                    if (studentsB.get(j).getId().equals(studentId))
+                    {
+                        if(classes.get(i).getStudents() == null)
+                        {
+                            ArrayList<Student> auxStudList = new ArrayList<Student>();
+                            auxStudList.add(studentsB.get(j));
+                            classes.get(i).setStudents(auxStudList);
+                        }
+                        else {
+                            ArrayList<Student> auxStudList = classes.get(i).getStudents();
+                            auxStudList.add(studentsB.get(j));
+                            classes.get(j).setStudents(auxStudList);
+                        }
+                        tier2Connection.openSecretary(getSecretaryData("0"), id);
+                    }
+                tier2Connection.secretaryError("Student not found", id);
+            }
+
+        }
+        tier2Connection.secretaryError("Class not found", id);
+    }
+
+    @Override
+    public void SecretaryClassRemoveStudent(String classNr, String classLetter, String studentId, long id)
+    {
+        for(int i = 0; i < classes.size(); i++)
+        {
+            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            {
+                for (int j = 0; j < classes.get(i).getStudents().size(); j++)
+                {
+                    if(classes.get(i).getStudents().get(j).getId().equals(studentId))
+                    {
+                        classes.get(i).getStudents().remove(j);
+                        tier2Connection.openSecretary(getSecretaryData("0"), id);
+                    }
+                }
+                tier2Connection.secretaryError("Student not found", id);
+            }
+
+        }
+        tier2Connection.secretaryError("Class not found", id);
+    }
+
+    @Override
+    public void SecretaryClassAddCourse(String classNr, String classLetter, String courseName, long id)
+    {
+        for(int i = 0; i < classes.size(); i++)
+        {
+            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            {
+                if(classes.get(i).getCourses() == null)
+                {
+                    ArrayList<Course> newCourses = new ArrayList<Course>();
+                    newCourses.add(new Course(courseName));
+                    classes.get(i).setCourses(newCourses);
+                }
+                else
+                {
+                    ArrayList<Course> newCourses = classes.get(i).getCourses();
+                    newCourses.add(new Course(courseName));
+                    classes.get(i).setCourses(newCourses);
+                }
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+            }
+
+        }
+        tier2Connection.secretaryError("Class not found", id);
+    }
+
+    @Override
+    public void SecretaryClassRemoveCourse(String classNr, String classLetter, String courseName, long id)
+    {
+        for(int i = 0; i < classes.size(); i++)
+        {
+            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            {
+                for (int j = 0; j < classes.get(i).getCourses().size(); j++)
+                {
+                    if(classes.get(i).getCourses().get(j).getName().equals(courseName))
+                    {
+                        classes.get(i).getCourses().remove(j);
+                        tier2Connection.openSecretary(getSecretaryData("0"), id);
+                    }
+                }
+                tier2Connection.secretaryError("Course not found", id);
+            }
+
+        }
         tier2Connection.secretaryError("Class not found", id);
     }
 }

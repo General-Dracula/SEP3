@@ -121,16 +121,13 @@ public class Tier3SocketConnection implements Tier3Connection
         t.start();
     }
 
-    @Override
-    public NetworkPackage createTeacher(String firstName, String lastName, String password)
+    public NetworkPackage waitForResponse(Long id)
     {
-        long currentCounter = getCounter();
         NetworkPackage responsePackage = null;
-        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaruCreateTeacher, firstName, lastName, password, currentCounter)));
         boolean bai = true;
         while(bai) {
             for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
+                if (requestList.get(i).getId() == id)
                 {
                     responsePackage = requestList.get(i);
                     requestList.remove(i);
@@ -144,281 +141,134 @@ public class Tier3SocketConnection implements Tier3Connection
             }
         }
         return responsePackage;
+    }
+
+    @Override
+    public NetworkPackage createTeacher(String firstName, String lastName, String password)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaruCreateTeacher, firstName, lastName, password, currentCounter)));
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage editTeacher(String id, String password)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryEditTeacher, id, password, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage deleteTeacher(String id)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteTeacher, id, "", currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage createStudent(String firstName, String lastName, String address, String password, String phoneNr, String birthday)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new StudentDataPackage(NetworkType.SecretaryCreateStudent, new Student("0", firstName, lastName, address, birthday, password, phoneNr, null, null), currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage deleteStudent(String id)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteStudent, id, "", currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage editStudent(String studentId, String address, String password, String phoneNr)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new FourFieldPackage(NetworkType.SecretaryEditStudent, studentId, address, password, phoneNr, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage createClass(String classNr, String classLetter, String teacherId)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryCreateClass, classNr, classLetter, teacherId, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage deleteClass(String classLetter, String classNr)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryDeleteClass, classNr, classLetter, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
+    }
+
+    @Override
+    public NetworkPackage classAddStudent(String classNr, String classLetter, String studentId)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryClassAddStudent, classNr, classLetter, studentId, currentCounter)));
+        return this.waitForResponse(currentCounter);
+    }
+
+    @Override
+    public NetworkPackage classRemoveStudent(String classNr, String classLetter, String studentId)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryClassRemoveStudent, classNr, classLetter, studentId, currentCounter)));
+        return this.waitForResponse(currentCounter);
+    }
+
+    @Override
+    public NetworkPackage classAddCourse(String classNr, String classLetter, String courseName)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryClassAddCourse, classNr, classLetter, courseName, currentCounter)));
+        return this.waitForResponse(currentCounter);
+    }
+
+    @Override
+    public NetworkPackage classRemoveCourse(String classNr, String classLetter, String courseName)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.SecretaryClassRemoveCourse, classNr, classLetter, courseName, currentCounter)));
+        return this.waitForResponse(currentCounter);
     }
 
     public NetworkPackage checkLogInData(String id, String password)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new TwoFieldPackage(NetworkType.LogInRequest, id, password, currentCounter)));
-            boolean bai = true;
-            while(bai) {
-                for (int i = 0; i <  requestList.size(); i++) {
-                    if (requestList.get(i).getId() == currentCounter)
-                    {
-                        responsePackage = requestList.get(i);
-                        requestList.remove(i);
-                        bai = false;
-                    }
-                }
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            return responsePackage;
 
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage assignGrade(String studentId, String course, int grade, String teacherID)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new FourFieldPackage(NetworkType.TeacherAssignGrade, studentId, course, String.valueOf(grade), teacherID, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage assignAbsence(String studentId, String course, String teacherID)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new ThreeFieldPackage(NetworkType.TeacherAssignAbsence, studentId, course, teacherID, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
     @Override
     public NetworkPackage motivateAbsence(String studentID, String course, String date, String teacherID)
     {
         long currentCounter = getCounter();
-        NetworkPackage responsePackage = null;
         writer.println(gson.toJson(new FourFieldPackage(NetworkType.TeacherMotivateAbsence, studentID, course, date, teacherID, currentCounter)));
-        boolean bai = true;
-        while(bai) {
-            for (int i = 0; i <  requestList.size(); i++) {
-                if (requestList.get(i).getId() == currentCounter)
-                {
-                    responsePackage = requestList.get(i);
-                    requestList.remove(i);
-                    bai = false;
-                }
-            }
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responsePackage;
+        return this.waitForResponse(currentCounter);
     }
 
 
