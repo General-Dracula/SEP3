@@ -47,7 +47,7 @@
                             </select>
                         </div>
                         <br>
-                        <button class="btn btn-primary" disabled=@NewGradeButtonDisabled() @onclick="AssignGrade">Assign Grade</button>
+                        <button class="btn btn-primary" @onclick="AssignGrade" disabled=@NewGradeButtonDisabled()>Assign Grade</button>
                     </div>
                 </form>
             }
@@ -73,11 +73,14 @@
                 {
                     <select class="form-control" name="students" id="students" @onchange=@ExtractCourses>
                         <option value="" selected disabled hidden>Choose student...</option>
-                        @foreach (Student student in selectedClass.students)
+                        @if (selectedClass.students != null)
                         {
-                            string selectedStudentName = student.firstName + " " + student.lastName;
-                            string serializedStudent = JsonSerializer.Serialize(student);
-                            <option value="@serializedStudent">@selectedStudentName</option>
+                            @foreach (Student student in selectedClass.students)
+                            {
+                                string selectedStudentName = student.firstName + " " + student.lastName;
+                                string serializedStudent = JsonSerializer.Serialize(student);
+                                <option value="@serializedStudent">@selectedStudentName</option>
+                            }
                         }
                     </select>
                 }
@@ -252,7 +255,7 @@
     //Regarding selected student
     string selectedClassAsString;
     string selectedStudentAsString;
-    Class selectedClass;
+    Class selectedClass = new Class();
     Student selectedStudent = new Student();
     bool studentSelected;
     List<string> selectedStudentCourses = new List<string>();
