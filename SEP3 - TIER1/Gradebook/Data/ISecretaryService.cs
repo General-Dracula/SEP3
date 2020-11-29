@@ -17,5 +17,7 @@ namespace WebApplication.Data
         Task<NetworkPackage> RemoveStudentFromClass(string classLetter, string classNr, string studentId);
         Task<NetworkPackage> AddCourseToClass(string classLetter, string classNr, string courseName);
         Task<NetworkPackage> RemoveCourseFromClass(string classLetter, string classNr, string courseName);
+        Task<NetworkPackage> ChangeSecretaryPassword(string newPassword);
+        Task<NetworkPackage> ChangeSecretaryUsername(string newUsername);
     }
 }

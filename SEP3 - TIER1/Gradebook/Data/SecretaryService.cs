@@ -91,6 +91,18 @@ namespace WebApplication.Data
             return await GetRequest(URI);
         }
 
+        public async Task<NetworkPackage> ChangeSecretaryPassword(string newPassword)
+        {
+            string URI = "http://localhost:" + Startup.PORT + $"/secretary/changepassword?newPassword={newPassword}";
+            return await GetRequest(URI);
+        }
+
+        public async Task<NetworkPackage> ChangeSecretaryUsername(string newUsername)
+        {
+            string URI = "http://localhost:" + Startup.PORT + $"/secretary/changeusername?newUsername={newUsername}";
+            return await GetRequest(URI);
+        }
+
         private async Task<NetworkPackage> GetRequest(string URI)
         {
             HttpClient client = new HttpClient();

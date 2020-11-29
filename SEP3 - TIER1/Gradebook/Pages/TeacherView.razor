@@ -4,6 +4,7 @@
 @using System.Text.Json
 @using WebApplication.Data
 @using WebApplication.NetworkPackages
+@inject IJSRuntime JSRuntime
 
 <head>
     <link rel="stylesheet" href="css/gradeTable.css">
@@ -84,6 +85,8 @@
                         }
                     </select>
                 }
+                <br>
+                <p class="center-horiz" style="color: red">@ErrorLabel</p>
             </div>
         </div>
         <div class="col-2">
@@ -252,6 +255,8 @@
 @code {
     Teacher teacher = CustomAuthenticationStateProvider.CachedTeacher;
     ITeacherService teacherService = new TeacherService();
+    string ErrorLabel;
+    
     //Regarding selected student
     string selectedClassAsString;
     string selectedStudentAsString;
