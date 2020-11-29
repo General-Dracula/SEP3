@@ -36,7 +36,7 @@ namespace WebApplication.Data
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string responseAsJson = await response.Content.ReadAsStringAsync();
-                SecretaryDataPackage result = JsonSerializer.Deserialize<SecretaryDataPackage>(responseAsJson);
+                TeacherDataPackage result = JsonSerializer.Deserialize<TeacherDataPackage>(responseAsJson);
                 Console.WriteLine(result.ToString());
                 return result;
             }
