@@ -129,7 +129,7 @@ public class ModelManager implements Model, Tier2Model {
         if (Integer.parseInt(secretary.getId()) > Integer.parseInt(maxNr))
             maxNr = secretary.getId();
 
-        maxNr = String.valueOf(Integer.valueOf(maxNr) + 1);
+        maxNr = String.valueOf(Integer.parseInt(maxNr) + 1);
 
         return maxNr;
     }
@@ -359,25 +359,36 @@ public class ModelManager implements Model, Tier2Model {
     }
 
     @Override
-    public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id)
-    {
-        classes.add(new Class(Integer.valueOf(classNr), classLetter.charAt(0), teacherId, null, null));
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
-    }
-
-    @Override
-    public void SecretaryDeleteClass(String classLetter, String classNr, Long id)
+    public void SecretaryDeleteClass(String classNr, String classLetter, Long id)
     {
         for (int i = 0; i < classes.size(); i++)
-            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
-            {
+        {
+            System.out.println(String.valueOf(classes.get(i).getLetter()) + " - " + classLetter + " - " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
+            System.out.println(String.valueOf(classes.get(i).getLetter()).equals(classLetter));
+            System.out.println(classes.get(i).getYear() == Integer.parseInt(classNr));
+            if (String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr)) {
                 classes.remove(i);
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
                 return;
             }
-        else
+        }
+
         tier2Connection.secretaryError("Class not found", id);
     }
+
+
+
+    @Override
+    public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id)
+    {
+        System.out.println(classLetter);
+        System.out.println(classNr);
+        System.out.println(teacherId);
+        classes.add(new Class(Integer.parseInt(classNr), classLetter.charAt(0), teacherId, null, null));
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
+    };
+
+
 
     @Override
     public void SecretaryCLassAddStudent(String classNr, String classLetter, String studentId, long id)

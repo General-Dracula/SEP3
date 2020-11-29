@@ -26,7 +26,7 @@ public interface Tier2Model
 
     public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id);
 
-    public void SecretaryDeleteClass(String classLetter, String classNr, Long id);
+    public void SecretaryDeleteClass(String classNr, String classLetter, Long id);
 
     public void SecretaryCLassAddStudent(String classNr, String classLetter, String studentId, long id);
 

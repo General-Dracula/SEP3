@@ -185,7 +185,7 @@ public class Tier1ApiConnection {
     @GetMapping("/secretary/createclass")
     public ResponseEntity<String> createclass(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String teacherId)
     {
-        System.out.println("AJUNGE CREATE TEACHER");
+        System.out.println("AJUNGE CREATE CLASS" + classNr + " - " + classLetter + " - " + teacherId);
         NetworkPackage networkPackage = model.createClass(classNr, classLetter, teacherId);
         String response = gson.toJson(networkPackage);
         if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
