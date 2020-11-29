@@ -359,9 +359,10 @@ public class ModelManager implements Model, Tier2Model {
         for (int i = 0; i < classes.size(); i++)
             if (classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
-                classes.remove(classes.get(i));
+                classes.remove(i);
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
             }
+        else
         tier2Connection.secretaryError("Class not found", id);
     }
 
@@ -387,6 +388,7 @@ public class ModelManager implements Model, Tier2Model {
                             classes.get(j).setStudents(auxStudList);
                         }
                         tier2Connection.openSecretary(getSecretaryData("0"), id);
+                        return;
                     }
                 for (int j = 0; j < studentsB.size(); j++)
                     if (studentsB.get(j).getId().equals(studentId))
@@ -414,16 +416,24 @@ public class ModelManager implements Model, Tier2Model {
     @Override
     public void SecretaryClassRemoveStudent(String classNr, String classLetter, String studentId, long id)
     {
+
+        System.out.println("----" + classNr + "-----" + classLetter + "----" + studentId);
         for(int i = 0; i < classes.size(); i++)
         {
-            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            System.out.println(classes.get(i).getLetter() + " - " + classLetter.charAt(0) + " -111111- " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
+            System.out.println(String.valueOf(classes.get(i).getLetter()).equals(classLetter));
+            System.out.println(classes.get(i).getYear() == Integer.parseInt(classNr));
+
+            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
+                System.out.println(classes.get(i).getLetter() + " - " + classLetter.charAt(0) + " -!!!!!!- " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
                 for (int j = 0; j < classes.get(i).getStudents().size(); j++)
                 {
                     if(classes.get(i).getStudents().get(j).getId().equals(studentId))
                     {
                         classes.get(i).getStudents().remove(j);
                         tier2Connection.openSecretary(getSecretaryData("0"), id);
+                        return;
                     }
                 }
                 tier2Connection.secretaryError("Student not found", id);
