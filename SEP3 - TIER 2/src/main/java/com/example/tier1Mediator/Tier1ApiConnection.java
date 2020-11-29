@@ -230,6 +230,7 @@ public class Tier1ApiConnection {
     public ResponseEntity<String> removestudent(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String studentId)
     {
         System.out.println("AJUNGE REMOVE STUDENT");
+        System.out.println("----" + classNr + "-----" + classLetter + "----" + studentId);
         NetworkPackage networkPackage = model.classRemoveStudent(classNr, classLetter, studentId);
         String response = gson.toJson(networkPackage);
         if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
