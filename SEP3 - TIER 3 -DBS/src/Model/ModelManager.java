@@ -208,12 +208,14 @@ public class ModelManager implements Model, Tier2Model {
             if (studentsA.get(i).getId().equals(studentId)) {
                 studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                return;
             }
 
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(studentId)) {
                 studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                return;
             }
 
 
@@ -229,12 +231,14 @@ public class ModelManager implements Model, Tier2Model {
             if (studentsA.get(i).getId().equals(studentId)) {
                 studentsA.get(i).getAbsences().add(new Absence(this.dateField, false, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                return;
             }
 
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(studentId)) {
                 studentsB.get(i).getAbsences().add(new Absence(this.dateField, false, course));
                 tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                return;
             }
 
 
@@ -251,6 +255,7 @@ public class ModelManager implements Model, Tier2Model {
                     if (studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsA.get(i).getAbsences().get(j).isMotivated()) {
                         studentsA.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                        return;
                     }
 
         for (int i = 0; i < studentsB.size(); i++)
@@ -259,6 +264,7 @@ public class ModelManager implements Model, Tier2Model {
                     if (studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsB.get(i).getAbsences().get(j).isMotivated()) {
                         studentsB.get(i).getAbsences().get(j).setMotivated(true);
                         tier2Connection.openTeacher(getTeacherData(teacherID), id);
+                        return;
                     }
 
 
@@ -281,6 +287,7 @@ public class ModelManager implements Model, Tier2Model {
             {
                 teachers.get(i).setPassword(password);
                 tier2Connection.openSecretary(getSecretaryData("0"), id2);
+                return;
             }
         tier2Connection.secretaryError("Teacher not found", id2);
     }
@@ -293,6 +300,7 @@ public class ModelManager implements Model, Tier2Model {
             {
                 teachers.remove(teachers.get(i));
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         tier2Connection.secretaryError("Teacher not found", id);
     }
@@ -314,12 +322,14 @@ public class ModelManager implements Model, Tier2Model {
             {
                 studentsA.remove(studentsA.get(i));
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(studentId))
             {
                 studentsB.remove(studentsB.get(i));
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         tier2Connection.secretaryError("Student not found", id);
     }
@@ -334,6 +344,7 @@ public class ModelManager implements Model, Tier2Model {
                 studentsA.get(i).setViewGradePassword(password);
                 studentsA.get(i).setPhoneNumber(phoneNr);
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(studentId))
@@ -342,6 +353,7 @@ public class ModelManager implements Model, Tier2Model {
                 studentsB.get(i).setViewGradePassword(password);
                 studentsB.get(i).setPhoneNumber(phoneNr);
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         tier2Connection.secretaryError("Student not found", id);
     }
@@ -357,10 +369,11 @@ public class ModelManager implements Model, Tier2Model {
     public void SecretaryDeleteClass(String classLetter, String classNr, Long id)
     {
         for (int i = 0; i < classes.size(); i++)
-            if (classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
                 classes.remove(i);
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
         else
         tier2Connection.secretaryError("Class not found", id);
@@ -371,7 +384,7 @@ public class ModelManager implements Model, Tier2Model {
     {
         for(int i = 0; i < classes.size(); i++)
         {
-            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
                 for (int j = 0; j < studentsA.size(); j++)
                     if (studentsA.get(j).getId().equals(studentId))
@@ -405,6 +418,7 @@ public class ModelManager implements Model, Tier2Model {
                             classes.get(j).setStudents(auxStudList);
                         }
                         tier2Connection.openSecretary(getSecretaryData("0"), id);
+                        return;
                     }
                 tier2Connection.secretaryError("Student not found", id);
             }
@@ -448,7 +462,7 @@ public class ModelManager implements Model, Tier2Model {
     {
         for(int i = 0; i < classes.size(); i++)
         {
-            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
                 if(classes.get(i).getCourses() == null)
                 {
@@ -463,6 +477,7 @@ public class ModelManager implements Model, Tier2Model {
                     classes.get(i).setCourses(newCourses);
                 }
                 tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
             }
 
         }
@@ -474,7 +489,7 @@ public class ModelManager implements Model, Tier2Model {
     {
         for(int i = 0; i < classes.size(); i++)
         {
-            if(classes.get(i).getLetter() == classLetter.charAt(0) && classes.get(i).getYear() == Integer.parseInt(classNr))
+            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
             {
                 for (int j = 0; j < classes.get(i).getCourses().size(); j++)
                 {
@@ -482,6 +497,7 @@ public class ModelManager implements Model, Tier2Model {
                     {
                         classes.get(i).getCourses().remove(j);
                         tier2Connection.openSecretary(getSecretaryData("0"), id);
+                        return;
                     }
                 }
                 tier2Connection.secretaryError("Course not found", id);

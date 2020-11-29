@@ -259,7 +259,7 @@ public class Tier1ApiConnection {
     @GetMapping("/secretary/removecourse")
     public ResponseEntity<String> removecourse(@RequestParam String classNr, @RequestParam String classLetter, @RequestParam String courseName)
     {
-        System.out.println("AJUNGE REMOVE STUDENT");
+        System.out.println("AJUNGE REMOVE COURSE");
         NetworkPackage networkPackage = model.classRemoveCourse(classNr, classLetter, courseName);
         String response = gson.toJson(networkPackage);
         if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
