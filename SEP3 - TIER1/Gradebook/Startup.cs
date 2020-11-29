@@ -33,11 +33,14 @@ namespace WebApplication
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
             services.AddAuthorization(options => {
+                options.AddPolicy("SecurityLevel3",  a => 
+                    a.RequireAuthenticatedUser().RequireClaim("Level", "3"));
+                
                 options.AddPolicy("SecurityLevel2",  a => 
-                    a.RequireAuthenticatedUser().RequireClaim("Level", "2"));
+                    a.RequireAuthenticatedUser().RequireClaim("Level", "2", "3"));
                 
                 options.AddPolicy("SecurityLevel1",  a => 
-                    a.RequireAuthenticatedUser().RequireClaim("Level", "1", "2"));
+                    a.RequireAuthenticatedUser().RequireClaim("Level", "1", "2", "3"));
             });
         }
 

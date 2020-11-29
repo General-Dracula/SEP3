@@ -55,9 +55,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
         try
         {
             string response = await userService.ValidateLoginAsync(username, password);
-            //Console.WriteLine(response);
             NetworkPackage resultUser = JsonSerializer.Deserialize<NetworkPackage>(response);
-            //Console.WriteLine(resultUser.id);
             User user = new User();
             if (resultUser.type.Equals("StudentData"))
             {

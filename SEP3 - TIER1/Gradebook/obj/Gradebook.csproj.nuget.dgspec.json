@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj": {}
+    "W:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj": {
+    "W:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+        "projectUniqueName": "W:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
         "projectName": "Gradebook",
-        "projectPath": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
-        "packagesPath": "C:\\Users\\dobre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dobre\\OneDrive\\Desktop\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
+        "projectPath": "W:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\Gradebook.csproj",
+        "packagesPath": "C:\\Users\\Paul\\.nuget\\packages\\",
+        "outputPath": "W:\\Univer\\SEP\\SEP3\\SEP3 - TIER1\\Gradebook\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet"
+        ],
         "configFilePaths": [
-          "C:\\Users\\dobre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Paul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\dobre\\.dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
