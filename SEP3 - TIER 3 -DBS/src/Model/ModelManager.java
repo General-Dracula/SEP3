@@ -70,6 +70,18 @@ public class ModelManager implements Model, Tier2Model {
         t2.setDaemon(true);
         t2.start();
 
+//        courses.add(new Course("Math"));
+//        courses.add(new Course("Computer Science"));
+//        courses.add(new Course("Romanian"));
+//        courses.add(new Course("English"));
+//        courses.add(new Course("German"));
+//        courses.add(new Course("French"));
+//        courses.add(new Course("Physics"));
+//        courses.add(new Course("Biology"));
+//        courses.add(new Course("Chemistry"));
+//        courses.add(new Course("Geography"));
+//        courses.add(new Course("Physical Education"));
+//        courses.add(new Course("Economics"));
 
 
 
@@ -170,25 +182,146 @@ public class ModelManager implements Model, Tier2Model {
         return maxNr;
     }
 
+    private ArrayList<Class> getClasses()
+    {
+        ArrayList<Class> classes = new ArrayList<Class>();
+        ArrayList<Student> students = new ArrayList<Student>();
+        ArrayList<Course> courses = new ArrayList<Course>();
+
+
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.class").executeQuery();
+            while (rs.next())
+            {
+                    ResultSet rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.student_class_link WHERE class_id = " +  rs.getString(1)).executeQuery();
+                    while(rs2.next())
+                    {
+                        students.add(this.getStudentData(rs2.getString(2)));
+                    }
+
+
+                ResultSet rs3 = con.prepareStatement("SELECT * FROM gradebook_dbs.course WHERE class_id ='" + rs.getString(1) + "'").executeQuery();
+                while (rs3.next())
+                {
+                    courses.add(new Course(rs3.getString(2)));
+                }
+
+                classes.add(new Class(rs.getInt(2), rs.getString(2).charAt(0), "", students, courses));
+                courses = new ArrayList<Course>();
+                students = new ArrayList<Student>();
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return classes;
+    }
+
     private Teacher getTeacherData(String id)
     {
         System.out.println("----------TEACHER DATA ");
-        for (int i = 0; i < teachers.size(); i++)
-            if (teachers.get(i).getId().equals(id))
-                return teachers.get(i);
-        return null;
+        Teacher teacher = null;
+        ArrayList<Class> classes = this.getClasses();
+        ArrayList<String> classesTeached = new ArrayList<String>();
+
+
+//        ResultSet rs2 = null;
+//        try {
+//            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher_class_link WHERE teacher_id ='" + id + "'").executeQuery();
+//            while (rs2.next())
+//            {
+//                classesTeached.add(rs2.getString(3));
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        for (Class i: classes)
+//        {
+//          boolean found = false;
+//          for(String j : classesTeached)
+//          {
+//              if(j.equals(i.getTeacherID()))
+//                  found = true;
+//          }
+//
+//          if(!found)
+//              classes.remove(i);
+//        }
+
+
+
+        ResultSet rs3 = null;
+        try {
+            rs3 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher WHERE id ='" + id + "'").executeQuery();
+            while (rs3.next())
+            {
+                teacher = new Teacher(rs3.getString(1), rs3.getString(2), rs3.getString(3), rs3.getString(4), classes);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return teacher;
     }
 
     private Student getStudentData(String id)
     {
         System.out.println("----------STUDENT DATA ");
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(id))
-                return studentsA.get(i);
+//
 
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(id))
-                return studentsB.get(i);
+        ArrayList<Grade> grades = new ArrayList<Grade>();
+
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.grades WHERE student_id ='" + id + "'").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(5).equals(id))
+                {
+                    grades.add(new Grade(Integer.parseInt(rs.getString(2)), rs.getString(3), rs.getString(4)));
+                }
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+
+        ArrayList<Absence> absences = new ArrayList<Absence>();
+
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.absence WHERE student_id ='" + id + "'").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(5).equals(id))
+                {
+                    absences.add(new Absence( rs.getString(2),  rs.getBoolean(3),  rs.getString(4)));
+                }
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.student WHERE id ='" + id + "'").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(1).equals(id))
+                {
+                    return new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(7), rs.getString(5), rs.getString(6), grades, absences);
+                }
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -201,22 +334,37 @@ public class ModelManager implements Model, Tier2Model {
     private String isUserValid(String id, String password)
     {
 
-        for (int i = 0; i < teachers.size(); i++)
-            if (teachers.get(i).getId().equals(id) && teachers.get(i).getPassword().equals(password))
-                return "Teacher";
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(1).equals(id) && rs.getString(4).equals(password))
+                {
+                    return "Teacher";
+                }
+            }
 
-        //if (id.equals(secretary.getId()) && password.equals(secretary.getPassword()))
-            //return "Secretary";
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
-                return "Student";
 
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
-                return "Student";
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.student").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(1).equals(id) && rs.getString(5).equals(password))
+                {
+                    return "Student";
+                }
+                else System.out.println(rs.getString(1) + " - " + rs.getString(5));
+            }
 
-        System.out.println("-----------------------------------");
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+
         try {
             ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.secretary").executeQuery();
             while (rs.next()) {
@@ -256,19 +404,14 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
 
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(studentId)) {
-                studentsA.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                return;
-            }
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.grades VALUES(DEFAULT, '" + grade + "', '" + dateField +"', '" + course +"', '" + studentId +"')").executeUpdate();
+            tier2Connection.openTeacher(getTeacherData(teacherID), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(studentId)) {
-                studentsB.get(i).getGrades().add(new Grade(Integer.valueOf(grade), dateField, course));
-                tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                return;
-            }
+
 
 
         tier2Connection.teacherError("Something is wrong boyy", id);
@@ -279,12 +422,7 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN Absence");
 
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(studentId)) {
-                studentsA.get(i).getAbsences().add(new Absence(this.dateField, false, course));
-                tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                return;
-            }
+
 
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(studentId)) {
