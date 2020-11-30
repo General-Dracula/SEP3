@@ -39,4 +39,8 @@ public interface Tier3Connection
     public NetworkPackage classAddCourse(String classNr, String classLetter, String courseName);
 
     public NetworkPackage classRemoveCourse(String classNr, String classLetter, String courseName);
+
+    public NetworkPackage changeSecretaryUsername(String newUsername);
+
+    public NetworkPackage changeSecretaryPassword(String newPassword);
 }

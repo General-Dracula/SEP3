@@ -6,6 +6,10 @@ import Data.Class;
 import Tier2Mediator.Tier2Connection;
 import Tier2Mediator.Tier2SocketConnection;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +18,10 @@ import java.util.Date;
 public class ModelManager implements Model, Tier2Model {
     Tier2Connection tier2Connection;
     String dateField = "";
+
+    java.sql.Date date2 = new java.sql.Date(1000);
+
+    Connection con;
 
     ////TESTING
     ArrayList<Grade> grades = new ArrayList<Grade>();
@@ -33,9 +41,37 @@ public class ModelManager implements Model, Tier2Model {
         tier2Connection.connect(6969);
         tier2Connection.waitFromTier2();
 
+
         SimpleDateFormat formatterDate = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatterTime = new SimpleDateFormat("HH:mm:ss");
         java.util.Date date = new Date();
         dateField = formatterDate.format(date);
+
+        try {
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SEP3-DBS", "postgres", "MuiePSD2020");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        Runnable runnable2 = () -> {
+            while (true) {
+
+                try {
+                    dateField = formatterDate.format(date);
+                    Thread.sleep(980*60*60*24);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread t2 = new Thread(runnable2);
+        t2.setDaemon(true);
+        t2.start();
+
+
+
 
         //testing
         grades.add(new Grade(7, "01/02/2020", "Math"));
@@ -169,8 +205,8 @@ public class ModelManager implements Model, Tier2Model {
             if (teachers.get(i).getId().equals(id) && teachers.get(i).getPassword().equals(password))
                 return "Teacher";
 
-        if (id.equals("0") && password.equals("0"))
-            return "Secretary";
+        //if (id.equals(secretary.getId()) && password.equals(secretary.getPassword()))
+            //return "Secretary";
 
         for (int i = 0; i < studentsA.size(); i++)
             if (studentsA.get(i).getId().equals(id) && studentsA.get(i).getViewGradePassword().equals(password))
@@ -179,6 +215,22 @@ public class ModelManager implements Model, Tier2Model {
         for (int i = 0; i < studentsB.size(); i++)
             if (studentsB.get(i).getId().equals(id) && studentsB.get(i).getViewGradePassword().equals(password))
                 return "Student";
+
+        System.out.println("-----------------------------------");
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.secretary").executeQuery();
+            while (rs.next()) {
+                if (rs.getString(2).equals(id) && rs.getString(3).equals(password))
+                {
+                    return "Secretary";
+                }
+                else System.out.println("NOPE");
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
         return null;
     }
@@ -516,5 +568,19 @@ public class ModelManager implements Model, Tier2Model {
 
         }
         tier2Connection.secretaryError("Class not found", id);
+    }
+
+    @Override
+    public void SecretaryChangeOwnUsername(String username, long id)
+    {
+        secretary.setId(username);
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
+    }
+
+    @Override
+    public void SecretaryChangeOwnPassword(String firstField, long id)
+    {
+        secretary.setPassword(firstField);
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
     }
 }

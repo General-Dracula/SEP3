@@ -120,5 +120,19 @@ public class ModelManager implements Model, Tier1Model
         return tier3Connection.classRemoveCourse(classNr, classLetter, courseName);
     }
 
+    @Override
+    public NetworkPackage changeSecretaryUsername(String newUsername)
+    {
+        return tier3Connection.changeSecretaryUsername(newUsername);
+    }
+
+    @Override
+    public NetworkPackage changeSecretaryPassword(String newPassword)
+    {
+        if(newPassword.length() < 8)
+            return new TwoFieldPackage(NetworkType.SecretaryError, "Password too short", "", -3234);
+        return tier3Connection.changeSecretaryPassword(newPassword);
+    }
+
 
 }

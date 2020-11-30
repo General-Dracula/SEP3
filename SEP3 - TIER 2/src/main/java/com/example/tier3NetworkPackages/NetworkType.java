@@ -34,5 +34,7 @@ public enum NetworkType
   SecretaryClassRemoveStudent,
   SecretaryClassAddCourse,
   SecretaryClassRemoveCourse,
+  SecretaryChangeUsername,
+  SecretaryChangePassword
 
 }

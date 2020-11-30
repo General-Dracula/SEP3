@@ -35,4 +35,8 @@ public interface Tier2Model
     public void SecretaryClassAddCourse(String classNr, String classLetter, String courseName, long id);
 
     public void SecretaryClassRemoveCourse(String classNr, String classLetter, String courseName, long id);
+
+    public void SecretaryChangeOwnUsername(String username, long id);
+
+    public void SecretaryChangeOwnPassword(String firstField, long id);
 }

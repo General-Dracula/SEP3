@@ -239,6 +239,23 @@ public class Tier3SocketConnection implements Tier3Connection
         return this.waitForResponse(currentCounter);
     }
 
+    @Override
+    public NetworkPackage changeSecretaryUsername(String newUsername)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryChangeUsername, newUsername, "", currentCounter)));
+
+        return this.waitForResponse(currentCounter);
+    }
+
+    @Override
+    public NetworkPackage changeSecretaryPassword(String newPassword)
+    {
+        long currentCounter = getCounter();
+        writer.println(gson.toJson(new TwoFieldPackage(NetworkType.SecretaryChangePassword, newPassword, "", currentCounter)));
+        return this.waitForResponse(currentCounter);
+    }
+
     public NetworkPackage checkLogInData(String id, String password)
     {
         long currentCounter = getCounter();
