@@ -362,3 +362,5 @@ C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.dll
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.pdb
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryLogin.razor.g.cs
+C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryLogin.razor.g.cs
