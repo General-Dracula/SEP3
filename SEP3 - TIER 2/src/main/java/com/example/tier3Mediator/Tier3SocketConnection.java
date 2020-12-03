@@ -84,6 +84,7 @@ public class Tier3SocketConnection implements Tier3Connection
                         System.out.println("------------ERROR!!!!!!!!!!!!!!!!!!");
                         requestList.add(logInError);
                     break;
+
                     case TeacherData:
                         TeacherDataPackage teacherDataPackage = gson.fromJson(message, TeacherDataPackage.class);
                         System.out.println(" -------------------" + teacherDataPackage.getData().getFirstName());

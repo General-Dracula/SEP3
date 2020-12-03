@@ -64,7 +64,8 @@
                     <option value="" selected disabled hidden>Choose class</option>
                     @foreach (Class _class in teacher.classes)
                     {
-                        string className = _class.year + "" + _class.letter;
+                        string className = _class.year + " - ";
+                        className = className + _class.letter.ToString();
                         string serializedClass = JsonSerializer.Serialize(_class);
                         <option value="@serializedClass">@className</option>
                     }

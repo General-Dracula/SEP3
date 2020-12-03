@@ -171,7 +171,7 @@ public class Tier1ApiConnection {
     @GetMapping("/secretary/editstudent")
     public ResponseEntity<String> editstudent(@RequestParam String studentId, @RequestParam String address, @RequestParam String password, @RequestParam String phoneNr)
     {
-        System.out.println("AJUNGE EDIT TEACHER");
+        System.out.println("AJUNGE EDIT STUDENT");
         NetworkPackage networkPackage = model.editStudent(studentId, address, password, phoneNr);
         String response = gson.toJson(networkPackage);
         if (networkPackage.getType().equals(NetworkType.SecretaryError)) {
@@ -200,7 +200,7 @@ public class Tier1ApiConnection {
     @GetMapping("/secretary/deleteclass")
     public ResponseEntity<String> deleteclass(@RequestParam String classLetter, @RequestParam String classNr)
     {
-        System.out.println("AJUNGE DELETE STUDENT");
+        System.out.println("AJUNGE DELETE CLASS");
         NetworkPackage networkPackage = model.deleteClass(classLetter, classNr);
         String response = gson.toJson(networkPackage);
         if (networkPackage.getType().equals(NetworkType.SecretaryError)) {

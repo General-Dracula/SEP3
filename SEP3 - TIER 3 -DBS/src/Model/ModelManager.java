@@ -42,7 +42,7 @@ public class ModelManager implements Model, Tier2Model {
         tier2Connection.waitFromTier2();
 
 
-        SimpleDateFormat formatterDate = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat formatterTime = new SimpleDateFormat("HH:mm:ss");
         java.util.Date date = new Date();
         dateField = formatterDate.format(date);
@@ -206,9 +206,68 @@ public class ModelManager implements Model, Tier2Model {
                     courses.add(new Course(rs3.getString(2)));
                 }
 
-                classes.add(new Class(rs.getInt(2), rs.getString(2).charAt(0), "", students, courses));
+                classes.add(new Class(rs.getInt(2), rs.getString(3).charAt(0), "", students, courses));
                 courses = new ArrayList<Course>();
                 students = new ArrayList<Student>();
+            }
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return classes;
+    }
+
+    private ArrayList<Class> getTeacherClasses(String teacherID)
+    {
+        ArrayList<Class> classes = new ArrayList<Class>();
+        ArrayList<Student> students = new ArrayList<Student>();
+        ArrayList<Course> courses = new ArrayList<Course>();
+
+        ArrayList<String> classesTeached = new ArrayList<String>();
+
+
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher_class_link WHERE teacher_id ='" + teacherID + "'").executeQuery();
+            while (rs2.next())
+            {
+                classesTeached.add(rs2.getString(3));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.class").executeQuery();
+            while (rs.next())
+            {
+                boolean continues = false;
+
+                for(int i = 0; i < classesTeached.size(); i++)
+                    if(classesTeached.get(i).equals(rs.getString(1)))
+                        continues = true;
+
+                if(continues)
+                {
+                    ResultSet rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.student_class_link WHERE class_id = " + rs.getString(1)).executeQuery();
+                    while (rs2.next()) {
+                        students.add(this.getStudentData(rs2.getString(2)));
+                    }
+
+
+                    ResultSet rs3 = con.prepareStatement("SELECT * FROM gradebook_dbs.course WHERE class_id ='" + rs.getString(1) + "'").executeQuery();
+                    while (rs3.next()) {
+                        courses.add(new Course(rs3.getString(2)));
+                    }
+
+                    classes.add(new Class(rs.getInt(2), rs.getString(3).charAt(0), "", students, courses));
+                    courses = new ArrayList<Course>();
+                    students = new ArrayList<Student>();
+                }
             }
 
         } catch (SQLException e)
@@ -223,35 +282,7 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("----------TEACHER DATA ");
         Teacher teacher = null;
-        ArrayList<Class> classes = this.getClasses();
-        ArrayList<String> classesTeached = new ArrayList<String>();
-
-
-//        ResultSet rs2 = null;
-//        try {
-//            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher_class_link WHERE teacher_id ='" + id + "'").executeQuery();
-//            while (rs2.next())
-//            {
-//                classesTeached.add(rs2.getString(3));
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        for (Class i: classes)
-//        {
-//          boolean found = false;
-//          for(String j : classesTeached)
-//          {
-//              if(j.equals(i.getTeacherID()))
-//                  found = true;
-//          }
-//
-//          if(!found)
-//              classes.remove(i);
-//        }
-
+        ArrayList<Class> classes = this.getTeacherClasses(id);
 
 
         ResultSet rs3 = null;
@@ -278,7 +309,8 @@ public class ModelManager implements Model, Tier2Model {
 
         try {
             ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.grades WHERE student_id ='" + id + "'").executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
                 if (rs.getString(5).equals(id))
                 {
                     grades.add(new Grade(Integer.parseInt(rs.getString(2)), rs.getString(3), rs.getString(4)));
@@ -295,7 +327,8 @@ public class ModelManager implements Model, Tier2Model {
 
         try {
             ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.absence WHERE student_id ='" + id + "'").executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
                 if (rs.getString(5).equals(id))
                 {
                     absences.add(new Absence( rs.getString(2),  rs.getBoolean(3),  rs.getString(4)));
@@ -310,7 +343,8 @@ public class ModelManager implements Model, Tier2Model {
 
         try {
             ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.student WHERE id ='" + id + "'").executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
                 if (rs.getString(1).equals(id))
                 {
                     return new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(7), rs.getString(5), rs.getString(6), grades, absences);
@@ -325,59 +359,96 @@ public class ModelManager implements Model, Tier2Model {
         return null;
     }
 
-    private Secretary getSecretaryData(String id)
+    private ArrayList<Teacher> getTeachers()
     {
-        System.out.println("----------SECRETARY DATA " + secretary.getId());
-        return this.secretary;
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+
+        ResultSet rs3 = null;
+        try {
+            rs3 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher").executeQuery();
+            while (rs3.next())
+            {
+                teachers.add( new Teacher(rs3.getString(1), rs3.getString(2), rs3.getString(3), rs3.getString(4), null));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return teachers;
     }
 
-    private String isUserValid(String id, String password)
+    private Secretary getSecretaryData(String id)
     {
-
-        try {
-            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher").executeQuery();
-            while (rs.next()) {
-                if (rs.getString(1).equals(id) && rs.getString(4).equals(password))
-                {
-                    return "Teacher";
-                }
-            }
-
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
+        System.out.println("----------SECRETARY DATA ");
 
 
-        try {
-            ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.student").executeQuery();
-            while (rs.next()) {
-                if (rs.getString(1).equals(id) && rs.getString(5).equals(password))
-                {
-                    return "Student";
-                }
-                else System.out.println(rs.getString(1) + " - " + rs.getString(5));
-            }
-
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
+        Secretary secretary = null;
 
 
         try {
             ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.secretary").executeQuery();
             while (rs.next()) {
-                if (rs.getString(2).equals(id) && rs.getString(3).equals(password))
-                {
-                    return "Secretary";
-                }
-                else System.out.println("NOPE");
+
+                    secretary = new Secretary(rs.getString(2), rs.getString(2), this.getTeachers(),this.getClasses() );
             }
 
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        return secretary;
+    }
+
+    private String isUserValid(String id, String password)
+    {
+
+        if(id.charAt(0) != 'T' && id.charAt(0) != 'S')
+        {
+            try {
+                ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.student WHERE id ='" + id + "'").executeQuery();
+                while (rs.next()) {
+                    if (rs.getString(1).equals(id) && rs.getString(5).equals(password)) {
+                        return "Student";
+                    } else System.out.println(rs.getString(1) + " - " + rs.getString(5));
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+            if(id.charAt(0) == 'T')
+            {
+                id = id.substring(1);
+            try {
+                ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher WHERE id ='" + id + "'").executeQuery();
+                while (rs.next()) {
+                    if (rs.getString(1).equals(id) && rs.getString(4).equals(password)) {
+                        return "Teacher";
+                    }
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        if(id.charAt(0) == 'S')
+        {
+            id = id.substring(1);
+            try {
+                ResultSet rs = con.prepareStatement("SELECT * FROM gradebook_dbs.secretary WHERE username ='" + id + "'").executeQuery();
+                while (rs.next()) {
+                    if (rs.getString(2).equals(id) && rs.getString(3).equals(password)) {
+                        return "Secretary";
+                    } else System.out.println("NOPE");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;
@@ -394,9 +465,9 @@ public class ModelManager implements Model, Tier2Model {
         } else if (validUser.equals("Student"))
             tier2Connection.openStudent(getStudentData(id), id2);
         else if (validUser.equals("Teacher"))
-            tier2Connection.openTeacher(getTeacherData(id), id2);
+            tier2Connection.openTeacher(getTeacherData(id.substring(1)), id2);
         else if (validUser.equals("Secretary"))
-            tier2Connection.openSecretary(getSecretaryData(id), id2);
+            tier2Connection.openSecretary(getSecretaryData(id.substring(1)), id2);
     }
 
     @Override
@@ -404,15 +475,13 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN GRADE");
 
+        teacherID.substring(1);
         try {
             con.prepareStatement("INSERT INTO gradebook_dbs.grades VALUES(DEFAULT, '" + grade + "', '" + dateField +"', '" + course +"', '" + studentId +"')").executeUpdate();
             tier2Connection.openTeacher(getTeacherData(teacherID), id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
 
         tier2Connection.teacherError("Something is wrong boyy", id);
     }
@@ -422,14 +491,14 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("!!!!!!!!!!!!!!!!!!ASSIGN Absence");
 
+        teacherID.substring(1);
 
-
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(studentId)) {
-                studentsB.get(i).getAbsences().add(new Absence(this.dateField, false, course));
-                tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                return;
-            }
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.absence VALUES(DEFAULT, '" + this.dateField +"', 'false', '" + course + "', '" + studentId + "')").executeUpdate();
+            tier2Connection.openTeacher(getTeacherData(teacherID), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         tier2Connection.teacherError("Something is wrong boyy", id);
@@ -439,23 +508,15 @@ public class ModelManager implements Model, Tier2Model {
     {
         System.out.println("!!!!!!!!!!!!!!!!!!MOTIVATE ABSENCE");
 
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(studentID))
-                for (int j = 0; j < studentsA.get(i).getAbsences().size(); j++)
-                    if (studentsA.get(i).getAbsences().get(j).getDate().equals(date) && studentsA.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsA.get(i).getAbsences().get(j).isMotivated()) {
-                        studentsA.get(i).getAbsences().get(j).setMotivated(true);
-                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                        return;
-                    }
+        teacherID.substring(1);
 
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(studentID))
-                for (int j = 0; j < studentsB.get(i).getAbsences().size(); j++)
-                    if (studentsB.get(i).getAbsences().get(j).getDate().equals(date) && studentsB.get(i).getAbsences().get(j).getCourse().equals(course) && !studentsB.get(i).getAbsences().get(j).isMotivated()) {
-                        studentsB.get(i).getAbsences().get(j).setMotivated(true);
-                        tier2Connection.openTeacher(getTeacherData(teacherID), id);
-                        return;
-                    }
+
+        try {
+            con.prepareStatement("UPDATE gradebook_dbs.absence SET motivated = 'true' WHERE student_id = '" + studentID +"' AND date = '" + date + "' AND course = '" + course + "'").executeUpdate();
+            tier2Connection.openTeacher(getTeacherData(teacherID), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         tier2Connection.teacherError("Something is wrong boyy", id);
@@ -464,103 +525,127 @@ public class ModelManager implements Model, Tier2Model {
     @Override
     public void SecretaryCreateTeacher(String firstName, String lastName, String password, long id)
     {
-        this.teachers.add(new Teacher(this.getNewId(), firstName, lastName, password, null));
-
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.teacher VALUES(DEFAULT, '" + firstName +"', '" + lastName + "', '" + password + "')").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void SecretaryEditTeacher(String id, String password, long id2)
     {
-        for (int i = 0; i < teachers.size(); i++)
-            if (teachers.get(i).getId().equals(id))
-            {
-                teachers.get(i).setPassword(password);
-                tier2Connection.openSecretary(getSecretaryData("0"), id2);
-                return;
-            }
+        try {
+            con.prepareStatement("UPDATE gradebook_dbs.teacher SET password = '" + password + "' WHERE id = '" + id + "';").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         tier2Connection.secretaryError("Teacher not found", id2);
     }
 
     @Override
     public void SecretaryDeleteTeacher(String firstField, long id)
     {
-        for (int i = 0; i < teachers.size(); i++)
-            if (teachers.get(i).getId().equals(firstField))
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.teacher_class_link WHERE teacher_id ='" + firstField + "'").executeQuery();
+            while (rs2.next())
             {
-                teachers.remove(teachers.get(i));
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
+                tier2Connection.secretaryError("Teacher is still teaching a class", id);
             }
-        tier2Connection.secretaryError("Teacher not found", id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con.prepareStatement("DELETE FROM gradebook_dbs.teacher WHERE id = '" + firstField + "'").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Teacher not found", id);
+        }
+
+
     }
 
     @Override
     public void SecretaryCreateStudent(Student data, Long id)
     {
-        data.setId(this.getNewId());
-        studentsA.add(data);
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.student VALUES(DEFAULT, '" + data.getFirstName() + "', '" + data.getLastName() + "', '" + data.getAddress() + "', '" + data.getViewGradePassword() + "', '" + data.getPhoneNumber() + "', '" + data.getBirthday() + "')").executeUpdate();
+            ResultSet rs3 = con.prepareStatement("SELECT * FROM gradebook_dbs.student WHERE first_name = '" + data.getFirstName() + "' AND birthdate = '" + data.getBirthday() + "'").executeQuery();
+            while (rs3.next())
+            {
+                con.prepareStatement("INSERT INTO gradebook_dbs.student_class_link VALUES(DEFAULT, '" + rs3.getString(1) + "', '3')").executeUpdate();
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
+            }
 
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
+
     }
 
     @Override
     public void SecretaryDeleteStudent(String studentId, long id)
     {
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(studentId))
-            {
-                studentsA.remove(studentsA.get(i));
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
-            }
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(studentId))
-            {
-                studentsB.remove(studentsB.get(i));
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
-            }
+        try {
+            con.prepareStatement("DELETE FROM gradebook_dbs.student_class_link WHERE student_id = '" + studentId + "';").executeUpdate();
+            con.prepareStatement("DELETE FROM gradebook_dbs.student WHERE id = '" + studentId + "';").executeUpdate();
+            con.prepareStatement("DELETE FROM gradebook_dbs.absence WHERE student_id = '" + studentId + "';").executeUpdate();
+            con.prepareStatement("DELETE FROM gradebook_dbs.grades WHERE student_id = '" + studentId + "';").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         tier2Connection.secretaryError("Student not found", id);
     }
 
     @Override
     public void SecretaryEditStudent(String studentId, String address, String password, String phoneNr, Long id)
     {
-        for (int i = 0; i < studentsA.size(); i++)
-            if (studentsA.get(i).getId().equals(studentId))
-            {
-                studentsA.get(i).setAddress(address);
-                studentsA.get(i).setViewGradePassword(password);
-                studentsA.get(i).setPhoneNumber(phoneNr);
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
-            }
-        for (int i = 0; i < studentsB.size(); i++)
-            if (studentsB.get(i).getId().equals(studentId))
-            {
-                studentsB.get(i).setAddress(address);
-                studentsB.get(i).setViewGradePassword(password);
-                studentsB.get(i).setPhoneNumber(phoneNr);
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
-            }
-        tier2Connection.secretaryError("Student not found", id);
+        try {
+        con.prepareStatement("UPDATE gradebook_dbs.student SET address = '" + address + "',  password = '" + password + "', phone_nr = '" + phoneNr + "' WHERE id = '" + studentId + "'").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+    } catch (SQLException e) {
+            tier2Connection.secretaryError("Student not found", id);
+        e.printStackTrace();
+    }
+
+
     }
 
     @Override
     public void SecretaryDeleteClass(String classNr, String classLetter, Long id)
     {
-        for (int i = 0; i < classes.size(); i++)
-        {
-            System.out.println(String.valueOf(classes.get(i).getLetter()) + " - " + classLetter + " - " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
-            System.out.println(String.valueOf(classes.get(i).getLetter()).equals(classLetter));
-            System.out.println(classes.get(i).getYear() == Integer.parseInt(classNr));
-            if (String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr)) {
-                classes.remove(i);
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
+        String auxID = null;
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.class WHERE year ='" + classNr + "' AND  letter ='" + classNr + "'").executeQuery();
+            while (rs2.next())
+            {
+                auxID = rs2.getString(1);
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con.prepareStatement("DELETE FROM gradebook_dbs.class WHERE id = '" + auxID + "'").executeUpdate();
+            con.prepareStatement("DELETE FROM gradebook_dbs.student_class_link WHERE class_id = '" + auxID + "'").executeUpdate();
+            con.prepareStatement("DELETE FROM gradebook_dbs.teacher_class_link WHERE class_id = '" + auxID + "'").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         tier2Connection.secretaryError("Class not found", id);
@@ -571,60 +656,47 @@ public class ModelManager implements Model, Tier2Model {
     @Override
     public void SecretaryCreateClass(String classNr, String classLetter, String teacherId, Long id)
     {
-        System.out.println(classLetter);
-        System.out.println(classNr);
-        System.out.println(teacherId);
-        classes.add(new Class(Integer.parseInt(classNr), classLetter.charAt(0), teacherId, null, null));
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
-    };
 
+        try {
+        con.prepareStatement("INSERT INTO gradebook_dbs.class VALUES(DEFAULT, '" + classNr + "', '" + classLetter + "')").executeUpdate();
+        tier2Connection.openSecretary(getSecretaryData("0"), id);
+        return;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        tier2Connection.secretaryError("SOMETHING WENT WRONG", id);
+    }
+    }
 
 
     @Override
     public void SecretaryCLassAddStudent(String classNr, String classLetter, String studentId, long id)
     {
-        for(int i = 0; i < classes.size(); i++)
-        {
-            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
+
+        String auxID = null;
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.class WHERE year ='" + classNr + "' AND  letter ='" + classNr + "'").executeQuery();
+            while (rs2.next())
             {
-                for (int j = 0; j < studentsA.size(); j++)
-                    if (studentsA.get(j).getId().equals(studentId))
-                    {
-                        if(classes.get(i).getStudents() == null)
-                        {
-                            ArrayList<Student> auxStudList = new ArrayList<Student>();
-                            auxStudList.add(studentsA.get(j));
-                            classes.get(i).setStudents(auxStudList);
-                        }
-                        else {
-                            ArrayList<Student> auxStudList = classes.get(i).getStudents();
-                            auxStudList.add(studentsA.get(j));
-                            classes.get(j).setStudents(auxStudList);
-                        }
-                        tier2Connection.openSecretary(getSecretaryData("0"), id);
-                        return;
-                    }
-                for (int j = 0; j < studentsB.size(); j++)
-                    if (studentsB.get(j).getId().equals(studentId))
-                    {
-                        if(classes.get(i).getStudents() == null)
-                        {
-                            ArrayList<Student> auxStudList = new ArrayList<Student>();
-                            auxStudList.add(studentsB.get(j));
-                            classes.get(i).setStudents(auxStudList);
-                        }
-                        else {
-                            ArrayList<Student> auxStudList = classes.get(i).getStudents();
-                            auxStudList.add(studentsB.get(j));
-                            classes.get(j).setStudents(auxStudList);
-                        }
-                        tier2Connection.openSecretary(getSecretaryData("0"), id);
-                        return;
-                    }
-                tier2Connection.secretaryError("Student not found", id);
+                auxID = rs2.getString(1);
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+
+        try {
+                con.prepareStatement("INSERT INTO gradebook_dbs.student_class_link VALUES(DEFAULT, '" + studentId + "', '" + auxID + "')").executeUpdate();
+                tier2Connection.openSecretary(getSecretaryData("0"), id);
+                return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
+
+
         tier2Connection.secretaryError("Class not found", id);
     }
 
@@ -632,93 +704,103 @@ public class ModelManager implements Model, Tier2Model {
     public void SecretaryClassRemoveStudent(String classNr, String classLetter, String studentId, long id)
     {
 
-        System.out.println("----" + classNr + "-----" + classLetter + "----" + studentId);
-        for(int i = 0; i < classes.size(); i++)
-        {
-            System.out.println(classes.get(i).getLetter() + " - " + classLetter.charAt(0) + " -111111- " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
-            System.out.println(String.valueOf(classes.get(i).getLetter()).equals(classLetter));
-            System.out.println(classes.get(i).getYear() == Integer.parseInt(classNr));
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.student_class_link VALUES(DEFAULT, '" + studentId + "', '3')").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
 
-            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
-            {
-                System.out.println(classes.get(i).getLetter() + " - " + classLetter.charAt(0) + " -!!!!!!- " + classes.get(i).getYear() + " - " + Integer.parseInt(classNr));
-                for (int j = 0; j < classes.get(i).getStudents().size(); j++)
-                {
-                    if(classes.get(i).getStudents().get(j).getId().equals(studentId))
-                    {
-                        classes.get(i).getStudents().remove(j);
-                        tier2Connection.openSecretary(getSecretaryData("0"), id);
-                        return;
-                    }
-                }
-                tier2Connection.secretaryError("Student not found", id);
-            }
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
         }
+
         tier2Connection.secretaryError("Class not found", id);
     }
 
     @Override
     public void SecretaryClassAddCourse(String classNr, String classLetter, String courseName, long id)
     {
-        for(int i = 0; i < classes.size(); i++)
-        {
-            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
+        String auxID = null;
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.class WHERE year ='" + classNr + "' AND  letter ='" + classNr + "'").executeQuery();
+            while (rs2.next())
             {
-                if(classes.get(i).getCourses() == null)
-                {
-                    ArrayList<Course> newCourses = new ArrayList<Course>();
-                    newCourses.add(new Course(courseName));
-                    classes.get(i).setCourses(newCourses);
-                }
-                else
-                {
-                    ArrayList<Course> newCourses = classes.get(i).getCourses();
-                    newCourses.add(new Course(courseName));
-                    classes.get(i).setCourses(newCourses);
-                }
-                tier2Connection.openSecretary(getSecretaryData("0"), id);
-                return;
+                auxID = rs2.getString(1);
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+
+        try {
+            con.prepareStatement("INSERT INTO gradebook_dbs.course VALUES(DEFAULT, '" + courseName + "', '" + auxID + "')").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
+
         tier2Connection.secretaryError("Class not found", id);
     }
 
     @Override
     public void SecretaryClassRemoveCourse(String classNr, String classLetter, String courseName, long id)
     {
-        for(int i = 0; i < classes.size(); i++)
-        {
-            if(String.valueOf(classes.get(i).getLetter()).equals(classLetter) && classes.get(i).getYear() == Integer.parseInt(classNr))
+        String auxID = null;
+        try {
+            ResultSet rs2 = null;
+            rs2 = con.prepareStatement("SELECT * FROM gradebook_dbs.class WHERE year ='" + classNr + "' AND  letter ='" + classNr + "'").executeQuery();
+            while (rs2.next())
             {
-                for (int j = 0; j < classes.get(i).getCourses().size(); j++)
-                {
-                    if(classes.get(i).getCourses().get(j).getName().equals(courseName))
-                    {
-                        classes.get(i).getCourses().remove(j);
-                        tier2Connection.openSecretary(getSecretaryData("0"), id);
-                        return;
-                    }
-                }
-                tier2Connection.secretaryError("Course not found", id);
+                auxID = rs2.getString(1);
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        try {
+            con.prepareStatement("DELETE FROM gradebook_dbs.course WHERE name = '" + courseName + "' AND class_id = '" + auxID + "").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
+
         tier2Connection.secretaryError("Class not found", id);
     }
 
     @Override
     public void SecretaryChangeOwnUsername(String username, long id)
     {
-        secretary.setId(username);
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
+        try {
+            con.prepareStatement("UPDATE gradebook_dbs.secretary SET username = '" + username + "' WHERE id = '4'").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
     }
 
     @Override
     public void SecretaryChangeOwnPassword(String firstField, long id)
     {
-        secretary.setPassword(firstField);
-        tier2Connection.openSecretary(getSecretaryData("0"), id);
+        try {
+            con.prepareStatement("UPDATE gradebook_dbs.secretary SET password = '" + firstField + "' WHERE id = '4'").executeUpdate();
+            tier2Connection.openSecretary(getSecretaryData("0"), id);
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tier2Connection.secretaryError("Something went wrong", id);
+        }
     }
 }

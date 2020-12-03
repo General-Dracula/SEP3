@@ -79,39 +79,46 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("Log In Request" + twoFieldPackage.getFirstField());
                         model.CheckLogInData(twoFieldPackage.getFirstField(), twoFieldPackage.getSecondField(), twoFieldPackage.getId());
                         break;
+
                     case TeacherAssignGrade:
                         FourFieldPackage threeFieldPackage = gson.fromJson(message, FourFieldPackage.class);
                         model.TeacherAssignGrade(threeFieldPackage.getFirstField(), threeFieldPackage.getSecondField(), threeFieldPackage.getThirdField(), threeFieldPackage.getFourthField(), threeFieldPackage.getId());
-                    break;
+                        break;
+
                     case TeacherAssignAbsence:
                         FourFieldPackage threeFieldPackage2 = gson.fromJson(message, FourFieldPackage.class);
                         model.TeacherAssignAbsence(threeFieldPackage2.getFirstField(), threeFieldPackage2.getSecondField(), threeFieldPackage2.getThirdField(), threeFieldPackage2.getId());
                         break;
+
                     case TeacherMotivateAbsence:
                         FourFieldPackage fourFieldPackage = gson.fromJson(message, FourFieldPackage.class);
                         System.out.println("-MOTIVATE ABSENCE");
                         model.TeacherMotivateAbsence(fourFieldPackage.getFirstField(), fourFieldPackage.getSecondField(), fourFieldPackage.getThirdField(), fourFieldPackage.getFourthField(), fourFieldPackage.getId());
                         break;
+
                     case SecretaruCreateTeacher:
                         ThreeFieldPackage threeFieldPackage1 = gson.fromJson(message, ThreeFieldPackage.class);
                         System.out.println("-CREATE TEACHER");
                         model.SecretaryCreateTeacher(threeFieldPackage1.getFirstField(), threeFieldPackage1.getSecondField(), threeFieldPackage1.getThirdField(), threeFieldPackage1.getId());
                         break;
+
                     case SecretaryEditTeacher:
                         TwoFieldPackage twoFieldPackage1 = gson.fromJson(message, TwoFieldPackage.class);
                         System.out.println("Secretary edit teacher" + twoFieldPackage1.getFirstField());
                         model.SecretaryEditTeacher(twoFieldPackage1.getFirstField(), twoFieldPackage1.getSecondField(), twoFieldPackage1.getId());
                         break;
+
                     case SecretaryDeleteTeacher:
                         TwoFieldPackage twoFieldPackage2 = gson.fromJson(message, TwoFieldPackage.class);
                         System.out.println("Secretary delete teacher" + twoFieldPackage2.getFirstField());
                         model.SecretaryDeleteTeacher(twoFieldPackage2.getFirstField(), twoFieldPackage2.getId());
                         break;
+
                     case SecretaryCreateStudent:
                         StudentDataPackage studentDataPackage = gson.fromJson(message, StudentDataPackage.class);
-                        System.out.println("Student create student" + studentDataPackage.getData().getFirstName());
+                        System.out.println("Student create student" + studentDataPackage.getData().getId());
                         model.SecretaryCreateStudent(studentDataPackage.getData(), studentDataPackage.getId());
-
+                        break;
 
                     case SecretaryDeleteStudent:
                         TwoFieldPackage twoFieldPackage3 = gson.fromJson(message, TwoFieldPackage.class);
@@ -172,15 +179,7 @@ public class Tier2SocketConnection implements Tier2Connection
                         System.out.println("Secretary changePassword" + twoFieldPackage6.getFirstField());
                         model.SecretaryChangeOwnPassword(twoFieldPackage6.getFirstField(), twoFieldPackage6.getId());
                         break;
-//                case :
-//
-//                    break;
-//                case :
-//
-//                    break;
-//                case :
-//
-//                    break;
+
                 }
 
 
