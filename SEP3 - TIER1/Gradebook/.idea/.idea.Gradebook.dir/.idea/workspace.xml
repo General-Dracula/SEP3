@@ -53,6 +53,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Pages/StudentView.razor" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -68,6 +71,10 @@
         <option value="$PROJECT_DIR$/Pages/SecretaryClass.razor" />
         <option value="$PROJECT_DIR$/Pages/SecretaryStudent.razor" />
         <option value="$PROJECT_DIR$/Pages/SecretaryTeacher.razor" />
+        <option value="$PROJECT_DIR$/Models/Student.cs" />
+        <option value="$PROJECT_DIR$/Models/Teacher.cs" />
+        <option value="$PROJECT_DIR$/Models/Class.cs" />
+        <option value="$PROJECT_DIR$/Models/Course.cs" />
         <option value="$PROJECT_DIR$/Pages/TeacherView.razor" />
       </list>
     </option>
