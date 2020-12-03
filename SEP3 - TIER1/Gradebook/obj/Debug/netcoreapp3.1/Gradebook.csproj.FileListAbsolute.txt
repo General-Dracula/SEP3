@@ -138,7 +138,6 @@ W:\Univer\SEP\SEP3\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook
 W:\Univer\SEP\SEP3\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.csproj.CopyComplete
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\appsettings.Development.json
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\appsettings.json
-W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.exe
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.deps.json
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\bin\Debug\netcoreapp3.1\Gradebook.runtimeconfig.json
@@ -156,7 +155,6 @@ W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.Razo
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
-W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Gradebook.dll
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.TagHelpers.input.cache
@@ -165,7 +163,6 @@ W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.Razo
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
-W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
@@ -284,8 +281,6 @@ W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclarati
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\TeacherView.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryTeacher.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryTeacher.razor.g.cs
-W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SecretarySidebar.razor.g.cs
-W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Shared\SecretarySidebar.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryClass.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryStudent.razor.g.cs
 W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryClass.razor.g.cs
@@ -364,3 +359,9 @@ C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.genruntimeconfig.cache
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryLogin.razor.g.cs
 C:\Users\dobre\OneDrive\Desktop\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryLogin.razor.g.cs
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretaryLogin.razor.g.cs
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretaryLogin.razor.g.cs
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Gradebook.RazorComponent.output.cache
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\scopedcss\bundle\Gradebook.styles.css
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SecretarySidebar.razor.g.cs
+W:\Univer\SEP\SEP3\SEP3 - TIER1\Gradebook\obj\Debug\netcoreapp3.1\Razor\Pages\SecretarySidebar.razor.g.cs

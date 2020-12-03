@@ -4,7 +4,5 @@ namespace WebApplication.NetworkPackages
     {
         public string type { get; set; }
         public long id { get; set; }
-        
-        
     }
 }
