@@ -5,14 +5,14 @@ namespace WebApplication.Models
 {
     public class Student 
     {
-        public string id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string address { get; set; }
-        public string birthday { get; set; }
-        public string viewGradePassword { get; set; }
-        public string phoneNumber { get; set; }
-        public List<Grade> grades { get; set; }
-        public List<Absence> absences { get; set; }
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Birthday { get; set; }
+        public string Password { get; set; }
+        public string PhoneNumber { get; set; }
+        public List<Grade> Grades { get; set; }
+        public List<Absence> Absences { get; set; }
     }
 }

@@ -9,7 +9,7 @@
 </head>
 
 <div>
-    <h2 class="blue-border center-horiz">Student - <b>@student.firstName @student.lastName</b>, ID = @student.id</h2>
+    <h2 class="blue-border center-horiz">Student - <b>@student.FirstName @student.LastName</b>, ID = @student.Id</h2>
 </div>
 
 <br>
@@ -23,23 +23,23 @@
             <tr>
                 <td style="width: 7em">Grades</td>
                 <tr>
-                    @foreach (Grade grade in student.grades)
+                    @foreach (Grade grade in student.Grades)
                     {
-                        string gradeOpacity = "0." + (int)(grade.grade*0.9);
-                        if (grade.grade == 10) gradeOpacity = "1";
+                        string gradeOpacity = "0." + (int)(grade.GradeValue*0.9);
+                        if (grade.GradeValue == 10) gradeOpacity = "1";
                         string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
-                        if (grade.course.Equals(course))
+                        if (grade.Course.Equals(course))
                         {
-                            <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
+                            <td class="cell" style="background-color: @gradeColor">@grade.GradeValue</td>
                         }
                     }
                 </tr>
                 <tr>
-                    @foreach (Grade grade in student.grades)
+                    @foreach (Grade grade in student.Grades)
                     {
-                        if (grade.course.Equals(course))
+                        if (grade.Course.Equals(course))
                         {
-                            <td class="cell">@grade.date</td>
+                            <td class="cell">@grade.Date</td>
                         }
                     }
                 </tr>
@@ -47,11 +47,11 @@
             <tr>
                 <td style="width: 7em">Absences</td>
                 <tr>
-                    @foreach (Absence absence in student.absences)
+                    @foreach (Absence absence in student.Absences)
                     {
-                        if (absence.course.Equals(course))
+                        if (absence.Course.Equals(course))
                         {
-                            if (absence.motivated)
+                            if (absence.Motivated)
                             {
                                 <td class="cell" style="background-color: #8aff78">Motivated</td>
                             }
@@ -63,11 +63,11 @@
                     }
                 </tr>
                 <tr>
-                    @foreach (Absence absence in student.absences)
+                    @foreach (Absence absence in student.Absences)
                     {
-                        if (absence.course.Equals(course))
+                        if (absence.Course.Equals(course))
                         {
-                            <td class="cell">@absence.date</td>
+                            <td class="cell">@absence.Date</td>
                         }
                     }
                 </tr>
@@ -80,8 +80,8 @@
 <br>
 
 <div class="blue-border center-horiz">
-<h4>Student's address: <b>@student.address</b></h4>
-<h4>Student's phone number: <b>@student.phoneNumber</b></h4>
+<h4>Student's address: <b>@student.Address</b></h4>
+<h4>Student's phone number: <b>@student.PhoneNumber</b></h4>
 </div>
 
 <br>
@@ -92,23 +92,23 @@
 
     private void ExtractCourses()
     {
-        foreach (Grade grade in student.grades)
+        foreach (Grade grade in student.Grades)
         {
             if (courses == null)
             {
-                courses.Add(grade.course);
+                courses.Add(grade.Course);
             }
-            else if (!courses.Contains(grade.course))
+            else if (!courses.Contains(grade.Course))
             {
-                courses.Add(grade.course);
+                courses.Add(grade.Course);
             }
         }
-        foreach (Absence absence in student.absences)
+        foreach (Absence absence in student.Absences)
         {
-            if(courses==null) courses.Add(absence.course);
-            else if (!courses.Contains(absence.course))
+            if(courses==null) courses.Add(absence.Course);
+            else if (!courses.Contains(absence.Course))
             {
-                courses.Add(absence.course);
+                courses.Add(absence.Course);
             }
         }
     }

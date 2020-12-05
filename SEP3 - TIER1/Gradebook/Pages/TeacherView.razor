@@ -55,17 +55,17 @@
         </div>
         <div class="col-4 center-horiz">
             <div>
-                <h2 class="blue-border center-horiz">Teacher - <b>@teacher.firstName @teacher.lastName</b>, ID = @teacher.id</h2>
+                <h2 class="blue-border center-horiz">Teacher - <b>@teacher.FirstName @teacher.LastName</b>, ID = @teacher.Id</h2>
             </div>
             <br>
 
             <div class="blue-border center-horiz">
                 <select class="form-control" name="classes" @onchange="@ClassSelected" id="classes">
                     <option value="" selected disabled hidden>Choose class</option>
-                    @foreach (Class _class in teacher.classes)
+                    @foreach (Class _class in teacher.Classes)
                     {
-                        string className = _class.year + " - ";
-                        className = className + _class.letter.ToString();
+                        string className = _class.Year + " - ";
+                        className = className + _class.Letter.ToString();
                         string serializedClass = JsonSerializer.Serialize(_class);
                         <option value="@serializedClass">@className</option>
                     }
@@ -75,11 +75,11 @@
                 {
                     <select class="form-control" name="students" id="students" @onchange=@ExtractCourses>
                         <option value="" selected disabled hidden>Choose student...</option>
-                        @if (selectedClass.students != null)
+                        @if (selectedClass.Students != null)
                         {
-                            @foreach (Student student in selectedClass.students)
+                            @foreach (Student student in selectedClass.Students)
                             {
-                                string selectedStudentName = student.firstName + " " + student.lastName;
+                                string selectedStudentName = student.FirstName + " " + student.LastName;
                                 string serializedStudent = JsonSerializer.Serialize(student);
                                 <option value="@serializedStudent">@selectedStudentName</option>
                             }
@@ -108,9 +108,9 @@
                                     {
                                         DateTime localDate = DateTime.Now;
                                         int aux = 0;
-                                        @foreach (Absence absence in selectedStudent.absences)
+                                        @foreach (Absence absence in selectedStudent.Absences)
                                         {
-                                            if (absence.course.Equals(course) && absence.date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
+                                            if (absence.Course.Equals(course) && absence.Date.Equals(localDate.Month + "/" + localDate.Day + "/" + localDate.Year))
                                             {
                                                 aux++;
                                             }
@@ -153,11 +153,11 @@
                                 <label>Date</label>
                                 <select class="form-control" id="dateSelector" @bind="@selectedAbsenceDate">
                                     <option value="" selected disabled hidden>Choose date...</option>
-                                    @foreach (Absence absence in selectedStudent.absences)
+                                    @foreach (Absence absence in selectedStudent.Absences)
                                     {
-                                        if (absence.course.Equals(selectedAbsenceCourse) && !absence.motivated)
+                                        if (absence.Course.Equals(selectedAbsenceCourse) && !absence.Motivated)
                                         {
-                                            <option value=@absence.date>@absence.date</option>
+                                            <option value=@absence.Date>@absence.Date</option>
                                         }
                                     }
                                 </select>
@@ -187,23 +187,23 @@
                         <tr>
                             <td style="width: 7em">Grades</td>
                             <tr>
-                                @foreach (Grade grade in selectedStudent.grades)
+                                @foreach (Grade grade in selectedStudent.Grades)
                                 {
-                                    string gradeOpacity = "0." + (int) (grade.grade * 0.9);
-                                    if (grade.grade == 10) gradeOpacity = "1";
+                                    string gradeOpacity = "0." + (int) (grade.GradeValue * 0.9);
+                                    if (grade.GradeValue == 10) gradeOpacity = "1";
                                     string gradeColor = "rgba(15, 180, 255, " + gradeOpacity + ")";
-                                    if (grade.course.Equals(course))
+                                    if (grade.Course.Equals(course))
                                     {
-                                        <td class="cell" style="background-color: @gradeColor">@grade.grade</td>
+                                        <td class="cell" style="background-color: @gradeColor">@grade.GradeValue</td>
                                     }
                                 }
                             </tr>
                             <tr>
-                                @foreach (Grade grade in selectedStudent.grades)
+                                @foreach (Grade grade in selectedStudent.Grades)
                                 {
-                                    if (grade.course.Equals(course))
+                                    if (grade.Course.Equals(course))
                                     {
-                                        <td class="cell">@grade.date</td>
+                                        <td class="cell">@grade.Date</td>
                                     }
                                 }
                             </tr>
@@ -211,11 +211,11 @@
                         <tr>
                             <td style="width: 7em">Absences</td>
                             <tr>
-                                @foreach (Absence absence in selectedStudent.absences)
+                                @foreach (Absence absence in selectedStudent.Absences)
                                 {
-                                    if (absence.course.Equals(course))
+                                    if (absence.Course.Equals(course))
                                     {
-                                        if (absence.motivated)
+                                        if (absence.Motivated)
                                         {
                                             <td class="cell" style="background-color: #8aff78">Motivated</td>
                                         }
@@ -227,11 +227,11 @@
                                 }
                             </tr>
                             <tr>
-                                @foreach (Absence absence in selectedStudent.absences)
+                                @foreach (Absence absence in selectedStudent.Absences)
                                 {
-                                    if (absence.course.Equals(course))
+                                    if (absence.Course.Equals(course))
                                     {
-                                        <td class="cell">@absence.date</td>
+                                        <td class="cell">@absence.Date</td>
                                     }
                                 }
                             </tr>
@@ -245,8 +245,8 @@
     if (studentSelected)
     {
         <div class="blue-border center-horiz">
-            <h4>Student's address: <b>@selectedStudent.address</b></h4>
-            <h4>Student's phone number: <b>@selectedStudent.phoneNumber</b></h4>
+            <h4>Student's address: <b>@selectedStudent.Address</b></h4>
+            <h4>Student's phone number: <b>@selectedStudent.PhoneNumber</b></h4>
         </div>
         <br>
     }
@@ -296,8 +296,8 @@
 
     async Task AssignGrade()
     {
-        NetworkPackage package = await teacherService.AssignGrade(selectedStudent.id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.id);
-        Console.WriteLine(selectedStudent.id + " " + selectedCourseAsString + " " + Int32.Parse(selectedGradeAsString));
+        NetworkPackage package = await teacherService.AssignGrade(selectedStudent.Id, selectedCourseAsString, Int32.Parse(selectedGradeAsString), teacher.Id);
+        Console.WriteLine(selectedStudent.Id + " " + selectedCourseAsString + " " + Int32.Parse(selectedGradeAsString));
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
@@ -312,8 +312,8 @@
 
     async Task AssignAbsence()
     {
-        NetworkPackage package = await teacherService.AssignAbsence(selectedStudent.id, selectedNewAbsenceCourse, teacher.id);
-        Console.WriteLine(selectedStudent.id + " " + selectedNewAbsenceCourse);
+        NetworkPackage package = await teacherService.AssignAbsence(selectedStudent.Id, selectedNewAbsenceCourse, teacher.Id);
+        Console.WriteLine(selectedStudent.Id + " " + selectedNewAbsenceCourse);
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
@@ -328,8 +328,8 @@
 
     async Task MotivateAbsence()
     {
-        Console.WriteLine(selectedStudent.id + " " + selectedAbsenceCourse + " " + selectedAbsenceDate + " " + teacher.id);
-        NetworkPackage package = await teacherService.MotivateAbsence(selectedStudent.id, selectedAbsenceCourse, selectedAbsenceDate, teacher.id);
+        Console.WriteLine(selectedStudent.Id + " " + selectedAbsenceCourse + " " + selectedAbsenceDate + " " + teacher.Id);
+        NetworkPackage package = await teacherService.MotivateAbsence(selectedStudent.Id, selectedAbsenceCourse, selectedAbsenceDate, teacher.Id);
         if (package != null)
         {
             TeacherDataPackage teacherDataPackage = (TeacherDataPackage) package;
@@ -347,13 +347,13 @@
         studentSelected = true;
         selectedStudentAsString = e.Value.ToString();
         selectedStudent = JsonSerializer.Deserialize<Student>(selectedStudentAsString);
-    //Console.WriteLine(selectedStudent.firstName);
+    //Console.WriteLine(selectedStudent.FirstName);
 
-        for (int i = 0; i < selectedClass.courses.Count; i++)
+        for (int i = 0; i < selectedClass.Courses.Count; i++)
         {
             if (i == 0 && selectedStudentCourses != null)
                 selectedStudentCourses = new List<string>();
-            selectedStudentCourses.Add(selectedClass.courses[i].name);
+            selectedStudentCourses.Add(selectedClass.Courses[i].Name);
         }
     }
 

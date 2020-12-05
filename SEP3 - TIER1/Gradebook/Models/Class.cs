@@ -4,11 +4,11 @@ namespace WebApplication.Models
 {
     public class Class
     {
-        public int year { get; set; }
-        public char letter { get; set; }
-        public string teacherID { get; set; }
-        public List<Student> students { get; set; }
+        public int Year { get; set; }
+        public char Letter { get; set; }
+        public string TeacherID { get; set; }
+        public List<Student> Students { get; set; }
         
-        public List<Course> courses { get; set; }
+        public List<Course> Courses { get; set; }
     }
 }

@@ -60,8 +60,8 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             if (resultUser.type.Equals("StudentData"))
             {
                 StudentDataPackage studentDataPackage = JsonSerializer.Deserialize<StudentDataPackage>(response);
-                user.UserName = studentDataPackage.data.id;
-                user.Password =  studentDataPackage.data.viewGradePassword;
+                user.UserName = studentDataPackage.data.Id;
+                user.Password =  studentDataPackage.data.Password;
                 user.SecurityLevel = 1;
                 CachedStudent = studentDataPackage.data;
                 RestoreWindowBooleans();
@@ -69,8 +69,8 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             } else if (resultUser.type.Equals("TeacherData"))
             {
                 TeacherDataPackage teacherDataPackage = JsonSerializer.Deserialize<TeacherDataPackage>(response);
-                user.UserName = teacherDataPackage.data.id;
-                user.Password =  teacherDataPackage.data.password;
+                user.UserName = teacherDataPackage.data.Id;
+                user.Password =  teacherDataPackage.data.Password;
                 user.SecurityLevel = 2;
                 CachedTeacher = teacherDataPackage.data;
                 RestoreWindowBooleans();
@@ -78,8 +78,8 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
             } else if (resultUser.type.Equals("SecretaryData"))
             {
                 SecretaryDataPackage secretaryDataPackage = JsonSerializer.Deserialize<SecretaryDataPackage>(response);
-                user.UserName = secretaryDataPackage.data.id;
-                user.Password = secretaryDataPackage.data.password;
+                user.UserName = secretaryDataPackage.data.Id;
+                user.Password = secretaryDataPackage.data.Password;
                 user.SecurityLevel = 3;
                 CachedSecretary = secretaryDataPackage.data;
                 RestoreWindowBooleans();
